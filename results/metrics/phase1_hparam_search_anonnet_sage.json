@@ -1,0 +1,306 @@
+{
+  "best_params": {
+    "embedding_dim": 128,
+    "hidden_channels": 64,
+    "out_channels": 32,
+    "num_layers": 3,
+    "lr": 0.003369227424154159,
+    "weight_decay": 2.2556124774643924e-05
+  },
+  "best_val_mrr": 0.023508360219359394,
+  "confirmed_test_ranking": {
+    "mrr": 0.0257529181718598,
+    "hits@1": 0.008036040423718496,
+    "hits@3": 0.02118592475343967,
+    "hits@10": 0.052234262754170216,
+    "mrr_sampled99": 0.29083778940579635,
+    "hits@1_sampled99": 0.15718982101546328,
+    "hits@3_sampled99": 0.31973700231340557,
+    "hits@10_sampled99": 0.585048094484354
+  },
+  "confirmed_test_metrics": {
+    "accuracy": 0.8190673322780957,
+    "auc_roc": 0.8962829343631451,
+    "pr_auc": 0.9005937404999738,
+    "f1": 0.8212653355785422,
+    "threshold": 0.7640727162361145,
+    "f1_at_threshold_0.5": 0.7666617697468292
+  },
+  "trials": [
+    {
+      "params": {
+        "embedding_dim": 128,
+        "hidden_channels": 256,
+        "out_channels": 128,
+        "num_layers": 2,
+        "lr": 0.0038322168504927897,
+        "weight_decay": 3.860866271460548e-05
+      },
+      "value": 0.010795982355037504
+    },
+    {
+      "params": {
+        "embedding_dim": 128,
+        "hidden_channels": 256,
+        "out_channels": 128,
+        "num_layers": 3,
+        "lr": 0.0008374496868436813,
+        "weight_decay": 0.00021957734465394562
+      },
+      "value": 0.015392676298960342
+    },
+    {
+      "params": {
+        "embedding_dim": 128,
+        "hidden_channels": 64,
+        "out_channels": 64,
+        "num_layers": 3,
+        "lr": 0.00010903843281968532,
+        "weight_decay": 7.126995609048586e-05
+      },
+      "value": 0.0009303154520648619
+    },
+    {
+      "params": {
+        "embedding_dim": 256,
+        "hidden_channels": 64,
+        "out_channels": 32,
+        "num_layers": 3,
+        "lr": 0.0002634905974115614,
+        "weight_decay": 2.4365700014641986e-06
+      },
+      "value": 0.011139592104391671
+    },
+    {
+      "params": {
+        "embedding_dim": 256,
+        "hidden_channels": 128,
+        "out_channels": 128,
+        "num_layers": 2,
+        "lr": 0.000856291327881824,
+        "weight_decay": 5.410990556767872e-06
+      },
+      "value": 0.0056249499625754835
+    },
+    {
+      "params": {
+        "embedding_dim": 256,
+        "hidden_channels": 256,
+        "out_channels": 128,
+        "num_layers": 2,
+        "lr": 0.008972612866432512,
+        "weight_decay": 2.5465581928924347e-05
+      },
+      "value": 0.0006933536559590257
+    },
+    {
+      "params": {
+        "embedding_dim": 64,
+        "hidden_channels": 128,
+        "out_channels": 128,
+        "num_layers": 2,
+        "lr": 0.00013436773384110736,
+        "weight_decay": 0.00011951333297092348
+      },
+      "value": 0.0008391375127716355
+    },
+    {
+      "params": {
+        "embedding_dim": 64,
+        "hidden_channels": 256,
+        "out_channels": 64,
+        "num_layers": 3,
+        "lr": 0.000379150982653768,
+        "weight_decay": 3.5446559318532913e-06
+      },
+      "value": 0.006838300015489883
+    },
+    {
+      "params": {
+        "embedding_dim": 256,
+        "hidden_channels": 128,
+        "out_channels": 64,
+        "num_layers": 3,
+        "lr": 0.0015278610607077103,
+        "weight_decay": 5.209016311370386e-05
+      },
+      "value": 0.016652828437738933
+    },
+    {
+      "params": {
+        "embedding_dim": 128,
+        "hidden_channels": 64,
+        "out_channels": 128,
+        "num_layers": 3,
+        "lr": 0.005800570688908555,
+        "weight_decay": 0.00011956244022128876
+      },
+      "value": 0.016337079189273167
+    },
+    {
+      "params": {
+        "embedding_dim": 256,
+        "hidden_channels": 128,
+        "out_channels": 64,
+        "num_layers": 2,
+        "lr": 0.0024434621992145637,
+        "weight_decay": 0.0008657014086787852
+      },
+      "value": 0.008715476144493525
+    },
+    {
+      "params": {
+        "embedding_dim": 128,
+        "hidden_channels": 64,
+        "out_channels": 32,
+        "num_layers": 3,
+        "lr": 0.002820187197481502,
+        "weight_decay": 1.0993272748194711e-05
+      },
+      "value": 0.02080470014730413
+    },
+    {
+      "params": {
+        "embedding_dim": 128,
+        "hidden_channels": 64,
+        "out_channels": 32,
+        "num_layers": 3,
+        "lr": 0.0015324551689603724,
+        "weight_decay": 1.2196133032762347e-05
+      },
+      "value": 0.021871383005372842
+    },
+    {
+      "params": {
+        "embedding_dim": 128,
+        "hidden_channels": 64,
+        "out_channels": 32,
+        "num_layers": 3,
+        "lr": 0.0016646690436005163,
+        "weight_decay": 1.3352043890431769e-05
+      },
+      "value": 0.01951547168769743
+    },
+    {
+      "params": {
+        "embedding_dim": 128,
+        "hidden_channels": 64,
+        "out_channels": 32,
+        "num_layers": 3,
+        "lr": 0.0031786917767842125,
+        "weight_decay": 9.31023180918466e-06
+      },
+      "value": 0.022854492474047264
+    },
+    {
+      "params": {
+        "embedding_dim": 128,
+        "hidden_channels": 64,
+        "out_channels": 32,
+        "num_layers": 3,
+        "lr": 0.00102466953299334,
+        "weight_decay": 1.028235700613609e-06
+      },
+      "value": 0.012990506510866556
+    },
+    {
+      "params": {
+        "embedding_dim": 128,
+        "hidden_channels": 64,
+        "out_channels": 32,
+        "num_layers": 3,
+        "lr": 0.0004674417754329369,
+        "weight_decay": 1.1516016035343371e-05
+      },
+      "value": 0.0077612075903189
+    },
+    {
+      "params": {
+        "embedding_dim": 64,
+        "hidden_channels": 64,
+        "out_channels": 32,
+        "num_layers": 3,
+        "lr": 0.004613805274862867,
+        "weight_decay": 1.631316661186498e-06
+      },
+      "value": 0.01961473433340204
+    },
+    {
+      "params": {
+        "embedding_dim": 128,
+        "hidden_channels": 64,
+        "out_channels": 32,
+        "num_layers": 3,
+        "lr": 0.009675643936202473,
+        "weight_decay": 6.773079698913202e-06
+      },
+      "value": 0.01788655514239451
+    },
+    {
+      "params": {
+        "embedding_dim": 128,
+        "hidden_channels": 64,
+        "out_channels": 32,
+        "num_layers": 3,
+        "lr": 0.0017949745274261862,
+        "weight_decay": 2.680263573671232e-05
+      },
+      "value": 0.023082974354919027
+    },
+    {
+      "params": {
+        "embedding_dim": 64,
+        "hidden_channels": 64,
+        "out_channels": 32,
+        "num_layers": 2,
+        "lr": 0.002541588483305291,
+        "weight_decay": 0.0004226479263199065
+      },
+      "value": 0.008360585395625298
+    },
+    {
+      "params": {
+        "embedding_dim": 128,
+        "hidden_channels": 64,
+        "out_channels": 32,
+        "num_layers": 3,
+        "lr": 0.0014427490593414253,
+        "weight_decay": 2.3617444766013232e-05
+      },
+      "value": 0.0174423287050077
+    },
+    {
+      "params": {
+        "embedding_dim": 128,
+        "hidden_channels": 64,
+        "out_channels": 32,
+        "num_layers": 3,
+        "lr": 0.0020991286427746426,
+        "weight_decay": 2.0506574862055714e-05
+      },
+      "value": 0.022966678712335372
+    },
+    {
+      "params": {
+        "embedding_dim": 128,
+        "hidden_channels": 64,
+        "out_channels": 32,
+        "num_layers": 3,
+        "lr": 0.003369227424154159,
+        "weight_decay": 2.2556124774643924e-05
+      },
+      "value": 0.023508360219359394
+    },
+    {
+      "params": {
+        "embedding_dim": 128,
+        "hidden_channels": 64,
+        "out_channels": 32,
+        "num_layers": 3,
+        "lr": 0.005766586620710731,
+        "weight_decay": 2.567497948323084e-05
+      },
+      "value": 0.019477394947906426
+    }
+  ]
+}

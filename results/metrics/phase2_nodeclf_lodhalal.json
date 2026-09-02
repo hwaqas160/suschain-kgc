@@ -1,0 +1,150 @@
+{
+  "class_names": [
+    "Fully certified",
+    "Not certified",
+    "Partially certified"
+  ],
+  "results": {
+    "sage": {
+      "config": {
+        "conv_kind": "sage",
+        "embedding_dim": 128,
+        "hidden_channels": 128,
+        "out_channels": 64,
+        "num_layers": 2,
+        "lr": 0.005,
+        "weight_decay": 1e-05,
+        "epochs": 150,
+        "patience": 20,
+        "seed": 0,
+        "device": "cuda"
+      },
+      "class_names": [
+        "Fully certified",
+        "Not certified",
+        "Partially certified"
+      ],
+      "majority_baseline": 0.9615079365079365,
+      "val_macro_f1": 0.3997356221932493,
+      "test_metrics": {
+        "accuracy": 0.8829365079365079,
+        "macro_precision": 0.34570585077831456,
+        "macro_recall": 0.346763085399449,
+        "macro_f1": 0.3438608592826173,
+        "confusion_matrix": [
+          [
+            443,
+            24,
+            17
+          ],
+          [
+            14,
+            2,
+            0
+          ],
+          [
+            3,
+            1,
+            0
+          ]
+        ]
+      },
+      "epochs_run": 23,
+      "wall_clock_seconds": 2.44846439990215
+    },
+    "gat": {
+      "config": {
+        "conv_kind": "gat",
+        "embedding_dim": 128,
+        "hidden_channels": 128,
+        "out_channels": 64,
+        "num_layers": 2,
+        "lr": 0.005,
+        "weight_decay": 1e-05,
+        "epochs": 150,
+        "patience": 20,
+        "seed": 0,
+        "device": "cuda"
+      },
+      "class_names": [
+        "Fully certified",
+        "Not certified",
+        "Partially certified"
+      ],
+      "majority_baseline": 0.9615079365079365,
+      "val_macro_f1": 0.5972621492128679,
+      "test_metrics": {
+        "accuracy": 0.9900793650793651,
+        "macro_precision": 0.6133463824851385,
+        "macro_recall": 0.6659779614325069,
+        "macro_f1": 0.6374065328610783,
+        "confusion_matrix": [
+          [
+            483,
+            0,
+            1
+          ],
+          [
+            0,
+            16,
+            0
+          ],
+          [
+            1,
+            3,
+            0
+          ]
+        ]
+      },
+      "epochs_run": 36,
+      "wall_clock_seconds": 9.426962000085041
+    },
+    "rgcn": {
+      "config": {
+        "conv_kind": "rgcn",
+        "embedding_dim": 128,
+        "hidden_channels": 128,
+        "out_channels": 64,
+        "num_layers": 2,
+        "lr": 0.005,
+        "weight_decay": 1e-05,
+        "epochs": 150,
+        "patience": 20,
+        "seed": 0,
+        "device": "cuda"
+      },
+      "class_names": [
+        "Fully certified",
+        "Not certified",
+        "Partially certified"
+      ],
+      "majority_baseline": 0.9615079365079365,
+      "val_macro_f1": 0.4931693989071038,
+      "test_metrics": {
+        "accuracy": 0.9325396825396826,
+        "macro_precision": 0.38829201101928373,
+        "macro_recall": 0.3841253443526171,
+        "macro_f1": 0.38614147338487514,
+        "confusion_matrix": [
+          [
+            467,
+            12,
+            5
+          ],
+          [
+            13,
+            3,
+            0
+          ],
+          [
+            4,
+            0,
+            0
+          ]
+        ]
+      },
+      "epochs_run": 25,
+      "wall_clock_seconds": 2.5927410000003874
+    }
+  }
+}

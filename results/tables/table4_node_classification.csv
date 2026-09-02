@@ -1,0 +1,6 @@
+dataset,model,accuracy,macro_f1,majority_baseline
+anonnet,SAGE,0.4139,0.412,0.2698
+anonnet,GAT,0.4982,0.4972,0.2698
+lodhalal,SAGE,0.8829,0.3439,0.9615
+lodhalal,GAT,0.9901,0.6374,0.9615
+lodhalal,RGCN,0.9325,0.3861,0.9615

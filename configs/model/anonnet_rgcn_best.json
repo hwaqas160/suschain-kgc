@@ -1,0 +1,11 @@
+{
+  "best_params": {
+    "embedding_dim": 128,
+    "hidden_channels": 64,
+    "out_channels": 32,
+    "num_layers": 3,
+    "lr": 0.0030869207757711877,
+    "weight_decay": 1.6905744058508455e-05
+  },
+  "best_val_mrr": 0.02572833779329708
+}

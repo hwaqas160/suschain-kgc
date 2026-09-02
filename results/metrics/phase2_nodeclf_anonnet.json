@@ -1,0 +1,103 @@
+{
+  "class_names": [
+    "High",
+    "Low",
+    "Medium"
+  ],
+  "results": {
+    "sage": {
+      "config": {
+        "conv_kind": "sage",
+        "embedding_dim": 128,
+        "hidden_channels": 128,
+        "out_channels": 64,
+        "num_layers": 2,
+        "lr": 0.005,
+        "weight_decay": 1e-05,
+        "epochs": 150,
+        "patience": 20,
+        "seed": 0,
+        "device": "cuda"
+      },
+      "class_names": [
+        "High",
+        "Low",
+        "Medium"
+      ],
+      "majority_baseline": 0.2698412698412698,
+      "val_macro_f1": 0.4395797478566303,
+      "test_metrics": {
+        "accuracy": 0.413884007029877,
+        "macro_precision": 0.41181027534285536,
+        "macro_recall": 0.4127258838949642,
+        "macro_f1": 0.41199936367763756,
+        "confusion_matrix": [
+          [
+            136,
+            119,
+            110
+          ],
+          [
+            86,
+            189,
+            116
+          ],
+          [
+            126,
+            110,
+            146
+          ]
+        ]
+      },
+      "epochs_run": 41,
+      "wall_clock_seconds": 1.637074600206688
+    },
+    "gat": {
+      "config": {
+        "conv_kind": "gat",
+        "embedding_dim": 128,
+        "hidden_channels": 128,
+        "out_channels": 64,
+        "num_layers": 2,
+        "lr": 0.005,
+        "weight_decay": 1e-05,
+        "epochs": 150,
+        "patience": 20,
+        "seed": 0,
+        "device": "cuda"
+      },
+      "class_names": [
+        "High",
+        "Low",
+        "Medium"
+      ],
+      "majority_baseline": 0.2698412698412698,
+      "val_macro_f1": 0.5027605156800485,
+      "test_metrics": {
+        "accuracy": 0.4982425307557118,
+        "macro_precision": 0.49845965999812164,
+        "macro_recall": 0.4971098503045434,
+        "macro_f1": 0.4971539509304251,
+        "confusion_matrix": [
+          [
+            161,
+            86,
+            118
+          ],
+          [
+            77,
+            209,
+            105
+          ],
+          [
+            100,
+            85,
+            197
+          ]
+        ]
+      },
+      "epochs_run": 33,
+      "wall_clock_seconds": 3.226031000027433
+    }
+  }
+}

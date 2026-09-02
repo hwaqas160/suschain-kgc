@@ -1,0 +1,10 @@
+method,type,accuracy_mean,auc_roc_mean,f1_mean,mrr_mean,mrr_std,hits@10_mean,hits@10_std
+RotatE,KGE,0.9634,0.9901,0.9628,0.356,,0.5539,
+DistMult,KGE,0.9575,0.9854,0.9574,0.1569,,0.2918,
+TransE,KGE,0.9395,0.9795,0.9384,0.0928,,0.2726,
+common_neighbors,heuristic,0.7971,0.8042,0.7586,0.0474,,0.0917,
+adamic_adar,heuristic,0.5,0.8055,0.6667,0.0423,,0.0757,
+ComplEx,KGE,0.903,0.9362,0.8987,0.0403,,0.0836,
+preferential_attachment,heuristic,0.7776,0.9233,0.7233,0.0397,,0.0744,
+GAT,GNN,0.8456,0.9074,0.8469,0.0291,0.0096,0.0583,0.0175
+SAGE,GNN,0.8124,0.887,0.8185,0.0222,0.0037,0.0467,0.0047

@@ -1,0 +1,24 @@
+# Pinned for Python 3.12 + CUDA 12.5 driver (local Quadro P2000, 5GB VRAM)
+# Install torch first from the CUDA wheel index, then the rest.
+#   pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu124
+#   pip install -r requirements.txt
+
+torch-geometric==2.6.1
+pykeen==1.11.0
+# pykeen 1.11.0 is incompatible with class-resolver>=0.6 under a modern
+# typing_extensions (TypeError: Too few arguments for FunctionResolver) --
+# verified directly; pin the last compatible class-resolver release.
+class-resolver==0.5.3
+sentence-transformers==3.3.1
+networkx==3.4.2
+pandas==2.2.3
+pyarrow==18.1.0
+numpy==2.1.3
+scipy==1.14.1
+scikit-learn==1.5.2
+matplotlib==3.9.3
+seaborn==0.13.2
+pyyaml==6.0.2
+tqdm==4.67.1
+pytest==8.3.4
+optuna==4.9.0

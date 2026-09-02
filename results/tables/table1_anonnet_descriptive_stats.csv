@@ -1,0 +1,15 @@
+key,value
+dataset,AnonNet
+n_nodes,7245
+n_unique_locations,105
+n_edges,43926
+possible_directed_pairs,52482780
+density_pct,0.08369602372435302
+degree_mean,11.33664596273292
+degree_median,3.0
+degree_max,499
+degree_min,1
+n_connected_components,1
+largest_component_size,7245
+n_isolated_nodes,0
+n_orphan_edges_dropped,0

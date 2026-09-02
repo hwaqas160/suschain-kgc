@@ -1,0 +1,84 @@
+{
+  "sage": {
+    "config": {
+      "conv_kind": "sage",
+      "embedding_dim": 128,
+      "hidden_channels": 128,
+      "out_channels": 64,
+      "num_layers": 2,
+      "lr": 0.005,
+      "weight_decay": 1e-05,
+      "epochs": 100,
+      "patience": 15,
+      "seed": 0,
+      "device": "cuda"
+    },
+    "val_metrics": {
+      "auc_roc": 0.8541419406345738
+    },
+    "test_metrics": {
+      "accuracy": 0.7815049312066237,
+      "auc_roc": 0.8586960941861926,
+      "pr_auc": 0.8473304571288789,
+      "f1": 0.7949494372393304,
+      "threshold": 0.698444664478302,
+      "f1_at_threshold_0.5": 0.7521034969116288
+    },
+    "test_ranking": {
+      "mrr": 0.012675211872181624,
+      "hits@1": 0.0025569219530013395,
+      "hits@3": 0.008279556800194814,
+      "hits@10": 0.024351637647631805,
+      "mrr_sampled99": 0.22364806032261728,
+      "hits@1_sampled99": 0.10349446000243516,
+      "hits@3_sampled99": 0.23365396322902715,
+      "hits@10_sampled99": 0.48861560939973214
+    },
+    "tuned_threshold": 0.698444664478302,
+    "best_val_auc": 0.8541419406345738,
+    "epochs_run": 63,
+    "wall_clock_seconds": 1.9648477002047002,
+    "peak_vram_mb": 98.120704
+  },
+  "gat": {
+    "config": {
+      "conv_kind": "gat",
+      "embedding_dim": 128,
+      "hidden_channels": 128,
+      "out_channels": 64,
+      "num_layers": 2,
+      "lr": 0.005,
+      "weight_decay": 1e-05,
+      "epochs": 100,
+      "patience": 15,
+      "seed": 0,
+      "device": "cuda"
+    },
+    "val_metrics": {
+      "auc_roc": 0.9088671760783366
+    },
+    "test_metrics": {
+      "accuracy": 0.8424449044198222,
+      "auc_roc": 0.9080018227110346,
+      "pr_auc": 0.9146708397651947,
+      "f1": 0.8439647895815748,
+      "threshold": 0.6332352757453918,
+      "f1_at_threshold_0.5": 0.7844554902846814
+    },
+    "test_ranking": {
+      "mrr": 0.03150592137031889,
+      "hits@1": 0.013271642517959334,
+      "hits@3": 0.02861317423596737,
+      "hits@10": 0.051625471812979426,
+      "mrr_sampled99": 0.3288386958661942,
+      "hits@1_sampled99": 0.18495068793376354,
+      "hits@3_sampled99": 0.37562401071472057,
+      "hits@10_sampled99": 0.6428832338974796
+    },
+    "tuned_threshold": 0.6332352757453918,
+    "best_val_auc": 0.9088671760783366,
+    "epochs_run": 95,
+    "wall_clock_seconds": 7.456072299974039,
+    "peak_vram_mb": 334.846976
+  }
+}

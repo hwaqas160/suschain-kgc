@@ -1,0 +1,125 @@
+{
+  "sage": {
+    "config": {
+      "conv_kind": "sage",
+      "embedding_dim": 128,
+      "hidden_channels": 128,
+      "out_channels": 64,
+      "num_layers": 2,
+      "lr": 0.005,
+      "weight_decay": 1e-05,
+      "epochs": 100,
+      "patience": 15,
+      "seed": 0,
+      "device": "cuda"
+    },
+    "val_metrics": {
+      "auc_roc": 0.9914987806913185
+    },
+    "test_metrics": {
+      "accuracy": 0.9640371229698376,
+      "auc_roc": 0.995514774360603,
+      "pr_auc": 0.994961442681475,
+      "f1": 0.9635551375499647,
+      "threshold": 0.6080402135848999,
+      "f1_at_threshold_0.5": 0.966050105361742
+    },
+    "test_ranking": {
+      "mrr": 0.3597660895686722,
+      "hits@1": 0.2614849187935035,
+      "hits@3": 0.4032482598607889,
+      "hits@10": 0.5510440835266821,
+      "mrr_sampled99": 0.6952441350219318,
+      "hits@1_sampled99": 0.5967517401392112,
+      "hits@3_sampled99": 0.7570765661252901,
+      "hits@10_sampled99": 0.8767981438515081
+    },
+    "tuned_threshold": 0.6080402135848999,
+    "best_val_auc": 0.9914987806913185,
+    "epochs_run": 100,
+    "wall_clock_seconds": 13.877340800128877,
+    "peak_vram_mb": 557.530624
+  },
+  "gat": {
+    "config": {
+      "conv_kind": "gat",
+      "embedding_dim": 128,
+      "hidden_channels": 128,
+      "out_channels": 64,
+      "num_layers": 2,
+      "lr": 0.005,
+      "weight_decay": 1e-05,
+      "epochs": 100,
+      "patience": 15,
+      "seed": 0,
+      "device": "cuda"
+    },
+    "val_metrics": {
+      "auc_roc": 0.9786336744526569
+    },
+    "test_metrics": {
+      "accuracy": 0.9634570765661253,
+      "auc_roc": 0.9887030108580381,
+      "pr_auc": 0.9794779896947508,
+      "f1": 0.9635458858928365,
+      "threshold": 0.311557799577713,
+      "f1_at_threshold_0.5": 0.9483779303812455
+    },
+    "test_ranking": {
+      "mrr": 0.04809451601408895,
+      "hits@1": 0.01531322505800464,
+      "hits@3": 0.04408352668213457,
+      "hits@10": 0.11461716937354989,
+      "mrr_sampled99": 0.31044321601885727,
+      "hits@1_sampled99": 0.1716937354988399,
+      "hits@3_sampled99": 0.35359628770301627,
+      "hits@10_sampled99": 0.614385150812065
+    },
+    "tuned_threshold": 0.311557799577713,
+    "best_val_auc": 0.9786336744526569,
+    "epochs_run": 45,
+    "wall_clock_seconds": 13.361890299944207,
+    "peak_vram_mb": 1094.777344
+  },
+  "rgcn": {
+    "config": {
+      "conv_kind": "rgcn",
+      "embedding_dim": 128,
+      "hidden_channels": 128,
+      "out_channels": 64,
+      "num_layers": 2,
+      "lr": 0.005,
+      "weight_decay": 1e-05,
+      "epochs": 100,
+      "patience": 15,
+      "seed": 0,
+      "device": "cuda"
+    },
+    "val_metrics": {
+      "auc_roc": 0.9946512992501116
+    },
+    "test_metrics": {
+      "accuracy": 0.9690255220417633,
+      "auc_roc": 0.9968989185028073,
+      "pr_auc": 0.9966939245828456,
+      "f1": 0.9685845393575715,
+      "threshold": 0.5075376629829407,
+      "f1_at_threshold_0.5": 0.9690697400917323
+    },
+    "test_ranking": {
+      "mrr": 0.499727922788547,
+      "hits@1": 0.40812064965197214,
+      "hits@3": 0.5438515081206496,
+      "hits@10": 0.6774941995359629,
+      "mrr_sampled99": 0.7853785475971794,
+      "hits@1_sampled99": 0.7104408352668213,
+      "hits@3_sampled99": 0.8375870069605569,
+      "hits@10_sampled99": 0.9167053364269142
+    },
+    "tuned_threshold": 0.5075376629829407,
+    "best_val_auc": 0.9946512992501116,
+    "epochs_run": 100,
+    "wall_clock_seconds": 13.355051999911666,
+    "peak_vram_mb": 557.419008
+  }
+}

@@ -1,0 +1,3 @@
+feature_mode,transductive_auc,coldstart_auc,coldstart_f1
+embedding,0.9999,0.872,0.2235
+text,1.0,0.8632,0.2287

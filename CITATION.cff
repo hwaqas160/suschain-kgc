@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this software or the enriched datasets, please cite both the software and the associated manuscript."
+title: "Sustainability-Aware Knowledge Graph Completion for Supply Chain Decision Support: replication package"
+type: software
+license: CC-BY-4.0
+authors:
+  - family-names: Saleem
+    given-names: Rahat Zeeshan
+    affiliation: "NUST Business School (NBS), National University of Sciences and Technology (NUST), Islamabad, Pakistan"
+  - family-names: Saleem
+    given-names: Hassan Waqas
+    affiliation: "School of Electrical Engineering and Computer Science (SEECS), National University of Sciences and Technology (NUST), Islamabad, Pakistan"
+  - family-names: Maryam
+    given-names: Hina
+    affiliation: "Department of Statistics, Bahauddin Zakariya University (BZU), Multan, Pakistan"
+keywords:
+  - supply chain sustainability
+  - knowledge graph completion
+  - graph neural networks
+  - link prediction
+  - multi-objective learning
+  - decision support
+references:
+  - type: article
+    title: "Advancing Sustainable Supply Chains Through Knowledge Graph Completion and Graph-Based Artificial Intelligence"
+    authors:
+      - family-names: Peeris
+        given-names: Maria Patricia
+      - family-names: Baryannis
+        given-names: George
+      - family-names: Papadakis
+        given-names: Emmanuel
+    journal: Sustainability
+    volume: 18
+    issue: 6
+    start: 2825
+    year: 2026
+    doi: 10.3390/su18062825

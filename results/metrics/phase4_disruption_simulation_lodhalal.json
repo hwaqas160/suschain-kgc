@@ -1,0 +1,34 @@
+{
+  "random": {
+    "k": 5,
+    "n_disrupted": 4310,
+    "substitute_recall_at_k": 0.0020881670533642693,
+    "mean_risk_at_k": 0.03148827701807022,
+    "pct_fully_certified_at_k": 0.9625058004640371,
+    "delta_risk_vs_removed": 0.026049187406897545
+  },
+  "popularity": {
+    "k": 5,
+    "n_disrupted": 4310,
+    "substitute_recall_at_k": 0.0802784222737819,
+    "mean_risk_at_k": 0.000316957215545699,
+    "pct_fully_certified_at_k": 0.8,
+    "delta_risk_vs_removed": -0.005122132133692503
+  },
+  "rgcn_plain": {
+    "k": 5,
+    "n_disrupted": 4310,
+    "substitute_recall_at_k": 0.5236658932714617,
+    "mean_risk_at_k": 0.004988574888557196,
+    "pct_fully_certified_at_k": 0.9690023201856148,
+    "delta_risk_vs_removed": -0.0004505147226154804
+  },
+  "rgcn_sustainability_aware": {
+    "k": 5,
+    "n_disrupted": 4310,
+    "substitute_recall_at_k": 0.525522041763341,
+    "mean_risk_at_k": 0.003542864229530096,
+    "pct_fully_certified_at_k": 0.9696519721577727,
+    "delta_risk_vs_removed": -0.0018962244503200054
+  }
+}
