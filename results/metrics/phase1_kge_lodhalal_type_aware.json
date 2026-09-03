@@ -1,0 +1,102 @@
+{
+  "negative_sampler": "pseudotyped",
+  "note": "ranking_metrics = PyKEEN's own full-vocabulary evaluation (same protocol as scripts/04, for direct comparison). ranking_metrics_type_restricted = this project's filtered ranking restricted to the 2,520 manufacturer candidates, matching every other row in Table 2.",
+  "results": {
+    "TransE": {
+      "model_name": "TransE",
+      "test_metrics": {
+        "accuracy": 0.5003480278422274,
+        "auc_roc": 0.5564384343322872,
+        "pr_auc": 0.5465379900443645,
+        "f1": 0.6662016585290242,
+        "threshold": -11.732195854187012
+      },
+      "ranking_metrics": {
+        "mrr": 0.00017562462016940117,
+        "hits@1": 0.0,
+        "hits@3": 0.0,
+        "hits@10": 0.0
+      },
+      "ranking_metrics_type_restricted": {
+        "mrr": 0.003797329512513161,
+        "hits@1": 0.0,
+        "hits@3": 0.0016241299303944316,
+        "hits@10": 0.005104408352668214
+      },
+      "negative_sampler": "pseudotyped",
+      "wall_clock_seconds": 1230.9546332999598
+    },
+    "DistMult": {
+      "model_name": "DistMult",
+      "test_metrics": {
+        "accuracy": 0.5,
+        "auc_roc": 0.5113745081044998,
+        "pr_auc": 0.517951148628139,
+        "f1": 0.6666666666666666,
+        "threshold": -0.5403583645820618
+      },
+      "ranking_metrics": {
+        "mrr": 0.00031481595942750573,
+        "hits@1": 0.0,
+        "hits@3": 0.0001160092807424594,
+        "hits@10": 0.0004640371229698376
+      },
+      "ranking_metrics_type_restricted": {
+        "mrr": 0.0036987267890619905,
+        "hits@1": 0.0004640371229698376,
+        "hits@3": 0.001160092807424594,
+        "hits@10": 0.004176334106728539
+      },
+      "negative_sampler": "pseudotyped",
+      "wall_clock_seconds": 1169.7120952999685
+    },
+    "ComplEx": {
+      "model_name": "ComplEx",
+      "test_metrics": {
+        "accuracy": 0.49965197215777263,
+        "auc_roc": 0.49658356705659423,
+        "pr_auc": 0.49990597425819394,
+        "f1": 0.6661506308537812,
+        "threshold": -6.906772613525391
+      },
+      "ranking_metrics": {
+        "mrr": 0.00036646361695602536,
+        "hits@1": 0.0001160092807424594,
+        "hits@3": 0.0002320185614849188,
+        "hits@10": 0.0002320185614849188
+      },
+      "ranking_metrics_type_restricted": {
+        "mrr": 0.003461582206818181,
+        "hits@1": 0.0006960556844547563,
+        "hits@3": 0.0009280742459396752,
+        "hits@10": 0.00394431554524362
+      },
+      "negative_sampler": "pseudotyped",
+      "wall_clock_seconds": 1238.317987699993
+    },
+    "RotatE": {
+      "model_name": "RotatE",
+      "test_metrics": {
+        "accuracy": 0.7506960556844547,
+        "auc_roc": 0.7881935928424157,
+        "pr_auc": 0.6840023746283918,
+        "f1": 0.7843452082288008,
+        "threshold": -3.1704604625701904
+      },
+      "ranking_metrics": {
+        "mrr": 0.0006521556060761213,
+        "hits@1": 0.0001160092807424594,
+        "hits@3": 0.00034802784222737816,
+        "hits@10": 0.0006960556844547563
+      },
+      "ranking_metrics_type_restricted": {
+        "mrr": 0.0022168716309930135,
+        "hits@1": 0.0004640371229698376,
+        "hits@3": 0.0006960556844547563,
+        "hits@10": 0.0016241299303944316
+      },
+      "negative_sampler": "pseudotyped",
+      "wall_clock_seconds": 1173.1561539000832
+    }
+  }
+}

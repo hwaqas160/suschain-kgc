@@ -93,11 +93,11 @@ def fig_benchmark_vs_base_paper(dataset: str, base_paper: dict, outfile: str):
 def fig_full_ranking(csv_name: str, dataset: str, outfile: str):
     """Horizontal bar: MRR across every method (GNN/heuristic/KGE), sorted.
 
-    LODHalal's four KGE models collapse to MRR of 0.0002-0.0012 -- real,
-    nonzero numbers, but invisible as bars at this scale. Both an exact
-    value label per bar and a short on-chart note (pointing to the
-    diagnosis in the text) make clear these are a measured, explained
-    result and not a missing-data artifact.
+    LODHalal's four KGE models sit at MRR of 0.0022-0.0038 under the
+    type-aware protocol -- real, nonzero numbers, but invisible as bars at
+    this scale. Both an exact value label per bar and a short on-chart note
+    (pointing to the diagnosis in the text) make clear these are a
+    measured, explained result and not a missing-data artifact.
     """
     df = pd.read_csv(TABLES_DIR / csv_name).sort_values("mrr_mean")
     color_map = {"GNN": BLUE, "heuristic": AQUA, "KGE": VIOLET}
@@ -122,9 +122,9 @@ def fig_full_ranking(csv_name: str, dataset: str, outfile: str):
         # Plain text only: LaTeX markup such as ~ or \  does not render in
         # matplotlib and would appear literally in the figure.
         ax.text(0.985, 0.50,
-                 "KGE models' MRR $\\approx$ 0 here: type-imbalanced negative\n"
-                 "sampling breaks default KGE evaluation (Section 4.1), not a\n"
-                 "general KGE failure (cf. RotatE on AnonNet, Figure 4).",
+                 "KGE MRR stays near the 2,520-candidate chance level\n"
+                 "($\\approx$0.0033) even under type-aware sampling and\n"
+                 "evaluation (Section 4.1), unlike RotatE on AnonNet (Figure 4).",
                  transform=ax.transAxes, ha="right", va="center", fontsize=6.3,
                  color=TEXT, style="italic")
     fig.tight_layout()

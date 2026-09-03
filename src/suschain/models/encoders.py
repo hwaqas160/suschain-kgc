@@ -22,7 +22,7 @@ from __future__ import annotations
 import torch
 import torch.nn.functional as F
 from torch import nn
-from torch_geometric.nn import GATv2Conv, GraphConv, HeteroConv, SAGEConv
+from torch_geometric.nn import GATConv, GATv2Conv, GraphConv, HeteroConv, SAGEConv
 
 Metadata = tuple[list[str], list[tuple[str, str, str]]]
 
@@ -62,6 +62,15 @@ class HeteroGNNEncoder(nn.Module):
                 (-1, -1), out_dim, heads=heads, concat=False,
                 add_self_loops=False, dropout=0.1,
             )
+        if conv_kind == "gatv1":
+            # Original GAT (Velickovic et al.) rather than GATv2. Kept
+            # hyperparameter-identical to the "gat" branch above so the two
+            # differ only in the attention mechanism itself, which is what
+            # the sensitivity experiment is meant to isolate.
+            return GATConv(
+                (-1, -1), out_dim, heads=heads, concat=False,
+                add_self_loops=False, dropout=0.1,
+            )
         if conv_kind == "rgcn":
             return GraphConv((-1, -1), out_dim, aggr="mean")
         raise ValueError(f"unknown conv_kind: {conv_kind}")
@@ -76,10 +85,12 @@ class HeteroGNNEncoder(nn.Module):
 
 
 def build_encoder(kind: str, metadata: Metadata, hidden_channels: int = 128, out_channels: int = 64, num_layers: int = 2) -> HeteroGNNEncoder:
-    """kind in {'sage', 'gat', 'rgcn'} -- matches the base paper's three
-    compared architectures (GraphSAGE baseline, GAT, RGCN), with GAT
+    """kind in {'sage', 'gat', 'gatv1', 'rgcn'} -- matches the base paper's
+    three compared architectures (GraphSAGE baseline, GAT, RGCN), with GAT
     upgraded to GATv2 (strictly more expressive attention mechanism) as a
-    documented deviation."""
+    documented deviation. 'gatv1' is the original GAT, retained so the
+    GATv2 substitution can be tested as a sensitivity experiment rather
+    than assumed harmless."""
     cross_relation_aggr = "sum" if kind == "rgcn" else "mean"
     return HeteroGNNEncoder(
         metadata=metadata,

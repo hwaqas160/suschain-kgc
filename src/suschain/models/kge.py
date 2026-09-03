@@ -22,7 +22,9 @@ from pykeen.pipeline import pipeline
 from pykeen.triples import TriplesFactory
 
 from suschain.data.splitters import EdgeType, LinkSplit
+from suschain.eval.kge_ranking import kge_filtered_ranking_metrics
 from suschain.eval.metrics import best_f1_threshold, binary_link_metrics
+from suschain.eval.ranking import build_known_positives
 
 
 @dataclass
@@ -30,6 +32,8 @@ class KGEResult:
     model_name: str
     test_metrics: dict
     ranking_metrics: dict
+    ranking_metrics_type_restricted: dict | None = None
+    negative_sampler: str = "basic"
 
 
 def _build_entity_vocab(num_src: int, num_dst: int, same_node_type: bool) -> tuple[dict[str, int], int, int]:
@@ -63,6 +67,7 @@ def train_kge_baseline(
     epochs: int = 100,
     seed: int = 0,
     device: str = "cuda" if torch.cuda.is_available() else "cpu",
+    negative_sampler: str = "basic",
 ) -> KGEResult:
     relation_label = edge_type[1]
     entity_to_id, src_offset, dst_offset = _build_entity_vocab(num_src_nodes, num_dst_nodes, same_node_type)
@@ -97,6 +102,7 @@ def train_kge_baseline(
         model=model_name,
         model_kwargs=dict(embedding_dim=embedding_dim),
         training_kwargs=dict(num_epochs=epochs, use_tqdm=False, use_tqdm_batch=False),
+        negative_sampler=negative_sampler,
         random_seed=seed,
         device=device,
         evaluation_fallback=True,
@@ -134,4 +140,27 @@ def train_kge_baseline(
     test_labels = split.test[edge_type].edge_label.numpy()
     test_metrics = binary_link_metrics(test_labels, test_scores, threshold=threshold)
 
-    return KGEResult(model_name=model_name, test_metrics=test_metrics, ranking_metrics=ranking_metrics)
+    # Type-restricted filtered ranking: candidates limited to the correct
+    # destination entity type, matching the protocol used for every GNN and
+    # heuristic row in the benchmark (Section 3.3). PyKEEN's own ranking_metrics
+    # above corrupts against the full entity vocabulary (all entity types
+    # combined), which for LODHalal (same_node_type=False) is a materially
+    # different, more permissive evaluation than the rest of the table.
+    ranking_metrics_type_restricted = None
+    if not same_node_type:
+        known_pos = build_known_positives(
+            mp_edges, train_sup_edges, val_pos_edges, test_pos_edges,
+        )
+        mrr_tr, hits_tr = kge_filtered_ranking_metrics(
+            model=model, entity_to_id=entity_to_id, relation_id=rel_id,
+            src_offset=src_offset, dst_offset=dst_offset, num_dst=num_dst_nodes,
+            test_pos_edges=test_pos_edges, known_pos_by_src=known_pos,
+            ks=(1, 3, 10), device=device,
+        )
+        ranking_metrics_type_restricted = {"mrr": mrr_tr, **{f"hits@{k}": v for k, v in hits_tr.items()}}
+
+    return KGEResult(
+        model_name=model_name, test_metrics=test_metrics, ranking_metrics=ranking_metrics,
+        ranking_metrics_type_restricted=ranking_metrics_type_restricted,
+        negative_sampler=negative_sampler,
+    )
