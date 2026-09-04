@@ -25,6 +25,7 @@ from suschain.data.lodhalal_loader import load_lodhalal
 from suschain.decision_eval.disruption_simulation import (
     evaluate_recommendations,
     recommend_by_scores,
+    recommend_posthoc_filter,
     recommend_random,
     simulate_disruption,
 )
@@ -149,7 +150,8 @@ def main():
 
     orig_edges = built.data[edge_type].edge_index
     per_seed = {m: {k: [] for k in METRICS}
-                for m in ["random", "popularity", "rgcn_plain", "rgcn_sustainability_aware"]}
+                for m in ["random", "popularity", "rgcn_plain",
+                          "rgcn_posthoc_filter", "rgcn_sustainability_aware"]}
 
     for seed in SEEDS:
         # one disruption scenario per seed; both models see the same one
@@ -170,9 +172,19 @@ def main():
         for name, lam in [("rgcn_plain", 0.0), ("rgcn_sustainability_aware", 1.0)]:
             zf, zm = train_model(built.data, edge_type, rev_edge_type,
                                  sc.remaining_edge_index, risk_norm, lam, seed)
+            plain_scores = (zf[src] @ zm.T).cpu()
             res[name] = evaluate_recommendations(
-                recommend_by_scores((zf[src] @ zm.T).cpu(), K),
+                recommend_by_scores(plain_scores, K),
                 sc.disrupted_edges, risk_np, fully_certified)
+            if name == "rgcn_plain":
+                # Post-hoc filtering baseline: same trained scores as the
+                # plain model above, re-ranked by risk after retrieval
+                # (Section 3.3's stated but unevaluated mechanism), so the
+                # comparison isolates the filtering step, not a different
+                # encoder or training run.
+                res["rgcn_posthoc_filter"] = evaluate_recommendations(
+                    recommend_posthoc_filter(plain_scores, risk_np, K, pool_size=50),
+                    sc.disrupted_edges, risk_np, fully_certified)
 
         for m in per_seed:
             for k in METRICS:
@@ -189,6 +201,12 @@ def main():
     b = per_seed["rgcn_sustainability_aware"]
     tests = {k: wilcoxon(a[k], b[k]) for k in METRICS}
 
+    # The paper's central comparison: does learning sustainability into the
+    # objective beat post-hoc filtering, the mechanism Section 3.3 of the
+    # base paper describes but does not implement or evaluate?
+    c = per_seed["rgcn_posthoc_filter"]
+    tests_vs_filter = {k: wilcoxon(c[k], b[k]) for k in METRICS}
+
     print("\n=== Disruption simulation, mean +/- std over 7 seeds (k=5, 10% disrupted) ===")
     print(f"{'method':<30}{'recall@5':>18}{'mean_risk@5':>20}{'certified@5':>18}{'delta_risk':>18}")
     for m, s in summary.items():
@@ -200,10 +218,14 @@ def main():
     print("\nWilcoxon, plain vs sustainability-aware (paired, 7 seeds):")
     for k, p in tests.items():
         print(f"  {k:<28} p={p:.4f}")
+    print("\nWilcoxon, post-hoc filter vs sustainability-aware (paired, 7 seeds):")
+    for k, p in tests_vs_filter.items():
+        print(f"  {k:<28} p={p:.4f}")
 
     out = {"seeds": SEEDS, "k": K, "disruption_fraction": DISRUPTION_FRACTION,
            "per_seed": per_seed, "summary": summary,
-           "wilcoxon_plain_vs_sustainability_aware": tests}
+           "wilcoxon_plain_vs_sustainability_aware": tests,
+           "wilcoxon_posthoc_filter_vs_sustainability_aware": tests_vs_filter}
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     p = RESULTS_DIR / "phase4_disruption_multiseed_lodhalal.json"
     p.write_text(json.dumps(out, indent=2))

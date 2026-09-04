@@ -163,12 +163,18 @@ def draw_bipartite_prediction(observed, predicted, src_label, dst_label, title, 
                            node_size=110, node_shape="s", linewidths=0.5,
                            edgecolors="white", ax=ax)
 
-    # Label only the highest-degree destination nodes: labelling everything is
-    # what makes the base paper's Figure 3 unreadable.
+    # Label only the highest-degree destination nodes, since labelling every
+    # node would make the figure unreadable at this density. High-degree hubs
+    # tend to sit close together under a force-directed layout, so labels are
+    # offset above each node and boxed in white rather than drawn at the
+    # node's exact position -- otherwise adjacent hub labels overlap directly.
     deg = dict(G.degree())
-    top_dst = sorted(dst_nodes, key=lambda n: -deg[n])[:8]
-    nx.draw_networkx_labels(G, pos, labels={n: n[1:] for n in top_dst},
-                            font_size=11, font_color=TEXT, ax=ax)
+    top_dst = sorted(dst_nodes, key=lambda n: -deg[n])[:5]
+    for n in top_dst:
+        x, y = pos[n]
+        ax.annotate(n[1:], xy=(x, y), xytext=(0, 9), textcoords="offset points",
+                   ha="center", va="bottom", fontsize=10, color=TEXT,
+                   bbox=dict(boxstyle="round,pad=0.15", fc="white", ec="none", alpha=0.85))
 
     handles = [
         plt.Line2D([], [], marker="o", color="none", markerfacecolor=src_color,
