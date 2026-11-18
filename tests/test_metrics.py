@@ -67,3 +67,23 @@ def test_best_f1_threshold_finds_separating_point():
 def test_majority_class_baseline():
     y_true = np.array([0, 0, 0, 1])
     assert majority_class_baseline_accuracy(y_true) == 0.75
+
+
+def test_best_accuracy_threshold_avoids_all_positive_corner():
+    import numpy as np
+    from suschain.eval.metrics import best_accuracy_threshold, best_f1_threshold
+    # heavily tied, weakly informative scorer: most pairs score 0
+    y = np.array([1] * 50 + [0] * 50)
+    s = np.array([1.0] * 10 + [0.0] * 40 + [1.0] * 2 + [0.0] * 48)
+    t_acc = best_accuracy_threshold(y, s)
+    acc = ((s >= t_acc).astype(int) == y).mean()
+    assert acc == 0.58                          # 10 TP + 48 TN
+    t_f1 = best_f1_threshold(y, s)
+    assert ((s >= t_f1).astype(int) == y).mean() == 0.5   # F1 picks "all positive"
+
+
+def test_ranks_with_ties():
+    import numpy as np
+    from suschain.eval.metrics import ranks_with_ties
+    r = ranks_with_ties(np.array([3.0, 1.0, 1.0, 1.0, 0.0]), 1.0)
+    assert r == {"optimistic": 2.0, "realistic": 3.0, "pessimistic": 4.0}

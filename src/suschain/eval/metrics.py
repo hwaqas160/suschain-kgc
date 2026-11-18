@@ -55,3 +55,36 @@ def node_classification_metrics(y_true: np.ndarray, y_pred: np.ndarray, labels=N
 def majority_class_baseline_accuracy(y_true: np.ndarray) -> float:
     values, counts = np.unique(y_true, return_counts=True)
     return float(counts.max() / counts.sum())
+
+
+def best_accuracy_threshold(y_true: np.ndarray, y_score: np.ndarray) -> float:
+    """Validation threshold that maximises accuracy (v4).
+
+    best_f1_threshold() can return 'everything positive' for a weak or heavily
+    tied scorer, because labelling every pair positive already scores F1 = 0.667
+    when there is one negative per positive. Accuracy has no such corner: the
+    all-positive rule scores 0.5. Checks every distinct score as a cut-off."""
+    y_true = np.asarray(y_true)
+    y_score = np.asarray(y_score, dtype=np.float64)
+    cands = np.unique(y_score)
+    cands = np.concatenate([cands, [cands[-1] + 1.0]])      # last one: everything negative
+    order = np.argsort(y_score)
+    s_sorted, t_sorted = y_score[order], y_true[order]
+    pos_total = t_sorted.sum()
+    # predicted positive = score >= t; negatives below the cut are correct
+    idx = np.searchsorted(s_sorted, cands, side="left")
+    neg_below = np.concatenate([[0], np.cumsum(1 - t_sorted)])[idx]
+    pos_above = pos_total - np.concatenate([[0], np.cumsum(t_sorted)])[idx]
+    acc = (neg_below + pos_above) / len(y_true)
+    return float(cands[int(np.argmax(acc))])
+
+
+def ranks_with_ties(row: np.ndarray, true_score: float) -> dict[str, float]:
+    """Rank of the true item under the three standard tie policies. `row` must
+    already exclude other known positives (set to -inf) and include the true
+    item itself. 'realistic' is the expected rank under random tie-breaking."""
+    greater = float((row > true_score).sum())
+    equal_others = float((row == true_score).sum()) - 1.0
+    return {"optimistic": 1.0 + greater,
+            "realistic": 1.0 + greater + equal_others / 2.0,
+            "pessimistic": 1.0 + greater + equal_others}

@@ -76,9 +76,10 @@ def main():
     fig.suptitle("Sustainability-aware multi-objective loss: utility vs. risk, "
                  "mean of 7 seeds with standard deviation", fontsize=11.5)
     fig.tight_layout()
-    out = FIG_DIR / "fig9_pareto_frontier.png"
-    fig.savefig(out, dpi=600, bbox_inches="tight")
-    print(f"saved {out}")
+    for ext in ("pdf", "png"):
+        out = FIG_DIR / f"fig9_pareto_frontier.{ext}"
+        fig.savefig(out, dpi=600, bbox_inches="tight")
+        print(f"saved {out}")
 
 
 if __name__ == "__main__":

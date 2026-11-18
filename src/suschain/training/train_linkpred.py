@@ -17,8 +17,9 @@ import torch.nn.functional as F
 from torch_geometric.data import HeteroData
 
 from suschain.data.splitters import EdgeType, LinkSplit, assert_no_leakage, split_link_prediction
-from suschain.eval.metrics import best_f1_threshold, binary_link_metrics
+from suschain.eval.metrics import best_accuracy_threshold, best_f1_threshold, binary_link_metrics
 from suschain.eval.ranking import build_known_positives, filtered_ranking_metrics, sampled_ranking_metrics
+from suschain.eval.ranking_v4 import filtered_ranks, known_from_edges, summarize_ranks
 from suschain.models.link_predictor import HeteroLinkPredictor
 
 
@@ -35,6 +36,9 @@ class TrainConfig:
     epochs: int = 100
     patience: int = 15
     seed: int = 0
+    # v4: keep only this many training negatives per positive (None = all the
+    # split provides). Used by the negative-ratio sweep.
+    train_neg_per_pos: float | None = None
     device: str = "cuda" if torch.cuda.is_available() else "cpu"
 
 
@@ -49,6 +53,12 @@ class TrainResult:
     epochs_run: int = 0
     wall_clock_seconds: float = 0.0
     peak_vram_mb: float = 0.0
+    # v4 fields (filled only when v4_eval=True; see eval/ranking_v4.py)
+    val_ranking_v4: dict = field(default_factory=dict)
+    test_ranking_v4: dict = field(default_factory=dict)
+    test_metrics_acc_threshold: dict = field(default_factory=dict)
+    test_ranks_v4: dict = field(default_factory=dict)
+    test_scores_v4: dict = field(default_factory=dict)
 
 
 def _forward_scores(model: HeteroLinkPredictor, data: HeteroData, edge_type: EdgeType, device: str):
@@ -66,12 +76,32 @@ def train_link_prediction(
     edge_type: EdgeType,
     rev_edge_type: EdgeType | None,
     config: TrainConfig,
+    split: LinkSplit | None = None,
+    v4_eval: bool = False,
 ) -> TrainResult:
+    """split: a precomputed split (v4 passes one so that every model family
+    sees identical edges); None reproduces the original behaviour.
+    v4_eval: also compute validation and test ranking with eval/ranking_v4
+    (realistic ties, complete filter set) and accuracy at the
+    accuracy-optimal validation threshold."""
     torch.manual_seed(config.seed)
     np.random.seed(config.seed)
 
-    split = split_link_prediction(data, edge_type, rev_edge_type, seed=config.seed)
+    if split is None:
+        split = split_link_prediction(data, edge_type, rev_edge_type, seed=config.seed)
     assert_no_leakage(split)
+
+    train_sel = None
+    if config.train_neg_per_pos is not None:
+        lab = split.train[edge_type].edge_label
+        pos_i = torch.nonzero(lab == 1.0).view(-1)
+        neg_i = torch.nonzero(lab == 0.0).view(-1)
+        n_keep = int(round(config.train_neg_per_pos * len(pos_i)))
+        if n_keep > len(neg_i):
+            raise ValueError(f"split has {len(neg_i)} training negatives, {n_keep} requested")
+        g = torch.Generator().manual_seed(config.seed)
+        keep = neg_i[torch.randperm(len(neg_i), generator=g)[:n_keep]]
+        train_sel = torch.cat([pos_i, keep]).to(config.device)
 
     device = config.device
     num_nodes_dict = {nt: data[nt].num_nodes for nt in data.node_types}
@@ -98,6 +128,8 @@ def train_link_prediction(
         optimizer.zero_grad()
         scores, _ = _forward_scores(model, split.train, edge_type, device)
         labels = split.train[edge_type].edge_label.to(device)
+        if train_sel is not None:
+            scores, labels = scores[train_sel], labels[train_sel]
         loss = F.binary_cross_entropy_with_logits(scores, labels)
         loss.backward()
         optimizer.step()
@@ -165,7 +197,13 @@ def train_link_prediction(
             num_negatives=99, ks=(1, 3, 10), seed=config.seed, decoder=ranking_decoder,
         )
 
+        v4 = {}
+        if v4_eval:
+            v4 = _v4_evaluation(model, split, edge_type, device, z_dict, val_labels, val_probs,
+                                test_labels, test_probs)
+
     return TrainResult(
+        **v4,
         config=config,
         val_metrics={"auc_roc": best_val_auc},
         test_metrics=test_metrics,
@@ -178,4 +216,36 @@ def train_link_prediction(
         epochs_run=epochs_run,
         wall_clock_seconds=wall_clock,
         peak_vram_mb=peak_vram,
+    )
+
+
+def _v4_evaluation(model, split, edge_type, device, z_test, val_labels, val_probs, test_labels, test_probs):
+    src_type, _, dst_type = edge_type
+    def pos(store):
+        return store.edge_label_index[:, store.edge_label == 1.0]
+    val_pos, test_pos = pos(split.val[edge_type]), pos(split.test[edge_type])
+    # val/test edge_index = every training edge (message passing + supervision);
+    # test's also includes validation edges
+    known_val = known_from_edges(split.val[edge_type].edge_index, val_pos)
+    known_test = known_from_edges(split.test[edge_type].edge_index, val_pos, test_pos)
+    node_id_dict = {nt: split.val[nt].node_id.to(device) for nt in split.val.node_types}
+    z_val = model.encode(node_id_dict, {et: split.val[et].edge_index.to(device) for et in split.val.edge_types})
+
+    def scorer(z):
+        zs, zd = z[src_type], z[dst_type]
+        if model.decoder.__class__.__name__ == "DotProductDecoder":
+            return lambda ids: zs[ids] @ zd.T
+        from suschain.eval.ranking import _score_row
+        return lambda ids: torch.stack([_score_row(zs[i], zd, model.decoder) for i in ids])
+
+    vr = filtered_ranks(scorer(z_val), val_pos, known_val, device=device)
+    tr = filtered_ranks(scorer(z_test), test_pos, known_test, device=device)
+    acc_thr = best_accuracy_threshold(val_labels, val_probs)
+    return dict(
+        val_ranking_v4=summarize_ranks(vr["realistic"]),
+        test_ranking_v4={p: summarize_ranks(r) for p, r in tr.items()},
+        test_metrics_acc_threshold=binary_link_metrics(test_labels, test_probs, threshold=acc_thr),
+        test_ranks_v4={"realistic": tr["realistic"]},
+        test_scores_v4={"labels": test_labels, "probs": test_probs,
+                        "val_labels": val_labels, "val_probs": val_probs},
     )

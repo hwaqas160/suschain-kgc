@@ -14,7 +14,36 @@ follow from an undisclosed protocol: no non-learned baselines, no
 knowledge-graph-embedding (KGE) baselines, no stated negative-sampling ratio
 or candidate-pool size, and no statistical testing between architectures.
 
-## What this adds over the base paper
+## v4 revision (November 2026): current results
+
+The v4 scripts (`scripts/33`–`45`, `docs/v4/`) support the revised manuscript
+"Retrain or re-rank? An evaluation of sustainability-aware graph learning for
+supplier substitution under disruption". Every result uses ten seeds. Where
+the v4 findings differ from the earlier sections below, the v4 findings
+apply. They are summarised in `docs/v4/FINDINGS.md`.
+
+- **Substitution test with held-out ground truth** on AnonNet
+  (`scripts/36`, `43`). The failed supplier is never a correct answer.
+- **The sustainability penalty in the loss behaves like a score shift**, to
+  first order (`docs/v4/penalty_derivation.md`). Applied after training, the
+  shift beats the trained penalty at every setting (`scripts/34`–`37`).
+- **The choice of ranker matters more than the penalty.** Top-10 hit rate:
+  RotatE 0.823; the co-supply rule 0.635; the GNNs 0.45–0.59.
+- **Risk-budgeted re-ranking** (`scripts/43`) calibrates the shift to a
+  target risk reduction on half the customers and checks it on the other half.
+- **Corrected link-prediction benchmark** (`scripts/41`,
+  `docs/v4/benchmark_protocol.md`). It uses equal-budget tuning on validation
+  data only, a leak-free directed AnonNet split, KGE models with reciprocal
+  relations, and tied scores sharing ranks. KGE models lead on both datasets.
+- **Replication of the base paper's setting** (`scripts/44`), following the
+  first author's description of it.
+- The manuscript's tables are generated from the result files by
+  `scripts/45_v4_paper_tables.py`.
+
+The earlier claims about the multi-objective loss and the cold-start result
+are withdrawn in v4. See `docs/v4/FINDINGS.md`: section 7 and the "Gate A decision" section.
+
+## What this adds over the base paper (v1–v3)
 
 - A disclosed benchmark: heuristic floors (popularity, common neighbors,
   Adamic-Adar, preferential attachment), four KGE models (TransE, DistMult,

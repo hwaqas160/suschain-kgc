@@ -43,6 +43,7 @@ class InductiveResult:
     coldstart_metrics: dict = field(default_factory=dict)
     n_heldout_entities: int = 0
     n_coldstart_edges: int = 0
+    coldstart_controls: dict = field(default_factory=dict)
     wall_clock_seconds: float = 0.0
 
 
@@ -64,7 +65,11 @@ def train_and_eval_inductive(
     config: InductiveTrainConfig,
     text_features: dict[str, torch.Tensor] | None,
     feature_mode: str,
+    coldstart_controls: bool = False,
 ) -> InductiveResult:
+    """coldstart_controls (v4): also score the cold-start edges after removing
+    query-specific information from the held-out source entities, to test
+    whether the cold-start AUC uses anything about the query entity at all."""
     torch.manual_seed(config.seed)
     np.random.seed(config.seed)
     device = config.device
@@ -157,11 +162,38 @@ def train_and_eval_inductive(
         else:
             coldstart_metrics = {}
 
+        controls = {}
+        if coldstart_controls and heldout_pos.shape[1] > 0:
+            from sklearn.metrics import roc_auc_score
+            h_src = heldout_pos[0].to(device)
+            ids = h_src.unique()
+
+            def auc_with(z_src):
+                zd = dict(z_dict)
+                zd[src_type] = z_src
+                ps = model.decode(zd, heldout_pos.to(device), src_type, dst_type)
+                ns = model.decode(zd, neg_edge_index_h, src_type, dst_type)
+                return float(roc_auc_score(labels_h, torch.cat([ps, ns]).cpu().numpy()))
+
+            zs = z_dict[src_type].clone()
+            zs[ids] = zs[ids].mean(dim=0, keepdim=True)
+            controls["mean_query_vector"] = auc_with(zs)
+            if src_type in model.embeddings:
+                W = model.embeddings[src_type].weight
+                saved = W.data.clone()
+                gen = torch.Generator(device=W.device).manual_seed(config.seed + 999)
+                for name in ("inputs_zeroed", "inputs_redrawn"):
+                    W.data[ids] = (torch.zeros(len(ids), W.shape[1], device=W.device) if name == "inputs_zeroed"
+                                   else torch.randn(len(ids), W.shape[1], device=W.device, generator=gen))
+                    controls[name] = auc_with(model.encode(node_id_dict, train_mp_edge_index_dict)[src_type])
+                    W.data.copy_(saved)
+
     return InductiveResult(
         feature_mode=feature_mode,
         transductive_metrics=transductive_metrics,
         coldstart_metrics=coldstart_metrics,
         n_heldout_entities=len(split.heldout_entity_ids),
         n_coldstart_edges=heldout_pos.shape[1],
+        coldstart_controls=controls,
         wall_clock_seconds=wall_clock,
     )

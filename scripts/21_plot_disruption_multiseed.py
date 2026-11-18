@@ -72,9 +72,10 @@ def main():
     fig.suptitle("Disruption simulation (LODHalal, $k$=5), mean of 7 seeds "
                  "with standard deviation", fontsize=11)
     fig.tight_layout()
-    out = FIG_DIR / "fig7_disruption_simulation.png"
-    fig.savefig(out, dpi=600, bbox_inches="tight")
-    print(f"saved {out}")
+    for ext in ("pdf", "png"):
+        out = FIG_DIR / f"fig7_disruption_simulation.{ext}"
+        fig.savefig(out, dpi=600, bbox_inches="tight")
+        print(f"saved {out}")
 
 
 if __name__ == "__main__":

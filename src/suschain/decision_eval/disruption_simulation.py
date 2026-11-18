@@ -113,3 +113,78 @@ def recommend_posthoc_filter(
     pool_risk = risk_by_dst[pool_idx]  # [n, pool_size]
     order = np.argsort(pool_risk, axis=1, kind="stable")[:, :k]
     return np.take_along_axis(pool_idx, order, axis=1)
+
+
+# ---------------------------------------------------------------------------
+# v4 additions: per-query outcomes, an inference-time risk penalty and the
+# certificate co-occurrence rule as a recommender.
+# ---------------------------------------------------------------------------
+
+def _mask_known(scores_all: torch.Tensor, exclude_dst: dict[int, set[int]] | None) -> torch.Tensor:
+    scores = scores_all.clone()
+    if exclude_dst is not None:
+        for i, excl in exclude_dst.items():
+            if excl:
+                scores[i, torch.tensor(list(excl), dtype=torch.long)] = float("-inf")
+    return scores
+
+
+def per_query_outcomes(
+    recommendations: np.ndarray,
+    disrupted_edges: torch.Tensor,
+    risk_by_dst: np.ndarray,
+    fully_certified_mask: np.ndarray,
+) -> dict[str, np.ndarray]:
+    """One value per disrupted edge, so intervals can be bootstrapped over
+    queries rather than only over seeds. Means of these arrays equal the
+    corresponding fields of evaluate_recommendations()."""
+    true_dst = disrupted_edges[1].numpy()
+    hit = (recommendations == true_dst[:, None]).any(axis=1).astype(np.float64)
+    rec_risk = risk_by_dst[recommendations].mean(axis=1)
+    certified = fully_certified_mask[recommendations].mean(axis=1)
+    return {
+        "hit": hit,
+        "risk": rec_risk,
+        "certified": certified,
+        "delta_risk": rec_risk - risk_by_dst[true_dst],
+    }
+
+
+def recommend_score_penalty(
+    scores_all: torch.Tensor, risk_by_dst: np.ndarray, k: int, beta: float,
+    exclude_dst: dict[int, set[int]] | None = None,
+) -> np.ndarray:
+    """Inference-time penalty: rank by score(u, v) - beta * risk(v).
+
+    Uses the plain model's logits, so no retraining is needed. To first order
+    this is what the training-time penalty of Eq. 12 does to the logits (see
+    docs/v4/penalty_derivation.md), so it is the baseline the learned penalty
+    has to beat."""
+    scores = _mask_known(scores_all, exclude_dst)
+    penalised = scores - beta * torch.as_tensor(risk_by_dst, dtype=scores.dtype)[None, :]
+    return torch.topk(penalised, k=k, dim=1).indices.numpy()
+
+
+def cert_cooccurrence_scores(
+    query_src: list[int],
+    certs_of_src: dict[int, set[int]],
+    srcs_of_cert: dict[int, set[int]],
+    train_dst_of_src: dict[int, int],
+    popularity: np.ndarray,
+) -> torch.Tensor:
+    """Certificate co-occurrence rule (scripts/22) as a score matrix.
+
+    For each query food, every other food sharing a certificate votes for its
+    training-graph manufacturer. Popularity, scaled to at most 1e-6, breaks
+    ties only. Uses no learned parameters and no information about the
+    disrupted edges."""
+    num_dst = len(popularity)
+    prior = popularity / (popularity.max() + 1e-9) * 1e-6
+    out = np.tile(prior, (len(query_src), 1))
+    for i, f in enumerate(query_src):
+        for c in certs_of_src.get(f, ()):
+            for f2 in srcs_of_cert[c]:
+                if f2 != f and f2 in train_dst_of_src:
+                    out[i, train_dst_of_src[f2]] += 1.0
+    assert out.shape[1] == num_dst
+    return torch.from_numpy(out)
