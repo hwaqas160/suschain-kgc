@@ -55,6 +55,7 @@ class KGEConfig:
     max_epochs: int = 200
     eval_every: int = 5
     patience: int = 4          # evaluations without improvement
+    loss: str = "softmax"      # "softmax" (default, all v4 results) or "bce" (v5 ablation)
     seed: int = 0
     device: str = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -112,6 +113,26 @@ class KGEModel(nn.Module):
         q = torch.cat([hr_ * c - hi * s, hr_ * s + hi * c], -1)
         d2 = (q * q).sum(-1, keepdim=True) + (ec * ec).sum(-1).unsqueeze(0) - 2 * q @ ec.T
         return self.gamma - d2.clamp_min(1e-9).sqrt()
+
+    def score_aligned(self, h, r, t):
+        """Scores of aligned triples, any shape of t that broadcasts against h, r
+        ([b] with [b, k]); returns the shape of t. Used by the BCE loss."""
+        eh, er, et = self.ent(h), self.rel(r), self.ent(t)
+        if t.dim() == 2:
+            eh, er = eh.unsqueeze(1), er.unsqueeze(1)
+        if self.kind == "DistMult":
+            return (eh * er * et).sum(-1)
+        if self.kind == "ComplEx":
+            hr_, hi = eh.chunk(2, -1)
+            rr, ri = er.chunk(2, -1)
+            tr, ti = et.chunk(2, -1)
+            return ((hr_ * rr - hi * ri) * tr + (hr_ * ri + hi * rr) * ti).sum(-1)
+        if self.kind == "TransE":
+            return self.gamma - (eh + er - et).pow(2).sum(-1).clamp_min(1e-9).sqrt()
+        hr_, hi = eh.chunk(2, -1)
+        c, s = torch.cos(er), torch.sin(er)
+        q = torch.cat([hr_ * c - hi * s, hr_ * s + hi * c], -1)
+        return self.gamma - (q - et).pow(2).sum(-1).clamp_min(1e-9).sqrt()
 
     def score_pairs(self, h, r, t):
         """Score aligned triples, [n]."""
@@ -182,6 +203,23 @@ def _train_epoch(model, opt, H, R, T, rel_dst, vocab, cfg, gen, dev):
         h, r, t = H[idx], R[idx], T[idx]
         lo, hi = vocab.range[rel_dst[int(r[0])]]
         n_type = hi - lo
+        if cfg.loss == "bce":
+            # binary cross-entropy: each true triple against num_neg tails drawn
+            # uniformly from the entities of the correct type, per row
+            b = len(t)
+            neg = torch.randint(lo, hi, (b, cfg.num_neg), generator=gen).to(dev)
+            pos_s = model.score_aligned(h, r, t)
+            neg_s = model.score_aligned(h, r, neg)
+            s_all = torch.cat([pos_s, neg_s.reshape(-1)])
+            y = torch.cat([torch.ones_like(pos_s), torch.zeros_like(neg_s.reshape(-1))])
+            loss = F.binary_cross_entropy_with_logits(s_all, y)
+            if cfg.reg > 0:
+                loss = loss + cfg.reg * (model.ent(h).pow(2).sum(-1).mean() + model.ent(t).pow(2).sum(-1).mean()
+                                         + model.rel(r).pow(2).sum(-1).mean())
+            opt.zero_grad()
+            loss.backward()
+            opt.step()
+            continue
         if n_type <= cfg.num_neg:
             cand = torch.arange(lo, hi, device=dev)
             s = model.score(h, r, cand)
