@@ -1,0 +1,46 @@
+{
+  "key": "nbfnet",
+  "tuning_year": 2016,
+  "best": {
+    "family": "nbfnet",
+    "seconds": 300.0,
+    "dim": 32,
+    "layers": 3
+  },
+  "best_val_hit10": 0.44518272425249167,
+  "trials": [
+    {
+      "params": {
+        "dim": 32,
+        "layers": 2
+      },
+      "val_hit10": 0.11627906976744186,
+      "seconds": 90.83369139999559
+    },
+    {
+      "params": {
+        "dim": 32,
+        "layers": 3
+      },
+      "val_hit10": 0.44518272425249167,
+      "seconds": 90.07745120000618
+    },
+    {
+      "params": {
+        "dim": 64,
+        "layers": 2
+      },
+      "val_hit10": 0.11627906976744186,
+      "seconds": 90.86965320000309
+    },
+    {
+      "params": {
+        "dim": 64,
+        "layers": 3
+      },
+      "val_hit10": 0.292358803986711,
+      "seconds": 90.15300429999479
+    }
+  ],
+  "total_seconds": 362.1317915999971
+}

@@ -1,0 +1,47 @@
+{
+  "key": "nbfnet",
+  "tuning_scenario_seed": 100,
+  "objective": "mean hit@10 on substitution queries",
+  "best": {
+    "family": "nbfnet",
+    "seconds": 600.0,
+    "dim": 32,
+    "layers": 3
+  },
+  "best_val_hit10": 0.8324344429979542,
+  "trials": [
+    {
+      "params": {
+        "dim": 32,
+        "layers": 2
+      },
+      "val_hit10": 0.6611493397805468,
+      "seconds": 245.7769566000061
+    },
+    {
+      "params": {
+        "dim": 32,
+        "layers": 3
+      },
+      "val_hit10": 0.8324344429979542,
+      "seconds": 251.0352763999981
+    },
+    {
+      "params": {
+        "dim": 64,
+        "layers": 2
+      },
+      "val_hit10": 0.6475729960944765,
+      "seconds": 253.6371644000028
+    },
+    {
+      "params": {
+        "dim": 64,
+        "layers": 3
+      },
+      "val_hit10": 0.8242514413241585,
+      "seconds": 264.2890080999932
+    }
+  ],
+  "total_seconds": 1017.0132903000049
+}

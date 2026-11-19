@@ -1,0 +1,2 @@
+tuning scenario seed 100: 5377 queries, 925 customers
+  kge_RotatE_softmax trial  1: hit@10 0.7724 (180s)

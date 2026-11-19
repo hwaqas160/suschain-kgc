@@ -1,0 +1,50 @@
+tuning year 2016: 301 queries, 38 customers, 4687 nodes
+  gnn_sage_bce trial 1: 0.2359 (5s)
+  gnn_sage_bce trial 2: 0.0764 (2s)
+  gnn_sage_bce trial 3: 0.0332 (2s)
+  gnn_sage_bce trial 4: 0.5249 (2s)
+  gnn_sage_bce trial 5: 0.0000 (2s)
+  gnn_sage_bce trial 6: 0.6213 (3s)
+  gnn_sage_bce trial 7: 0.2591 (9s)
+  gnn_sage_bce trial 8: 0.0266 (3s)
+  gnn_sage_bce trial 9: 0.5150 (8s)
+  gnn_sage_bce trial 10: 0.2060 (8s)
+  gnn_sage_bce trial 11: 0.0465 (2s)
+  gnn_sage_bce trial 12: 0.2093 (2s)
+== gnn_sage_bce: tuning-year hit@10 0.6213
+  gnn_sage_softmax trial 1: 0.5249 (3s)
+  gnn_sage_softmax trial 2: 0.3389 (3s)
+  gnn_sage_softmax trial 3: 0.2425 (7s)
+  gnn_sage_softmax trial 4: 0.4618 (7s)
+  gnn_sage_softmax trial 5: 0.4618 (1s)
+  gnn_sage_softmax trial 6: 0.5216 (5s)
+  gnn_sage_softmax trial 7: 0.4684 (16s)
+  gnn_sage_softmax trial 8: 0.5681 (8s)
+  gnn_sage_softmax trial 9: 0.5249 (21s)
+  gnn_sage_softmax trial 10: 0.4684 (17s)
+  gnn_sage_softmax trial 11: 0.1462 (3s)
+  gnn_sage_softmax trial 12: 0.5814 (3s)
+== gnn_sage_softmax: tuning-year hit@10 0.5814
+  kge_RotatE_softmax trial 1: 0.4020 (62s)
+  kge_RotatE_softmax trial 2: 0.6246 (54s)
+  kge_RotatE_softmax trial 3: 0.1827 (15s)
+  kge_RotatE_softmax trial 4: 0.1694 (13s)
+  kge_RotatE_softmax trial 5: 0.4020 (22s)
+  kge_RotatE_softmax trial 6: 0.3256 (10s)
+  kge_RotatE_softmax trial 7: 0.4485 (20s)
+  kge_RotatE_softmax trial 8: 0.3322 (12s)
+== kge_RotatE_softmax: tuning-year hit@10 0.6246
+  kge_ComplEx_softmax trial 1: 0.5415 (39s)
+  kge_ComplEx_softmax trial 2: 0.0631 (15s)
+  kge_ComplEx_softmax trial 3: 0.5548 (18s)
+  kge_ComplEx_softmax trial 4: 0.3023 (20s)
+  kge_ComplEx_softmax trial 5: 0.4485 (18s)
+  kge_ComplEx_softmax trial 6: 0.5548 (28s)
+  kge_ComplEx_softmax trial 7: 0.0498 (18s)
+  kge_ComplEx_softmax trial 8: 0.4485 (8s)
+== kge_ComplEx_softmax: tuning-year hit@10 0.5548
+  nbfnet 32/2: 0.1163
+  nbfnet 32/3: 0.4452
+  nbfnet 64/2: 0.1163
+  nbfnet 64/3: 0.2924
+== nbfnet: tuning-year hit@10 0.4452
