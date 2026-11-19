@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from matplotlib.patches import Circle, Ellipse, Rectangle  # noqa: E402
 
 from v5_figstyle import (ACCENT, DOUBLE_COL, FILL, FILL_ACC, FILL_OK, FILL_RISK, INK, INK2,  # noqa: E402
-                         LINE, MUTE, OK, OUT, RISK, RISK_RAMP, arrow, box, canvas, save)
+                         LINE, MUTE, OK, OUT, RISK, RISK_RAMP, arrow, box, canvas, save, sphere)
 
 BH = r"$\hat{\beta}$"
 T, L = 7.8, 6.7  # title and line font sizes inside boxes
@@ -74,8 +74,8 @@ def framework():
 # ---------------------------------------------------------------- task
 def node(ax, x, y, label, fc=FILL, ec=INK2, lw=0.8, r=2.6, ring=None, fs=7.2, tc=INK):
     if ring:
-        ax.add_patch(Circle((x, y), r + 1.0, fc="none", ec=ring, lw=1.6, zorder=3))
-    ax.add_patch(Circle((x, y), r, fc=fc, ec=ec, lw=lw, zorder=3))
+        ax.add_patch(Circle((x, y), r + 1.0, fc="none", ec=ring, lw=1.6, zorder=3.5))
+    sphere(ax, x, y, r, fc, ec, lw=lw, zorder=3)
     ax.text(x, y, label, ha="center", va="center", fontsize=fs, color=tc, zorder=4)
 
 
@@ -153,7 +153,7 @@ def task():
     ax.text(101, top - (k - 1) * step - 5.4, f"top {k}", ha="center", va="center", fontsize=6.0, color=INK2)
     arrow(ax, 96.6, top - step, 105.2, top - step, color=ACCENT, lw=1.1)
     ax.text(100, 6.0, "The correct answer stays in the top 3;\nthe top 3 now holds lower-risk firms.\n"
-            "No retraining; β comes from the buyer's\ntarget (Figure 2).", ha="center", va="center",
+            "No retraining; β comes from the buyer's\ntarget (Figure 1).", ha="center", va="center",
             fontsize=6.0, color=INK2, linespacing=1.3)
     save(fig, "Figure_Task")
 
@@ -232,7 +232,7 @@ def graphical_abstract():
     arrow(ax, 80, y + h + 2.4, 80, y + h + 0.3, color=ACCENT, lw=1.1)
     for i, s in enumerate(findings):
         ax.text(66, y - 3.5 - 5.6 * i, s, ha="center", va="top", fontsize=6.9, color=INK2)
-    save(fig, "Graphical_Abstract", png=True)
+    save(fig, "Graphical_Abstract", png=True, dpi=450)
 
 
 if __name__ == "__main__":

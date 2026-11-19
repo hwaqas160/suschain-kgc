@@ -1,0 +1,123 @@
+methods ['gnn_gat_bce', 'gnn_gat_softmax', 'gnn_sage_bce', 'gnn_sage_softmax', 'kge_ComplEx_bce', 'kge_ComplEx_softmax', 'kge_DistMult_softmax', 'kge_RotatE_bce', 'kge_RotatE_softmax', 'kge_TransE_softmax', 'nbfnet']
+best GNN by tuning hit@10: gnn_gat_softmax; best KGE (softmax): kge_RotatE_softmax
+seed 10 gnn_gat_bce            hit@10 0.633 risk 0.164 train 513s
+seed 10 gnn_gat_softmax        hit@10 0.779 risk 0.166 train 249s
+seed 10 gnn_sage_bce           hit@10 0.690 risk 0.163 train 100s
+seed 10 gnn_sage_softmax       hit@10 0.762 risk 0.166 train 71s
+seed 10 kge_ComplEx_bce        hit@10 0.712 risk 0.163 train 94s
+seed 10 kge_ComplEx_softmax    hit@10 0.737 risk 0.166 train 74s
+seed 10 kge_DistMult_softmax   hit@10 0.758 risk 0.166 train 70s
+seed 10 kge_RotatE_bce         hit@10 0.803 risk 0.164 train 141s
+seed 10 kge_RotatE_softmax     hit@10 0.826 risk 0.165 train 197s
+seed 10 kge_TransE_softmax     hit@10 0.795 risk 0.167 train 86s
+seed 10 nbfnet                 hit@10 0.840 risk 0.165 train 608s
+seed 10 done in 2906s; co_supply 0.649
+seed 11 gnn_gat_bce            hit@10 0.624 risk 0.162 train 504s
+seed 11 gnn_gat_softmax        hit@10 0.742 risk 0.168 train 262s
+seed 11 gnn_sage_bce           hit@10 0.677 risk 0.164 train 98s
+seed 11 gnn_sage_softmax       hit@10 0.745 risk 0.167 train 79s
+seed 11 kge_ComplEx_bce        hit@10 0.686 risk 0.165 train 111s
+seed 11 kge_ComplEx_softmax    hit@10 0.733 risk 0.164 train 82s
+seed 11 kge_DistMult_softmax   hit@10 0.752 risk 0.166 train 40s
+seed 11 kge_RotatE_bce         hit@10 0.781 risk 0.163 train 164s
+seed 11 kge_RotatE_softmax     hit@10 0.814 risk 0.165 train 199s
+seed 11 kge_TransE_softmax     hit@10 0.770 risk 0.166 train 108s
+seed 11 nbfnet                 hit@10 0.817 risk 0.166 train 612s
+seed 11 done in 2995s; co_supply 0.627
+seed 12 gnn_gat_bce            hit@10 0.625 risk 0.164 train 526s
+seed 12 gnn_gat_softmax        hit@10 0.758 risk 0.166 train 375s
+seed 12 gnn_sage_bce           hit@10 0.678 risk 0.165 train 122s
+seed 12 gnn_sage_softmax       hit@10 0.745 risk 0.167 train 96s
+seed 12 kge_ComplEx_bce        hit@10 0.690 risk 0.165 train 142s
+seed 12 kge_ComplEx_softmax    hit@10 0.731 risk 0.166 train 64s
+seed 12 kge_DistMult_softmax   hit@10 0.756 risk 0.166 train 67s
+seed 12 kge_RotatE_bce         hit@10 0.784 risk 0.165 train 178s
+seed 12 kge_RotatE_softmax     hit@10 0.820 risk 0.165 train 235s
+seed 12 kge_TransE_softmax     hit@10 0.773 risk 0.168 train 81s
+seed 12 nbfnet                 hit@10 0.823 risk 0.166 train 612s
+seed 12 done in 3510s; co_supply 0.633
+seed 13 gnn_gat_bce            hit@10 0.650 risk 0.165 train 497s
+seed 13 gnn_gat_softmax        hit@10 0.767 risk 0.165 train 226s
+seed 13 gnn_sage_bce           hit@10 0.698 risk 0.165 train 86s
+seed 13 gnn_sage_softmax       hit@10 0.764 risk 0.167 train 50s
+seed 13 kge_ComplEx_bce        hit@10 0.690 risk 0.166 train 67s
+seed 13 kge_ComplEx_softmax    hit@10 0.723 risk 0.167 train 29s
+seed 13 kge_DistMult_softmax   hit@10 0.747 risk 0.166 train 24s
+seed 13 kge_RotatE_bce         hit@10 0.784 risk 0.165 train 85s
+seed 13 kge_RotatE_softmax     hit@10 0.813 risk 0.165 train 103s
+seed 13 kge_TransE_softmax     hit@10 0.765 risk 0.167 train 49s
+seed 13 nbfnet                 hit@10 0.814 risk 0.166 train 613s
+seed 13 done in 2487s; co_supply 0.633
+seed 14 gnn_gat_bce            hit@10 0.662 risk 0.163 train 494s
+seed 14 gnn_gat_softmax        hit@10 0.773 risk 0.165 train 220s
+seed 14 gnn_sage_bce           hit@10 0.708 risk 0.164 train 80s
+seed 14 gnn_sage_softmax       hit@10 0.765 risk 0.166 train 44s
+seed 14 kge_ComplEx_bce        hit@10 0.726 risk 0.164 train 64s
+seed 14 kge_ComplEx_softmax    hit@10 0.752 risk 0.164 train 25s
+seed 14 kge_DistMult_softmax   hit@10 0.768 risk 0.166 train 22s
+seed 14 kge_RotatE_bce         hit@10 0.811 risk 0.165 train 85s
+seed 14 kge_RotatE_softmax     hit@10 0.826 risk 0.165 train 102s
+seed 14 kge_TransE_softmax     hit@10 0.802 risk 0.167 train 47s
+seed 14 nbfnet                 hit@10 0.835 risk 0.166 train 612s
+seed 14 done in 2443s; co_supply 0.658
+seed 15 gnn_gat_bce            hit@10 0.607 risk 0.163 train 493s
+seed 15 gnn_gat_softmax        hit@10 0.764 risk 0.164 train 219s
+seed 15 gnn_sage_bce           hit@10 0.674 risk 0.164 train 79s
+seed 15 gnn_sage_softmax       hit@10 0.748 risk 0.167 train 43s
+seed 15 kge_ComplEx_bce        hit@10 0.691 risk 0.165 train 63s
+seed 15 kge_ComplEx_softmax    hit@10 0.743 risk 0.164 train 26s
+seed 15 kge_DistMult_softmax   hit@10 0.751 risk 0.165 train 23s
+seed 15 kge_RotatE_bce         hit@10 0.800 risk 0.164 train 85s
+seed 15 kge_RotatE_softmax     hit@10 0.816 risk 0.165 train 102s
+seed 15 kge_TransE_softmax     hit@10 0.778 risk 0.168 train 48s
+seed 15 nbfnet                 hit@10 0.837 risk 0.165 train 611s
+seed 15 done in 2442s; co_supply 0.638
+seed 16 gnn_gat_bce            hit@10 0.652 risk 0.166 train 492s
+seed 16 gnn_gat_softmax        hit@10 0.780 risk 0.168 train 218s
+seed 16 gnn_sage_bce           hit@10 0.726 risk 0.164 train 78s
+seed 16 gnn_sage_softmax       hit@10 0.777 risk 0.167 train 42s
+seed 16 kge_ComplEx_bce        hit@10 0.721 risk 0.164 train 61s
+seed 16 kge_ComplEx_softmax    hit@10 0.760 risk 0.165 train 25s
+seed 16 kge_DistMult_softmax   hit@10 0.766 risk 0.165 train 20s
+seed 16 kge_RotatE_bce         hit@10 0.818 risk 0.164 train 84s
+seed 16 kge_RotatE_softmax     hit@10 0.833 risk 0.165 train 100s
+seed 16 kge_TransE_softmax     hit@10 0.789 risk 0.168 train 45s
+seed 16 nbfnet                 hit@10 0.839 risk 0.166 train 611s
+seed 16 done in 2430s; co_supply 0.653
+seed 17 gnn_gat_bce            hit@10 0.652 risk 0.162 train 489s
+seed 17 gnn_gat_softmax        hit@10 0.773 risk 0.165 train 214s
+seed 17 gnn_sage_bce           hit@10 0.696 risk 0.161 train 75s
+seed 17 gnn_sage_softmax       hit@10 0.760 risk 0.165 train 40s
+seed 17 kge_ComplEx_bce        hit@10 0.694 risk 0.162 train 59s
+seed 17 kge_ComplEx_softmax    hit@10 0.753 risk 0.164 train 24s
+seed 17 kge_DistMult_softmax   hit@10 0.768 risk 0.163 train 19s
+seed 17 kge_RotatE_bce         hit@10 0.807 risk 0.164 train 82s
+seed 17 kge_RotatE_softmax     hit@10 0.821 risk 0.164 train 100s
+seed 17 kge_TransE_softmax     hit@10 0.783 risk 0.166 train 45s
+seed 17 nbfnet                 hit@10 0.838 risk 0.164 train 611s
+seed 17 done in 2400s; co_supply 0.634
+seed 18 gnn_gat_bce            hit@10 0.648 risk 0.164 train 463s
+seed 18 gnn_gat_softmax        hit@10 0.772 risk 0.167 train 228s
+seed 18 gnn_sage_bce           hit@10 0.690 risk 0.165 train 81s
+seed 18 gnn_sage_softmax       hit@10 0.774 risk 0.169 train 47s
+seed 18 kge_ComplEx_bce        hit@10 0.703 risk 0.166 train 60s
+seed 18 kge_ComplEx_softmax    hit@10 0.756 risk 0.166 train 28s
+seed 18 kge_DistMult_softmax   hit@10 0.772 risk 0.165 train 20s
+seed 18 kge_RotatE_bce         hit@10 0.820 risk 0.166 train 83s
+seed 18 kge_RotatE_softmax     hit@10 0.839 risk 0.166 train 100s
+seed 18 kge_TransE_softmax     hit@10 0.794 risk 0.169 train 46s
+seed 18 nbfnet                 hit@10 0.835 risk 0.167 train 611s
+seed 18 done in 2407s; co_supply 0.647
+seed 19 gnn_gat_bce            hit@10 0.642 risk 0.161 train 458s
+seed 19 gnn_gat_softmax        hit@10 0.771 risk 0.166 train 228s
+seed 19 gnn_sage_bce           hit@10 0.707 risk 0.163 train 80s
+seed 19 gnn_sage_softmax       hit@10 0.763 risk 0.165 train 47s
+seed 19 kge_ComplEx_bce        hit@10 0.716 risk 0.163 train 60s
+seed 19 kge_ComplEx_softmax    hit@10 0.752 risk 0.165 train 27s
+seed 19 kge_DistMult_softmax   hit@10 0.761 risk 0.165 train 20s
+seed 19 kge_RotatE_bce         hit@10 0.807 risk 0.164 train 83s
+seed 19 kge_RotatE_softmax     hit@10 0.832 risk 0.163 train 100s
+seed 19 kge_TransE_softmax     hit@10 0.807 risk 0.164 train 46s
+seed 19 nbfnet                 hit@10 0.837 risk 0.164 train 610s
+seed 19 done in 2402s; co_supply 0.651
+done

@@ -1,0 +1,15 @@
+methods ['gnn_gat_bce', 'gnn_gat_softmax', 'gnn_sage_bce', 'gnn_sage_softmax', 'kge_ComplEx_bce', 'kge_ComplEx_softmax', 'kge_DistMult_softmax', 'kge_RotatE_bce', 'kge_RotatE_softmax', 'kge_TransE_softmax', 'nbfnet']
+best GNN by tuning hit@10: gnn_gat_softmax; best KGE (softmax): kge_RotatE_softmax
+seed 100 gnn_gat_bce            hit@10 0.634 risk 0.163 train 502s
+seed 100 gnn_gat_softmax        hit@10 0.783 risk 0.165 train 260s
+seed 100 gnn_sage_bce           hit@10 0.680 risk 0.162 train 104s
+seed 100 gnn_sage_softmax       hit@10 0.783 risk 0.168 train 73s
+seed 100 kge_ComplEx_bce        hit@10 0.704 risk 0.165 train 90s
+seed 100 kge_ComplEx_softmax    hit@10 0.736 risk 0.165 train 76s
+seed 100 kge_DistMult_softmax   hit@10 0.757 risk 0.165 train 70s
+seed 100 kge_RotatE_bce         hit@10 0.809 risk 0.165 train 140s
+seed 100 kge_RotatE_softmax     hit@10 0.826 risk 0.165 train 198s
+seed 100 kge_TransE_softmax     hit@10 0.796 risk 0.168 train 77s
+seed 100 nbfnet                 hit@10 0.835 risk 0.166 train 613s
+seed 100 done in 2911s; co_supply 0.632
+done

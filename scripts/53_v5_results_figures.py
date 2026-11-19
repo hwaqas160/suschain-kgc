@@ -46,7 +46,7 @@ GROUPS = [("Rules", ["popularity", "co_supply"]),
 def name(m):
     if m.endswith("_lam1") or m.endswith("_lam5"):
         base, lam = m.rsplit("_lam", 1)
-        return f"{NAMES.get(base, base)} + penalty λ={lam}"
+        return f"{NAMES.get(base, base)} + penalty $\\lambda={lam}$"
     return NAMES.get(m, m)
 
 
@@ -117,7 +117,7 @@ def tab_accuracy(d):
     order = [m for _, ms in GROUPS for m in ms if m in per]
     lam = [m for m in per if "_lam" in m]
     lines = [r"\begin{tabular}{lrrrrrr}", r"\toprule",
-             r"Ranker & hit@10 & MRR & recall@10 & risk@10 & train (s) & re-rank (ms) \\", r"\midrule"]
+             r"Ranker & hit@10 & MRR & recall@10 & risk@10 & train, s & re-rank, ms \\", r"\midrule"]
     last = None
     for g, ms in GROUPS:
         for m in ms:
@@ -136,9 +136,12 @@ def tab_accuracy(d):
             lines.append(f"{nm} & {h:.3f} $\\pm$ {hh:.3f} & {r:.3f} & {rc:.3f} & {rk:.3f} & {tr} & {rr} \\\\")
     if lam:
         lines.append(r"\addlinespace")
+        base = sorted(lam)[0].rsplit("_lam", 1)[0]
+        lines.append(f"\\multicolumn{{7}}{{l}}{{\\textit{{{NAMES.get(base, base)}, retrained with the learned penalty}}}} \\\\")
         for m in sorted(lam):
             h, hh = ci(per[m]["hit@10"])
-            lines.append(f"{name(m)} & {h:.3f} $\\pm$ {hh:.3f} & {np.mean(per[m]['rr']):.3f} & "
+            lab = f"\\quad $\\lambda={m.rsplit('_lam', 1)[1]}$"
+            lines.append(f"{lab} & {h:.3f} $\\pm$ {hh:.3f} & {np.mean(per[m]['rr']):.3f} & "
                          f"{np.mean(per[m]['recall@10']):.3f} & {np.mean(per[m]['risk@10']):.3f} & "
                          f"{np.mean(per[m]['train_seconds']):.0f} & -- \\\\")
     lines += [r"\bottomrule", r"\end{tabular}"]
@@ -148,7 +151,7 @@ def tab_accuracy(d):
 def tab_tests(a):
     lines = [r"\begin{tabular}{lrr}", r"\toprule", r"Hypothesis & $p$ & $p$ (Holm) \\", r"\midrule"]
     for k, v in a["tests"].items():
-        lab = k.replace("_", r"\_").replace("vs", "vs.")
+        lab = k.replace("_", r"\_").replace("vs", "vs.").replace("(lambda 1)", r"($\lambda=1$)")
         for key, nm in NAMES.items():
             lab = lab.replace(key.replace("_", r"\_"), nm)
         lines.append(f"{lab} & {fmt_p(v['p'])} & {fmt_p(v['p_holm'])} \\\\")
@@ -170,7 +173,7 @@ def fig_tradeoff(d, cv):
     # (a) shift vs learned penalty on the best GNN
     ax = axes[0]
     H, R = mean_curve(cv, seeds, bg)
-    ax.plot(R, H, "-", color=ACCENT, lw=1.6, label="shift on the plain model")
+    ax.plot(R, H, "-", color=ACCENT, lw=1.6, marker=".", ms=4, label="shift on the plain model")
     ax.plot(R[0], H[0], "o", color=ACCENT, ms=5)
     for lam, mk in (("1", "s"), ("5", "D")):
         k = f"{bg}_lam{lam}"
@@ -178,10 +181,12 @@ def fig_tradeoff(d, cv):
             H2, R2 = mean_curve(cv, seeds, k)
             ax.plot(R2, H2, ":", color=RISK, lw=1.1)
             ax.plot(R2[0], H2[0], mk, color=RISK, ms=5.5, mfc="white", mew=1.4,
-                    label=f"learned penalty λ = {lam} (then shifted, dotted)")
+                    label=f"learned penalty $\\lambda={lam}$ (then shifted, dotted)")
     ax.set_xlabel("risk@10 (lower is better)")
     ax.set_ylabel("hit@10")
-    ax.set_title(f"(a) {name(bg)}: retrain or re-rank", fontsize=8, loc="left", color=INK)
+    ax.set_title(f"(a) {name(bg)}: retrain or re-rank (high-risk end)", fontsize=8, loc="left", color=INK)
+    ax.set_xlim(R[0] - 0.035, R[0] + 0.003)
+    ax.set_ylim(H[0] - 0.09, H[0] + 0.02)
     ax.legend(fontsize=6.4, loc="lower right")
     # (b) shift curves of the main rankers
     ax = axes[1]
@@ -195,8 +200,7 @@ def fig_tradeoff(d, cv):
     ax.set_xlabel("risk@10 (lower is better)")
     ax.set_title("(b) Shift applied to different rankers", fontsize=8, loc="left", color=INK)
     ax.legend(fontsize=6.4, loc="lower right")
-    for a_ in axes:
-        a_.set_ylim(bottom=0)
+    axes[1].set_ylim(bottom=0)
     fig.text(0.5, -0.02, "Each curve starts at the plain ranking (dot, β = 0) and moves left as the shift weight β "
              "grows from 0 to 20. Mean over seeds.", ha="center", fontsize=6.6, color=INK2)
     fig.tight_layout()
@@ -282,7 +286,7 @@ def tab_tuning():
     for p in sorted(CONF.glob("substitution_*.json")):
         c = json.loads(p.read_text())
         rows.append((c["key"], c))
-    lines = [r"\begin{tabular}{llrrr}", r"\toprule",
+    lines = [r"\begin{tabular}{lp{0.30\textwidth}rrr}", r"\toprule",
              r"Ranker & Chosen setting & Trials & Minutes & Tuning hit@10 \\", r"\midrule"]
     order = [m for _, ms in GROUPS for m in ms]
     for k, c in sorted(rows, key=lambda r: order.index(r[0]) if r[0] in order else 99):

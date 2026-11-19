@@ -1,0 +1,30 @@
+best learned ranker by tuning-year hit@10: kge_RotatE_softmax
+year 2014: co_supply 0.690 popularity 0.629 random 0.267 gnn_sage_bce 0.555 gnn_sage_softmax 0.691 kge_RotatE_softmax 0.699 kge_ComplEx_softmax 0.584 nbfnet 0.682
+year 2015: co_supply 0.551 popularity 0.322 random 0.361 gnn_sage_bce 0.609 gnn_sage_softmax 0.411 kge_RotatE_softmax 0.673 kge_ComplEx_softmax 0.469 nbfnet 0.522
+year 2017: co_supply 0.588 popularity 0.620 random 0.331 gnn_sage_bce 0.525 gnn_sage_softmax 0.529 kge_RotatE_softmax 0.649 kge_ComplEx_softmax 0.464 nbfnet 0.661
+year 2018: co_supply 0.491 popularity 0.480 random 0.592 gnn_sage_bce 0.767 gnn_sage_softmax 0.470 kge_RotatE_softmax 0.856 kge_ComplEx_softmax 0.337 nbfnet 0.734
+year 2020: co_supply 0.671 popularity 0.692 random 0.427 gnn_sage_bce 0.621 gnn_sage_softmax 0.778 kge_RotatE_softmax 0.749 kge_ComplEx_softmax 0.564 nbfnet 0.890
+year 2021: co_supply 0.633 popularity 0.531 random 0.474 gnn_sage_bce 0.757 gnn_sage_softmax 0.692 kge_RotatE_softmax 0.776 kge_ComplEx_softmax 0.706 nbfnet 0.784
+year 2022: co_supply 0.692 popularity 0.586 random 0.231 gnn_sage_bce 0.724 gnn_sage_softmax 0.749 kge_RotatE_softmax 0.766 kge_ComplEx_softmax 0.636 nbfnet 0.740
+{
+  "tests": {
+    "T1 best learned vs co-supply": {
+      "p": 0.015625,
+      "p_holm": 0.03125
+    },
+    "T2 nbfnet vs co-supply": {
+      "p": 0.078125,
+      "p_holm": 0.078125
+    }
+  },
+  "summary": {
+    "co_supply": 0.616,
+    "popularity": 0.551,
+    "random": 0.383,
+    "gnn_sage_bce": 0.651,
+    "gnn_sage_softmax": 0.617,
+    "kge_RotatE_softmax": 0.738,
+    "kge_ComplEx_softmax": 0.537,
+    "nbfnet": 0.716
+  }
+}

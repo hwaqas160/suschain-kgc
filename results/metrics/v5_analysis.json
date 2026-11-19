@@ -1,0 +1,3730 @@
+{
+  "seeds": [
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "best_gnn": "gnn_gat_softmax",
+  "best_kge": "kge_RotatE_softmax",
+  "betas": [
+    0.0,
+    0.01,
+    0.02,
+    0.05,
+    0.1,
+    0.2,
+    0.3,
+    0.5,
+    0.75,
+    1.0,
+    1.5,
+    2.0,
+    3.0,
+    5.0,
+    10.0,
+    20.0
+  ],
+  "monotonicity": {
+    "violations": 0,
+    "comparisons": 11162340,
+    "largest_increase": 5.960464477539063e-08
+  },
+  "risk_budget": {
+    "co_supply": {
+      "target5": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0036816765695656486,
+            "share_within": 0.6495,
+            "hit_lost": 0.00908078155543309,
+            "mean_beta": 0.2744,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.0381177072584397,
+            "share_within": 1.0,
+            "hit_lost": 0.08662540071372127,
+            "mean_beta": 1.3005,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.003272743477123678,
+            "share_within": 0.6669999999999999,
+            "hit_lost": 0.007307055252954438,
+            "mean_beta": 0.2631,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.021802229061010994,
+            "share_within": 0.9994999999999999,
+            "hit_lost": 0.03886242343996664,
+            "mean_beta": 0.6506,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.003461701628419204,
+            "share_within": 0.735,
+            "hit_lost": 0.006315604809653598,
+            "mean_beta": 0.26247,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.013862264011371292,
+            "share_within": 0.9964999999999999,
+            "hit_lost": 0.021156920138243242,
+            "mean_beta": 0.45614999999999994,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0030728120477567884,
+            "share_within": 0.7705,
+            "hit_lost": 0.005480298404492334,
+            "mean_beta": 0.253,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.004975358082943084,
+            "share_within": 0.942,
+            "hit_lost": 0.006567529023733953,
+            "mean_beta": 0.2854,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.000999807742140404,
+        "alpha_from": "tuning scenario"
+      },
+      "target10": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.004531588120112772,
+            "share_within": 0.653,
+            "hit_lost": 0.02117943715110705,
+            "mean_beta": 0.44715,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.038625305788023964,
+            "share_within": 1.0,
+            "hit_lost": 0.11680026808836111,
+            "mean_beta": 1.7884999999999998,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.004508916628672444,
+            "share_within": 0.6655,
+            "hit_lost": 0.019831676755389736,
+            "mean_beta": 0.4386,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.021324680097322544,
+            "share_within": 0.9994999999999999,
+            "hit_lost": 0.060369050756326745,
+            "mean_beta": 0.9054,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.00530038284605549,
+            "share_within": 0.749,
+            "hit_lost": 0.02043596232188763,
+            "mean_beta": 0.4497,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.01342880647271375,
+            "share_within": 0.9959999999999999,
+            "hit_lost": 0.038205179324125524,
+            "mean_beta": 0.6413250000000001,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.006962246792475824,
+            "share_within": 0.909,
+            "hit_lost": 0.023534974431642895,
+            "mean_beta": 0.4803,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.00783635665215274,
+            "share_within": 0.984,
+            "hit_lost": 0.024627869028735528,
+            "mean_beta": 0.4968,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0022253823517282127,
+        "alpha_from": "tuning scenario"
+      },
+      "target20": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.004323993788194401,
+            "share_within": 0.7845,
+            "hit_lost": 0.05931291066105935,
+            "mean_beta": 0.9046750000000001,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04043716800091201,
+            "share_within": 1.0,
+            "hit_lost": 0.20082816241756438,
+            "mean_beta": 3.4362500000000002,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0038447132527067635,
+            "share_within": 0.8099999999999999,
+            "hit_lost": 0.05740731196753703,
+            "mean_beta": 0.8683750000000001,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.02199981706875664,
+            "share_within": 0.999,
+            "hit_lost": 0.11508061165874042,
+            "mean_beta": 1.74725,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0038519065804915554,
+            "share_within": 0.857,
+            "hit_lost": 0.056946966505158,
+            "mean_beta": 0.8561249999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.013804888107672938,
+            "share_within": 0.9935,
+            "hit_lost": 0.08723505039315224,
+            "mean_beta": 1.2938749999999999,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0030485749440526747,
+            "share_within": 0.8065,
+            "hit_lost": 0.054390408262668,
+            "mean_beta": 0.821375,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.005640132172942195,
+            "share_within": 0.9339999999999999,
+            "hit_lost": 0.06285920811620507,
+            "mean_beta": 0.9192500000000001,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0051418632073588445,
+        "alpha_from": "tuning scenario"
+      },
+      "target30": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.004483058336782602,
+            "share_within": 0.8575000000000002,
+            "hit_lost": 0.11240658864530673,
+            "mean_beta": 1.7096249999999997,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.043438279182777526,
+            "share_within": 1.0,
+            "hit_lost": 0.33155834861645644,
+            "mean_beta": 7.6450000000000005,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.004302517984712332,
+            "share_within": 0.8765000000000001,
+            "hit_lost": 0.11060490936015059,
+            "mean_beta": 1.675375,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.023460096459052837,
+            "share_within": 1.0,
+            "hit_lost": 0.19605144974485422,
+            "mean_beta": 3.30075,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.004330210201601435,
+            "share_within": 0.897,
+            "hit_lost": 0.11001951395215448,
+            "mean_beta": 1.6622499999999998,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.014288081905060826,
+            "share_within": 0.9964999999999999,
+            "hit_lost": 0.15068133493750607,
+            "mean_beta": 2.36825,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0031757391799583238,
+            "share_within": 0.8145,
+            "hit_lost": 0.10569659226041092,
+            "mean_beta": 1.5925,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.006725875596837866,
+            "share_within": 0.9365,
+            "hit_lost": 0.11830354174297282,
+            "mean_beta": 1.8045000000000002,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.010143538680931184,
+        "alpha_from": "tuning scenario"
+      }
+    },
+    "gnn_gat_bce": {
+      "target5": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.00277973376541331,
+            "share_within": 0.5935,
+            "hit_lost": 0.006258349752459201,
+            "mean_beta": 1.7895949999999998,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04722138305738211,
+            "share_within": 1.0,
+            "hit_lost": 0.07755396389102,
+            "mean_beta": 9.381499999999999,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0018825489774215761,
+            "share_within": 0.593,
+            "hit_lost": 0.00506534654754625,
+            "mean_beta": 1.641175,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.024341179681345297,
+            "share_within": 0.9989999999999999,
+            "hit_lost": 0.02800486316566438,
+            "mean_beta": 4.968375,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.002310666645011213,
+            "share_within": 0.6715,
+            "hit_lost": 0.0047861166520575165,
+            "mean_beta": 1.6668499999999997,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.012790652235735733,
+            "share_within": 0.9899999999999999,
+            "hit_lost": 0.01270821004496259,
+            "mean_beta": 3.1078750000000004,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.002111503887027042,
+            "share_within": 0.8055,
+            "hit_lost": 0.004137916371626052,
+            "mean_beta": 1.6216250000000003,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.004035726462492709,
+            "share_within": 0.9299999999999999,
+            "hit_lost": 0.005459862005695244,
+            "mean_beta": 1.873375,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0015530862376208516,
+        "alpha_from": "tuning scenario"
+      },
+      "target10": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.004649317984929957,
+            "share_within": 0.6799999999999999,
+            "hit_lost": 0.014535310974969056,
+            "mean_beta": 3.19579,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04651467624876772,
+            "share_within": 1.0,
+            "hit_lost": 0.10121843721762495,
+            "mean_beta": 11.217500000000001,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.004034174396343189,
+            "share_within": 0.7130000000000001,
+            "hit_lost": 0.012762150121980087,
+            "mean_beta": 3.05335,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.02993318120477212,
+            "share_within": 1.0,
+            "hit_lost": 0.056226946639587785,
+            "mean_beta": 7.572500000000001,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.004463234254214645,
+            "share_within": 0.8155000000000001,
+            "hit_lost": 0.012331734439100458,
+            "mean_beta": 3.0818749999999997,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.015360794919621137,
+            "share_within": 0.999,
+            "hit_lost": 0.025549160663550306,
+            "mean_beta": 4.778249999999999,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0035855466792401374,
+            "share_within": 0.944,
+            "hit_lost": 0.010252674983791815,
+            "mean_beta": 2.92075,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.006249758469537957,
+            "share_within": 0.9605,
+            "hit_lost": 0.013813885542948368,
+            "mean_beta": 3.3335,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.003104788968771343,
+        "alpha_from": "tuning scenario"
+      },
+      "target20": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.011883642421788933,
+            "share_within": 0.7405000000000002,
+            "hit_lost": 0.053357292495971834,
+            "mean_beta": 7.27925,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.05718891018198863,
+            "share_within": 1.0,
+            "hit_lost": 0.20523799954112013,
+            "mean_beta": 18.794999999999998,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.011823944076868952,
+            "share_within": 0.764,
+            "hit_lost": 0.052299992697121,
+            "mean_beta": 7.238999999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.028032681720072485,
+            "share_within": 0.9994999999999999,
+            "hit_lost": 0.09256578472175657,
+            "mean_beta": 10.5825,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.012304808217648048,
+            "share_within": 0.8009999999999999,
+            "hit_lost": 0.05284085414207864,
+            "mean_beta": 7.3199999999999985,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.025110912785247297,
+            "share_within": 0.9960000000000001,
+            "hit_lost": 0.0827214428135024,
+            "mean_beta": 9.83,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.012331020260668145,
+            "share_within": 0.8550000000000001,
+            "hit_lost": 0.051912053738513306,
+            "mean_beta": 7.342499999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.018602149473359836,
+            "share_within": 0.951,
+            "hit_lost": 0.06693482497737771,
+            "mean_beta": 8.5625,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.010232776474751732,
+        "alpha_from": "tuning scenario"
+      },
+      "target30": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.012223945935943892,
+            "share_within": 0.9705,
+            "hit_lost": 0.09563359141965094,
+            "mean_beta": 10.7925,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04506427283431039,
+            "share_within": 1.0,
+            "hit_lost": 0.22221749802803026,
+            "mean_beta": 20.0,
+            "share_reachable": 0.9749999999999999
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.010997115338426006,
+            "share_within": 0.9964999999999999,
+            "hit_lost": 0.09005050399318429,
+            "mean_beta": 10.397499999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04273433004269752,
+            "share_within": 1.0,
+            "hit_lost": 0.2128527106457226,
+            "mean_beta": 19.334999999999997,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.010104720383842157,
+            "share_within": 1.0,
+            "hit_lost": 0.08640078420722931,
+            "mean_beta": 10.129999999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.024896862765941642,
+            "share_within": 1.0,
+            "hit_lost": 0.1422032033121828,
+            "mean_beta": 14.280000000000001,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.009651982998815782,
+            "share_within": 1.0,
+            "hit_lost": 0.08465176069531039,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.00961553789583951,
+            "share_within": 1.0,
+            "hit_lost": 0.084879724235603,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.030714861666854422,
+        "alpha_from": "tuning scenario"
+      }
+    },
+    "gnn_gat_softmax": {
+      "target5": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.002312165728796954,
+            "share_within": 0.5734999999999999,
+            "hit_lost": 0.006004801256431764,
+            "mean_beta": 1.23656,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04680471633020973,
+            "share_within": 1.0,
+            "hit_lost": 0.10014787653125926,
+            "mean_beta": 6.5504999999999995,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0019601195557597375,
+            "share_within": 0.5850000000000001,
+            "hit_lost": 0.005012885337805277,
+            "mean_beta": 1.18779,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.023470663030661244,
+            "share_within": 0.9994999999999999,
+            "hit_lost": 0.030896963349185125,
+            "mean_beta": 3.37,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0024828585757188356,
+            "share_within": 0.6664999999999999,
+            "hit_lost": 0.004809502642220356,
+            "mean_beta": 1.21655,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.01192948380156551,
+            "share_within": 0.9904999999999999,
+            "hit_lost": 0.012714388601647498,
+            "mean_beta": 2.1050250000000004,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0027202068625525903,
+            "share_within": 0.7975,
+            "hit_lost": 0.005045122196018625,
+            "mean_beta": 1.2263749999999998,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.004749269038390078,
+            "share_within": 0.9225,
+            "hit_lost": 0.0060863302454697244,
+            "mean_beta": 1.4114999999999998,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0013474745154377138,
+        "alpha_from": "tuning scenario"
+      },
+      "target10": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.003681359752777161,
+            "share_within": 0.633,
+            "hit_lost": 0.014662126974705139,
+            "mean_beta": 2.1507,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.05287356172290229,
+            "share_within": 1.0,
+            "hit_lost": 0.15655678400041811,
+            "mean_beta": 8.777,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0032334636043027006,
+            "share_within": 0.6505,
+            "hit_lost": 0.01299155894945465,
+            "mean_beta": 2.0802,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.02613856946266363,
+            "share_within": 0.9979999999999999,
+            "hit_lost": 0.05492503461900672,
+            "mean_beta": 4.69225,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.003679389693698474,
+            "share_within": 0.74,
+            "hit_lost": 0.012698219533000774,
+            "mean_beta": 2.10525,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.014327448287152178,
+            "share_within": 0.9949999999999999,
+            "hit_lost": 0.02787831716546888,
+            "mean_beta": 3.2515,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0030714539081680607,
+            "share_within": 0.8310000000000001,
+            "hit_lost": 0.01134613952250052,
+            "mean_beta": 2.027,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.005723050793817311,
+            "share_within": 0.9315000000000001,
+            "hit_lost": 0.014702587258561692,
+            "mean_beta": 2.3095,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0020184127150619327,
+        "alpha_from": "tuning scenario"
+      },
+      "target20": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.008303443431554645,
+            "share_within": 0.7060000000000001,
+            "hit_lost": 0.0540955310446805,
+            "mean_beta": 4.574875,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.045866554371934196,
+            "share_within": 1.0,
+            "hit_lost": 0.19961972589401236,
+            "mean_beta": 10.5575,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.008537202379976041,
+            "share_within": 0.7619999999999999,
+            "hit_lost": 0.05228566501675915,
+            "mean_beta": 4.56125,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.038689266631416405,
+            "share_within": 1.0,
+            "hit_lost": 0.16586573088549741,
+            "mean_beta": 9.145000000000001,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.010099244800584068,
+            "share_within": 0.8675,
+            "hit_lost": 0.05500886980108981,
+            "mean_beta": 4.735,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.01807477779195258,
+            "share_within": 0.9995,
+            "hit_lost": 0.0831504034667287,
+            "mean_beta": 5.909000000000001,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.01204355794933169,
+            "share_within": 0.986,
+            "hit_lost": 0.059858717623868,
+            "mean_beta": 4.9719999999999995,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.012247655467553723,
+            "share_within": 0.999,
+            "hit_lost": 0.060398116514498966,
+            "mean_beta": 4.998,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.003580370742943084,
+        "alpha_from": "tuning scenario"
+      },
+      "target30": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.018768079202599514,
+            "share_within": 0.725,
+            "hit_lost": 0.15230323654479394,
+            "mean_beta": 8.617999999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.055781638031376556,
+            "share_within": 1.0,
+            "hit_lost": 0.3766012565855365,
+            "mean_beta": 18.955,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.020497285775131942,
+            "share_within": 0.7779999999999999,
+            "hit_lost": 0.15926832864786725,
+            "mean_beta": 8.889999999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.027833433910493914,
+            "share_within": 1.0,
+            "hit_lost": 0.18983036803222259,
+            "mean_beta": 10.085,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.02346068446541531,
+            "share_within": 0.8699999999999999,
+            "hit_lost": 0.17076193379230106,
+            "mean_beta": 9.35,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.027559275006566387,
+            "share_within": 1.0,
+            "hit_lost": 0.1878520268238687,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.027004195505199797,
+            "share_within": 0.9815000000000002,
+            "hit_lost": 0.1856554516029257,
+            "mean_beta": 9.9075,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.02751965397635689,
+            "share_within": 0.999,
+            "hit_lost": 0.18804942728465449,
+            "mean_beta": 9.995,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.008691133769541542,
+        "alpha_from": "tuning scenario"
+      }
+    },
+    "gnn_sage_bce": {
+      "target5": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.002505729687521353,
+            "share_within": 0.5850000000000001,
+            "hit_lost": 0.009912417338015924,
+            "mean_beta": 1.68828,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.047848572311632157,
+            "share_within": 1.0,
+            "hit_lost": 0.09511239470525637,
+            "mean_beta": 9.249,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0019372775634432658,
+            "share_within": 0.5835,
+            "hit_lost": 0.00862214669097706,
+            "mean_beta": 1.5899499999999998,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.024095076357817845,
+            "share_within": 0.9994999999999999,
+            "hit_lost": 0.03831108921996116,
+            "mean_beta": 4.7372499999999995,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.002397192270296529,
+            "share_within": 0.6789999999999999,
+            "hit_lost": 0.008545832608256435,
+            "mean_beta": 1.61796,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.012709326448965951,
+            "share_within": 0.993,
+            "hit_lost": 0.01964078834574092,
+            "mean_beta": 2.971375,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0022326974539829784,
+            "share_within": 0.8160000000000001,
+            "hit_lost": 0.007899919948254376,
+            "mean_beta": 1.58125,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.003906880389030262,
+            "share_within": 0.9595,
+            "hit_lost": 0.009349345574742731,
+            "mean_beta": 1.7899999999999998,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0016703684740695664,
+        "alpha_from": "tuning scenario"
+      },
+      "target10": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0041667131249703716,
+            "share_within": 0.6279999999999999,
+            "hit_lost": 0.02086883773144672,
+            "mean_beta": 2.98248,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.045861272128177685,
+            "share_within": 1.0,
+            "hit_lost": 0.11490451424853873,
+            "mean_beta": 10.647499999999999,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0039013561283915677,
+            "share_within": 0.6695,
+            "hit_lost": 0.019463627439058266,
+            "mean_beta": 2.9035,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.02928566638439789,
+            "share_within": 1.0,
+            "hit_lost": 0.06870623743242779,
+            "mean_beta": 7.2065,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.004347747486570042,
+            "share_within": 0.7605000000000001,
+            "hit_lost": 0.019296670173372738,
+            "mean_beta": 2.931375,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.015771491982574173,
+            "share_within": 0.9974999999999999,
+            "hit_lost": 0.03701424963211902,
+            "mean_beta": 4.66025,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.004611209048644998,
+            "share_within": 0.9305,
+            "hit_lost": 0.018834920367829557,
+            "mean_beta": 2.9385,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.005544973439322547,
+            "share_within": 0.9964999999999999,
+            "hit_lost": 0.020074814731374947,
+            "mean_beta": 3.0784999999999996,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.002689296091035452,
+        "alpha_from": "tuning scenario"
+      },
+      "target20": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.011270036878639252,
+            "share_within": 0.874,
+            "hit_lost": 0.06508685186754382,
+            "mean_beta": 6.897250000000001,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.05790988093763616,
+            "share_within": 1.0,
+            "hit_lost": 0.23624168308511312,
+            "mean_beta": 18.51,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.010495760095029793,
+            "share_within": 0.9155,
+            "hit_lost": 0.062459437217921784,
+            "mean_beta": 6.7170000000000005,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.0282634406610431,
+            "share_within": 0.999,
+            "hit_lost": 0.10837725252964539,
+            "mean_beta": 10.2325,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.009873179705777077,
+            "share_within": 0.9369999999999999,
+            "hit_lost": 0.06041075255270384,
+            "mean_beta": 6.580500000000001,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.026481790594472247,
+            "share_within": 0.9974999999999999,
+            "hit_lost": 0.10229633441592381,
+            "mean_beta": 9.815,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.00533130636080952,
+            "share_within": 0.8714999999999999,
+            "hit_lost": 0.04874450323961714,
+            "mean_beta": 5.6899999999999995,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.01508877394178564,
+            "share_within": 0.9269999999999999,
+            "hit_lost": 0.07279726039407672,
+            "mean_beta": 7.609999999999999,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.008698476958932225,
+        "alpha_from": "tuning scenario"
+      },
+      "target30": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.012190138148826964,
+            "share_within": 0.9705,
+            "hit_lost": 0.11021978293597379,
+            "mean_beta": 10.3365,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04700038426485157,
+            "share_within": 1.0,
+            "hit_lost": 0.2592065679150702,
+            "mean_beta": 19.994999999999997,
+            "share_reachable": 0.9944999999999998
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.011497158206350916,
+            "share_within": 0.9974999999999999,
+            "hit_lost": 0.10613146855706027,
+            "mean_beta": 10.0875,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04358239008547428,
+            "share_within": 1.0,
+            "hit_lost": 0.24447340438939044,
+            "mean_beta": 19.04,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.011268787128666517,
+            "share_within": 1.0,
+            "hit_lost": 0.10476037383883616,
+            "mean_beta": 10.01,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.020187718361737182,
+            "share_within": 1.0,
+            "hit_lost": 0.14328580678798206,
+            "mean_beta": 12.504999999999999,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.011234351713396382,
+            "share_within": 1.0,
+            "hit_lost": 0.10447933809875935,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.011198447514293965,
+            "share_within": 1.0,
+            "hit_lost": 0.10450416967641148,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.025344692811330432,
+        "alpha_from": "tuning scenario"
+      }
+    },
+    "gnn_sage_softmax": {
+      "target5": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0023147726246571937,
+            "share_within": 0.5895,
+            "hit_lost": 0.004263296966994635,
+            "mean_beta": 0.798005,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.042689016500692865,
+            "share_within": 1.0,
+            "hit_lost": 0.07691980250010512,
+            "mean_beta": 4.2375,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.00183775985798821,
+            "share_within": 0.603,
+            "hit_lost": 0.0032677567039522556,
+            "mean_beta": 0.7564649999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.02163689198206092,
+            "share_within": 0.9994999999999999,
+            "hit_lost": 0.023789615920476265,
+            "mean_beta": 2.180875,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0022367941346601527,
+            "share_within": 0.6965000000000001,
+            "hit_lost": 0.0027939847242772777,
+            "mean_beta": 0.7713249999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.01176711339337624,
+            "share_within": 0.9904999999999999,
+            "hit_lost": 0.009861447807199959,
+            "mean_beta": 1.4090250000000002,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0020680054790203862,
+            "share_within": 0.763,
+            "hit_lost": 0.0021619785238286018,
+            "mean_beta": 0.7561249999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.0038864420162378808,
+            "share_within": 0.9225,
+            "hit_lost": 0.0036166545104568486,
+            "mean_beta": 0.8706250000000001,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0003305284780247929,
+        "alpha_from": "tuning scenario"
+      },
+      "target10": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0030856712175202803,
+            "share_within": 0.61,
+            "hit_lost": 0.011404679482309804,
+            "mean_beta": 1.421175,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.044570360727698835,
+            "share_within": 1.0,
+            "hit_lost": 0.11638157293838092,
+            "mean_beta": 5.533500000000001,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0029246902149068746,
+            "share_within": 0.6475,
+            "hit_lost": 0.010101365452072866,
+            "mean_beta": 1.38834,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.023976774360303706,
+            "share_within": 1.0,
+            "hit_lost": 0.04590973922588025,
+            "mean_beta": 3.14725,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0035042095601598615,
+            "share_within": 0.7415,
+            "hit_lost": 0.009791321982625884,
+            "mean_beta": 1.4162500000000002,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.012950423916310766,
+            "share_within": 0.9959999999999999,
+            "hit_lost": 0.02268991507333301,
+            "mean_beta": 2.1465,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0043262632392500385,
+            "share_within": 0.9099999999999999,
+            "hit_lost": 0.009837681731242911,
+            "mean_beta": 1.465,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.005235508532392344,
+            "share_within": 0.9839999999999998,
+            "hit_lost": 0.010798824837355347,
+            "mean_beta": 1.5355,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0015766927241645675,
+        "alpha_from": "tuning scenario"
+      },
+      "target20": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.006730027657091106,
+            "share_within": 0.758,
+            "hit_lost": 0.046408092915272245,
+            "mean_beta": 3.133375,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.054057404211537395,
+            "share_within": 1.0,
+            "hit_lost": 0.24647310847068232,
+            "mean_beta": 9.552499999999998,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.006361189917693526,
+            "share_within": 0.8264999999999999,
+            "hit_lost": 0.043546746504681925,
+            "mean_beta": 3.06475,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.027095355972595873,
+            "share_within": 1.0,
+            "hit_lost": 0.1111625135462024,
+            "mean_beta": 5.372,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0063591067075588845,
+            "share_within": 0.924,
+            "hit_lost": 0.04150162066506741,
+            "mean_beta": 3.03125,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.01985167529822174,
+            "share_within": 0.9995,
+            "hit_lost": 0.08312535914345848,
+            "mean_beta": 4.467499999999999,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.006247474284443114,
+            "share_within": 0.999,
+            "hit_lost": 0.04036970551739162,
+            "mean_beta": 3.0005,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.006603223848059758,
+            "share_within": 0.999,
+            "hit_lost": 0.04116717877330056,
+            "mean_beta": 3.043,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.003805008679795252,
+        "alpha_from": "tuning scenario"
+      },
+      "target30": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.010521126960138488,
+            "share_within": 0.9119999999999999,
+            "hit_lost": 0.11442022569069192,
+            "mean_beta": 5.465999999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04490710639501068,
+            "share_within": 1.0,
+            "hit_lost": 0.2969118607761484,
+            "mean_beta": 11.955,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.009222237109725005,
+            "share_within": 0.9695,
+            "hit_lost": 0.10592052342327658,
+            "mean_beta": 5.211500000000001,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.03910121086237224,
+            "share_within": 1.0,
+            "hit_lost": 0.25601842894680116,
+            "mean_beta": 9.834999999999999,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.00850063359288388,
+            "share_within": 0.9979999999999999,
+            "hit_lost": 0.10114384253347172,
+            "mean_beta": 5.0685,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.026699674395496927,
+            "share_within": 1.0,
+            "hit_lost": 0.1919050061767701,
+            "mean_beta": 7.9,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.008058127233633776,
+            "share_within": 1.0,
+            "hit_lost": 0.0992136866305502,
+            "mean_beta": 5.0,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.008021106027788823,
+            "share_within": 1.0,
+            "hit_lost": 0.09897875503717844,
+            "mean_beta": 5.0,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.007038279927705643,
+        "alpha_from": "tuning scenario"
+      }
+    },
+    "kge_ComplEx_bce": {
+      "target5": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0024950385240908924,
+            "share_within": 0.6285,
+            "hit_lost": 0.0065720915829848014,
+            "mean_beta": 1.5993,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.050793296174708145,
+            "share_within": 1.0,
+            "hit_lost": 0.0882444510455989,
+            "mean_beta": 8.9305,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0019872376032592036,
+            "share_within": 0.649,
+            "hit_lost": 0.005429485654248136,
+            "mean_beta": 1.5181250000000002,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.02429556559447591,
+            "share_within": 0.999,
+            "hit_lost": 0.02881987406132777,
+            "mean_beta": 4.452000000000001,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0022396196096313692,
+            "share_within": 0.7125,
+            "hit_lost": 0.005132493642128193,
+            "mean_beta": 1.5315750000000001,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.012625892897205703,
+            "share_within": 0.993,
+            "hit_lost": 0.013554537025804583,
+            "mean_beta": 2.811375,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0021854392508860857,
+            "share_within": 0.7665000000000001,
+            "hit_lost": 0.004772005256762156,
+            "mean_beta": 1.5183750000000003,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.003946923756353955,
+            "share_within": 0.9269999999999999,
+            "hit_lost": 0.005983977919203286,
+            "mean_beta": 1.7235000000000003,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0008929137823101235,
+        "alpha_from": "tuning scenario"
+      },
+      "target10": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0044166625876699925,
+            "share_within": 0.6215,
+            "hit_lost": 0.015177666193799214,
+            "mean_beta": 2.867805,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04847969797144254,
+            "share_within": 1.0,
+            "hit_lost": 0.10350736314921656,
+            "mean_beta": 9.989999999999998,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.003996834491629739,
+            "share_within": 0.6355000000000001,
+            "hit_lost": 0.013651925984625285,
+            "mean_beta": 2.781275,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.02835442665925033,
+            "share_within": 0.9994999999999999,
+            "hit_lost": 0.053756485816837875,
+            "mean_beta": 6.4575000000000005,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.004246208012927471,
+            "share_within": 0.7070000000000001,
+            "hit_lost": 0.013450837700154632,
+            "mean_beta": 2.791375,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.016704720657268683,
+            "share_within": 0.9964999999999999,
+            "hit_lost": 0.02915171304113486,
+            "mean_beta": 4.5275,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.00475524756607437,
+            "share_within": 0.844,
+            "hit_lost": 0.013198474439788018,
+            "mean_beta": 2.8440000000000003,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.006043355462252249,
+            "share_within": 0.9875,
+            "hit_lost": 0.014653542015220095,
+            "mean_beta": 3.0095,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0016673311798937045,
+        "alpha_from": "tuning scenario"
+      },
+      "target20": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.011599010369014732,
+            "share_within": 0.9164999999999999,
+            "hit_lost": 0.05426477942694169,
+            "mean_beta": 6.441,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.057252179570219844,
+            "share_within": 1.0,
+            "hit_lost": 0.22562784900861438,
+            "mean_beta": 16.685,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.009826249808585666,
+            "share_within": 0.974,
+            "hit_lost": 0.04888092453931866,
+            "mean_beta": 6.103,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.03216781040514384,
+            "share_within": 1.0,
+            "hit_lost": 0.10313685654647595,
+            "mean_beta": 9.985,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.008272774334231136,
+            "share_within": 0.9969999999999999,
+            "hit_lost": 0.044531051655819096,
+            "mean_beta": 5.816,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.030096749846953715,
+            "share_within": 0.9995,
+            "hit_lost": 0.09793058172119201,
+            "mean_beta": 9.6225,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0042470070714836815,
+            "share_within": 0.9775,
+            "hit_lost": 0.034808041207073245,
+            "mean_beta": 5.115,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.008834063161200044,
+            "share_within": 0.9745000000000001,
+            "hit_lost": 0.04537199411634481,
+            "mean_beta": 5.9125,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.004814325912921312,
+        "alpha_from": "tuning scenario"
+      },
+      "target30": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.01480304483932324,
+            "share_within": 0.96,
+            "hit_lost": 0.10124776067210854,
+            "mean_beta": 9.84,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.05309001626666291,
+            "share_within": 1.0,
+            "hit_lost": 0.2865165728304417,
+            "mean_beta": 19.985,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.015719968543522502,
+            "share_within": 0.9959999999999999,
+            "hit_lost": 0.10326516472096933,
+            "mean_beta": 9.989999999999998,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.041546401555118816,
+            "share_within": 1.0,
+            "hit_lost": 0.22919081904265406,
+            "mean_beta": 16.885,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.015817100627443514,
+            "share_within": 1.0,
+            "hit_lost": 0.10327286732382683,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.016334929084080553,
+            "share_within": 1.0,
+            "hit_lost": 0.10583512445049481,
+            "mean_beta": 10.14,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.015821229178715406,
+            "share_within": 1.0,
+            "hit_lost": 0.10343216730238074,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.015798077247064064,
+            "share_within": 1.0,
+            "hit_lost": 0.10322525667149667,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.013139148212031984,
+        "alpha_from": "tuning scenario"
+      }
+    },
+    "kge_ComplEx_softmax": {
+      "target5": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.002288136092839636,
+            "share_within": 0.5904999999999999,
+            "hit_lost": 0.007787214095261621,
+            "mean_beta": 1.33176,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04917543948304522,
+            "share_within": 1.0,
+            "hit_lost": 0.09806575777513518,
+            "mean_beta": 7.911,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.001711168478836725,
+            "share_within": 0.601,
+            "hit_lost": 0.006865383567156984,
+            "mean_beta": 1.24939,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.023808492337571117,
+            "share_within": 1.0,
+            "hit_lost": 0.03152603747940745,
+            "mean_beta": 3.8810000000000002,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.002193857642224662,
+            "share_within": 0.6785,
+            "hit_lost": 0.0069961108577645745,
+            "mean_beta": 1.2841749999999998,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.012172415660859966,
+            "share_within": 0.991,
+            "hit_lost": 0.014805703508858754,
+            "mean_beta": 2.386,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.002413463327583297,
+            "share_within": 0.8320000000000001,
+            "hit_lost": 0.00693483197273317,
+            "mean_beta": 1.299125,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.004098161436450407,
+            "share_within": 0.9295,
+            "hit_lost": 0.008028547604446414,
+            "mean_beta": 1.4775,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0008976166114430019,
+        "alpha_from": "tuning scenario"
+      },
+      "target10": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0038565134821635337,
+            "share_within": 0.593,
+            "hit_lost": 0.016499601488783426,
+            "mean_beta": 2.4341549999999996,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.05092998331539411,
+            "share_within": 1.0,
+            "hit_lost": 0.12844750594777463,
+            "mean_beta": 9.618,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0033598801672287265,
+            "share_within": 0.599,
+            "hit_lost": 0.014910835436520206,
+            "mean_beta": 2.3441500000000004,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.025709298867010327,
+            "share_within": 1.0,
+            "hit_lost": 0.05249419246693342,
+            "mean_beta": 5.3445,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.00374946797378699,
+            "share_within": 0.6729999999999999,
+            "hit_lost": 0.014653611752122084,
+            "mean_beta": 2.3691250000000004,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.015583023114575123,
+            "share_within": 0.993,
+            "hit_lost": 0.03101776034686733,
+            "mean_beta": 3.87825,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0037393313535865704,
+            "share_within": 0.7689999999999999,
+            "hit_lost": 0.014526156167541915,
+            "mean_beta": 2.3577500000000002,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.006794803322382262,
+            "share_within": 0.951,
+            "hit_lost": 0.01760217512135944,
+            "mean_beta": 2.72475,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0016800459961145795,
+        "alpha_from": "tuning scenario"
+      },
+      "target20": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.009020549554453234,
+            "share_within": 0.8320000000000001,
+            "hit_lost": 0.05450204920881467,
+            "mean_beta": 5.382999999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.0499483461948941,
+            "share_within": 1.0,
+            "hit_lost": 0.20962416062405193,
+            "mean_beta": 13.73,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.007913893197555808,
+            "share_within": 0.9065,
+            "hit_lost": 0.049093901127731994,
+            "mean_beta": 5.148499999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.03586068098516918,
+            "share_within": 1.0,
+            "hit_lost": 0.13292901023782555,
+            "mean_beta": 9.860000000000001,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.007482328900581731,
+            "share_within": 0.9725000000000001,
+            "hit_lost": 0.046270119271058514,
+            "mean_beta": 5.034999999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.02660728248553489,
+            "share_within": 1.0,
+            "hit_lost": 0.10499848264734905,
+            "mean_beta": 8.2825,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.007375381017277256,
+            "share_within": 1.0,
+            "hit_lost": 0.045584105507914904,
+            "mean_beta": 5.0,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.007334603349557547,
+            "share_within": 1.0,
+            "hit_lost": 0.04550527168923639,
+            "mean_beta": 5.0024999999999995,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.004698058605274702,
+        "alpha_from": "tuning scenario"
+      },
+      "target30": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.016792094682403457,
+            "share_within": 0.8865000000000001,
+            "hit_lost": 0.1251548416000822,
+            "mean_beta": 9.4295,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.055516691719639855,
+            "share_within": 1.0,
+            "hit_lost": 0.33409935673010277,
+            "mean_beta": 19.945,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.01906152280436025,
+            "share_within": 0.9635,
+            "hit_lost": 0.13210024881945598,
+            "mean_beta": 9.8175,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.030642813315964086,
+            "share_within": 1.0,
+            "hit_lost": 0.1941875685798417,
+            "mean_beta": 12.95,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.020019262293139457,
+            "share_within": 0.9955,
+            "hit_lost": 0.13477112354655746,
+            "mean_beta": 9.977500000000001,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.020168794932910145,
+            "share_within": 1.0,
+            "hit_lost": 0.13543113868727258,
+            "mean_beta": 10.004999999999999,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.020161875686708835,
+            "share_within": 1.0,
+            "hit_lost": 0.13569977097578872,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.020128955725938168,
+            "share_within": 1.0,
+            "hit_lost": 0.1354350610911606,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.010799024056594076,
+        "alpha_from": "tuning scenario"
+      }
+    },
+    "kge_DistMult_softmax": {
+      "target5": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.002404857623073659,
+            "share_within": 0.6054999999999999,
+            "hit_lost": 0.0071927888599650465,
+            "mean_beta": 1.448135,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04997954521791594,
+            "share_within": 1.0,
+            "hit_lost": 0.10711673553825732,
+            "mean_beta": 8.3355,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0018089869318587276,
+            "share_within": 0.626,
+            "hit_lost": 0.0058820299545609515,
+            "mean_beta": 1.360855,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.02405350310733218,
+            "share_within": 1.0,
+            "hit_lost": 0.03531237374523978,
+            "mean_beta": 4.0895,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0022907283640856407,
+            "share_within": 0.6965,
+            "hit_lost": 0.005408520688814371,
+            "mean_beta": 1.39314,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.012333795476582497,
+            "share_within": 0.9914999999999999,
+            "hit_lost": 0.015505426255643603,
+            "mean_beta": 2.537,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.002468943812849701,
+            "share_within": 0.8085000000000001,
+            "hit_lost": 0.00475092206326388,
+            "mean_beta": 1.3984999999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.004200727710219644,
+            "share_within": 0.9349999999999999,
+            "hit_lost": 0.006332203703299113,
+            "mean_beta": 1.5894999999999997,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0008916996340322958,
+        "alpha_from": "tuning scenario"
+      },
+      "target10": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.004013162016469233,
+            "share_within": 0.6169999999999999,
+            "hit_lost": 0.017451744461232974,
+            "mean_beta": 2.583225,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.05017724788431884,
+            "share_within": 1.0,
+            "hit_lost": 0.13332420869068462,
+            "mean_beta": 9.801499999999999,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.00350372561476279,
+            "share_within": 0.6375000000000001,
+            "hit_lost": 0.015575786733570473,
+            "mean_beta": 2.4861750000000002,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.026064821950513822,
+            "share_within": 1.0,
+            "hit_lost": 0.0594555286453662,
+            "mean_beta": 5.6405,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.004051479148213645,
+            "share_within": 0.7344999999999999,
+            "hit_lost": 0.015482428502132894,
+            "mean_beta": 2.530875,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.016141518983991028,
+            "share_within": 0.9935,
+            "hit_lost": 0.03575144762561684,
+            "mean_beta": 4.1267499999999995,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.004440297946589284,
+            "share_within": 0.8175000000000001,
+            "hit_lost": 0.01580771707831867,
+            "mean_beta": 2.5647499999999996,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.007038131853664057,
+            "share_within": 0.9235,
+            "hit_lost": 0.018603120048509995,
+            "mean_beta": 2.886,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0016759110204858751,
+        "alpha_from": "tuning scenario"
+      },
+      "target20": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.009708628532799123,
+            "share_within": 0.8665,
+            "hit_lost": 0.06149964296661561,
+            "mean_beta": 5.71325,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.052639703724980016,
+            "share_within": 1.0,
+            "hit_lost": 0.23690616730251218,
+            "mean_beta": 15.045000000000002,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.008107879027777385,
+            "share_within": 0.9315000000000001,
+            "hit_lost": 0.05533084966907752,
+            "mean_beta": 5.398,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.034446025456228005,
+            "share_within": 1.0,
+            "hit_lost": 0.13527325129367113,
+            "mean_beta": 9.915000000000001,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.007240641444895782,
+            "share_within": 0.9894999999999999,
+            "hit_lost": 0.051465359150873954,
+            "mean_beta": 5.214,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.02819229126476277,
+            "share_within": 1.0,
+            "hit_lost": 0.11594307960340686,
+            "mean_beta": 8.835,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.006059672944905713,
+            "share_within": 1.0,
+            "hit_lost": 0.04773886390477213,
+            "mean_beta": 5.0,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.006271293767112432,
+            "share_within": 1.0,
+            "hit_lost": 0.04846002842146692,
+            "mean_beta": 5.045,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.005140351837097655,
+        "alpha_from": "tuning scenario"
+      },
+      "target30": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.01614133981331143,
+            "share_within": 0.9195,
+            "hit_lost": 0.1297565435187285,
+            "mean_beta": 9.6005,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.05337948241885215,
+            "share_within": 1.0,
+            "hit_lost": 0.33483813556596415,
+            "mean_beta": 19.98,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.01778824799272427,
+            "share_within": 0.977,
+            "hit_lost": 0.1349600168380337,
+            "mean_beta": 9.885000000000002,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.03412936414061903,
+            "share_within": 1.0,
+            "hit_lost": 0.22505401374871536,
+            "mean_beta": 14.465000000000003,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.01841251811246141,
+            "share_within": 0.998,
+            "hit_lost": 0.1365468307845269,
+            "mean_beta": 9.99,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.018543061188966984,
+            "share_within": 1.0,
+            "hit_lost": 0.13736239418587182,
+            "mean_beta": 10.02,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.018478238361072034,
+            "share_within": 1.0,
+            "hit_lost": 0.13701977922205372,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.01844919243423716,
+            "share_within": 1.0,
+            "hit_lost": 0.13683966972881853,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.012896487511458266,
+        "alpha_from": "tuning scenario"
+      }
+    },
+    "kge_RotatE_bce": {
+      "target5": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.002255859976552559,
+            "share_within": 0.5885,
+            "hit_lost": 0.008763508873334148,
+            "mean_beta": 0.901,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.042980429094389164,
+            "share_within": 1.0,
+            "hit_lost": 0.09686310145343202,
+            "mean_beta": 4.8165,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0018477581894439424,
+            "share_within": 0.6045,
+            "hit_lost": 0.007543876634988246,
+            "mean_beta": 0.8591900000000001,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.022061332885770044,
+            "share_within": 0.9984999999999999,
+            "hit_lost": 0.036358585124669586,
+            "mean_beta": 2.49775,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0022710338651641855,
+            "share_within": 0.6805,
+            "hit_lost": 0.00752585317384,
+            "mean_beta": 0.8768499999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.011637713778131852,
+            "share_within": 0.9854999999999998,
+            "hit_lost": 0.017450703556275322,
+            "mean_beta": 1.5829999999999997,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0018888564527027763,
+            "share_within": 0.7455,
+            "hit_lost": 0.006932880710477133,
+            "mean_beta": 0.8411249999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.003943280684261344,
+            "share_within": 0.8760000000000001,
+            "hit_lost": 0.008906694120091993,
+            "mean_beta": 0.99275,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0006695664404053735,
+        "alpha_from": "tuning scenario"
+      },
+      "target10": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0031737905363615274,
+            "share_within": 0.692,
+            "hit_lost": 0.01915732588688565,
+            "mean_beta": 1.6020249999999998,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.047237782071049735,
+            "share_within": 1.0,
+            "hit_lost": 0.15327809076553814,
+            "mean_beta": 6.658499999999999,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0029443913864837276,
+            "share_within": 0.76,
+            "hit_lost": 0.017574257255459236,
+            "mean_beta": 1.560775,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.02506078642122292,
+            "share_within": 0.9994999999999999,
+            "hit_lost": 0.06459242643910448,
+            "mean_beta": 3.647,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0033142102507245966,
+            "share_within": 0.8470000000000001,
+            "hit_lost": 0.017143509527487916,
+            "mean_beta": 1.573875,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.013479917626761474,
+            "share_within": 0.9960000000000001,
+            "hit_lost": 0.03476889770990042,
+            "mean_beta": 2.453,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0029903636255824376,
+            "share_within": 0.9209999999999999,
+            "hit_lost": 0.01608241790106486,
+            "mean_beta": 1.5395,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.0048412339065747245,
+            "share_within": 0.9414999999999999,
+            "hit_lost": 0.019157891617720944,
+            "mean_beta": 1.6915,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0015631412273609216,
+        "alpha_from": "tuning scenario"
+      },
+      "target20": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.006883643044457861,
+            "share_within": 0.8230000000000001,
+            "hit_lost": 0.06106283452621556,
+            "mean_beta": 3.493475,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.05086976112773965,
+            "share_within": 1.0,
+            "hit_lost": 0.2558240003016635,
+            "mean_beta": 9.8775,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0068872533177687795,
+            "share_within": 0.9095000000000001,
+            "hit_lost": 0.05963539021976303,
+            "mean_beta": 3.4635,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.029341071142920488,
+            "share_within": 1.0,
+            "hit_lost": 0.14504859337537518,
+            "mean_beta": 6.409000000000001,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.006784204314204715,
+            "share_within": 0.978,
+            "hit_lost": 0.05847490710714642,
+            "mean_beta": 3.429,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.01924411108968571,
+            "share_within": 0.9995,
+            "hit_lost": 0.09604804921799699,
+            "mean_beta": 4.843999999999999,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0038608265507200194,
+            "share_within": 0.9604999999999999,
+            "hit_lost": 0.04920551043841291,
+            "mean_beta": 3.09,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.007842899032299946,
+            "share_within": 0.9574999999999999,
+            "hit_lost": 0.06220944606965321,
+            "mean_beta": 3.5419999999999994,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.003914898789685362,
+        "alpha_from": "tuning scenario"
+      },
+      "target30": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.012128937644490372,
+            "share_within": 0.9555,
+            "hit_lost": 0.14272390727118114,
+            "mean_beta": 6.3245,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04891183305316873,
+            "share_within": 1.0,
+            "hit_lost": 0.36015120258568156,
+            "mean_beta": 15.059999999999999,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.009934622631012165,
+            "share_within": 0.9889999999999999,
+            "hit_lost": 0.13019709169457017,
+            "mean_beta": 5.9455,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.03504058492792435,
+            "share_within": 1.0,
+            "hit_lost": 0.2591452902611965,
+            "mean_beta": 9.97,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.008086819027124117,
+            "share_within": 1.0,
+            "hit_lost": 0.12002263407334424,
+            "mean_beta": 5.635000000000001,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.03211982729663184,
+            "share_within": 1.0,
+            "hit_lost": 0.24409153583857796,
+            "mean_beta": 9.499999999999998,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.004227620436847118,
+            "share_within": 0.9995,
+            "hit_lost": 0.10029542022191747,
+            "mean_beta": 5.0125,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.006415940103462169,
+            "share_within": 0.9974999999999999,
+            "hit_lost": 0.11178232725278196,
+            "mean_beta": 5.37,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.007687557600692098,
+        "alpha_from": "tuning scenario"
+      }
+    },
+    "kge_RotatE_softmax": {
+      "target5": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.002307688252368845,
+            "share_within": 0.5880000000000001,
+            "hit_lost": 0.005546214548367744,
+            "mean_beta": 1.2908449999999998,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04854015023043785,
+            "share_within": 1.0,
+            "hit_lost": 0.1053789663350527,
+            "mean_beta": 7.501500000000002,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0018979847646040493,
+            "share_within": 0.6060000000000001,
+            "hit_lost": 0.004303144989776768,
+            "mean_beta": 1.23279,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.023621444964325423,
+            "share_within": 0.9984999999999999,
+            "hit_lost": 0.0319990308507479,
+            "mean_beta": 3.6807499999999997,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.002290814000024858,
+            "share_within": 0.6865,
+            "hit_lost": 0.003963316270053609,
+            "mean_beta": 1.2582,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.012204940294720898,
+            "share_within": 0.9834999999999999,
+            "hit_lost": 0.01303943946024988,
+            "mean_beta": 2.28575,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0026348288573367737,
+            "share_within": 0.7470000000000001,
+            "hit_lost": 0.0035727745448695647,
+            "mean_beta": 1.283875,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.0045348435520305985,
+            "share_within": 0.9039999999999999,
+            "hit_lost": 0.004474524069149466,
+            "mean_beta": 1.4737500000000001,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0009013771560773089,
+        "alpha_from": "tuning scenario"
+      },
+      "target10": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0037032935693967818,
+            "share_within": 0.6465,
+            "hit_lost": 0.015073970607180364,
+            "mean_beta": 2.31314,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.051318042364389374,
+            "share_within": 1.0,
+            "hit_lost": 0.14459767359049142,
+            "mean_beta": 9.348,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0034686045733312077,
+            "share_within": 0.6965,
+            "hit_lost": 0.01316223033756769,
+            "mean_beta": 2.2546500000000003,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.02548270461385969,
+            "share_within": 0.9989999999999999,
+            "hit_lost": 0.05442842280526818,
+            "mean_beta": 5.0592500000000005,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0037795559242739677,
+            "share_within": 0.78,
+            "hit_lost": 0.012890654301220486,
+            "mean_beta": 2.266875,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.015009101804693304,
+            "share_within": 0.993,
+            "hit_lost": 0.030724193987196273,
+            "mean_beta": 3.6229999999999998,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0031383091089821165,
+            "share_within": 0.8584999999999999,
+            "hit_lost": 0.011596215523725067,
+            "mean_beta": 2.179,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.0066124967312015445,
+            "share_within": 0.8915,
+            "hit_lost": 0.016338391281693846,
+            "mean_beta": 2.5767499999999997,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0016848008322726759,
+        "alpha_from": "tuning scenario"
+      },
+      "target20": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.008586834522704142,
+            "share_within": 0.7769999999999999,
+            "hit_lost": 0.056432174184010274,
+            "mean_beta": 5.077624999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04749724885803795,
+            "share_within": 1.0,
+            "hit_lost": 0.2206229234311167,
+            "mean_beta": 12.6125,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.007925439309548022,
+            "share_within": 0.859,
+            "hit_lost": 0.051537070166520225,
+            "mean_beta": 4.907,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.036859403434531375,
+            "share_within": 1.0,
+            "hit_lost": 0.15212880780007393,
+            "mean_beta": 9.694999999999999,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.008445897881615155,
+            "share_within": 0.952,
+            "hit_lost": 0.051104169575331,
+            "mean_beta": 4.9365,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.022657683397800256,
+            "share_within": 1.0,
+            "hit_lost": 0.10100970522622818,
+            "mean_beta": 7.3050000000000015,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.008998638843343823,
+            "share_within": 1.0,
+            "hit_lost": 0.052311989030829155,
+            "mean_beta": 5.0,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.008965158933440595,
+            "share_within": 1.0,
+            "hit_lost": 0.05217936590816239,
+            "mean_beta": 5.0,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.004478520269313615,
+        "alpha_from": "tuning scenario"
+      },
+      "target30": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.01712021939186296,
+            "share_within": 0.8324999999999999,
+            "hit_lost": 0.14059684749829932,
+            "mean_beta": 9.1585,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.05537838129168898,
+            "share_within": 1.0,
+            "hit_lost": 0.39402381323783064,
+            "mean_beta": 19.835,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0196253063137835,
+            "share_within": 0.916,
+            "hit_lost": 0.14955150591550245,
+            "mean_beta": 9.580000000000002,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.02792128213560417,
+            "share_within": 1.0,
+            "hit_lost": 0.19929002539620086,
+            "mean_beta": 11.71,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.021597436502164877,
+            "share_within": 0.9814999999999999,
+            "hit_lost": 0.15656767561121127,
+            "mean_beta": 9.907499999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.02214594002179155,
+            "share_within": 1.0,
+            "hit_lost": 0.15879741594900448,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.02214751312642849,
+            "share_within": 1.0,
+            "hit_lost": 0.15917575339809717,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.02213790637607991,
+            "share_within": 1.0,
+            "hit_lost": 0.15888748928109292,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.010376301412194191,
+        "alpha_from": "tuning scenario"
+      }
+    },
+    "kge_TransE_softmax": {
+      "target5": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0023510094703792558,
+            "share_within": 0.5855,
+            "hit_lost": 0.00494443258543253,
+            "mean_beta": 1.232135,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04620163972393037,
+            "share_within": 1.0,
+            "hit_lost": 0.09046971155286185,
+            "mean_beta": 6.516499999999999,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.001971166255157122,
+            "share_within": 0.601,
+            "hit_lost": 0.004040085826047569,
+            "mean_beta": 1.18132,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.023429005337848568,
+            "share_within": 0.9979999999999999,
+            "hit_lost": 0.02619879520582729,
+            "mean_beta": 3.36925,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.002487884079481186,
+            "share_within": 0.674,
+            "hit_lost": 0.0037395733562036134,
+            "mean_beta": 1.2126100000000002,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.01204544767690587,
+            "share_within": 0.9864999999999998,
+            "hit_lost": 0.010453683184828599,
+            "mean_beta": 2.114625,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0026103482201460175,
+            "share_within": 0.7585000000000001,
+            "hit_lost": 0.003439215131454434,
+            "mean_beta": 1.217,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.0048487720264322855,
+            "share_within": 0.9039999999999999,
+            "hit_lost": 0.0043428161525128255,
+            "mean_beta": 1.41575,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.00044455356354360705,
+        "alpha_from": "tuning scenario"
+      },
+      "target10": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0037049731818401045,
+            "share_within": 0.629,
+            "hit_lost": 0.012336947572154564,
+            "mean_beta": 2.1673699999999996,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.05223183609019577,
+            "share_within": 1.0,
+            "hit_lost": 0.1455852558523525,
+            "mean_beta": 8.814499999999999,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.003509211686408395,
+            "share_within": 0.6625,
+            "hit_lost": 0.010950394877458785,
+            "mean_beta": 2.1192750000000005,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.025923189936564617,
+            "share_within": 0.9994999999999999,
+            "hit_lost": 0.04843993609016852,
+            "mean_beta": 4.688750000000001,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0037558538322344107,
+            "share_within": 0.7505,
+            "hit_lost": 0.010527266494334274,
+            "mean_beta": 2.121625,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.014388731223763593,
+            "share_within": 0.9924999999999999,
+            "hit_lost": 0.023524255946604226,
+            "mean_beta": 3.2730000000000006,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0031383826045558727,
+            "share_within": 0.8385,
+            "hit_lost": 0.01002129667014227,
+            "mean_beta": 2.0442500000000003,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.005828390396816645,
+            "share_within": 0.9425000000000001,
+            "hit_lost": 0.01252722433159843,
+            "mean_beta": 2.3249999999999997,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0013427869988153415,
+        "alpha_from": "tuning scenario"
+      },
+      "target20": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.008554508184205374,
+            "share_within": 0.713,
+            "hit_lost": 0.05016301405164451,
+            "mean_beta": 4.680125,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04524737702207228,
+            "share_within": 1.0,
+            "hit_lost": 0.19106408463436142,
+            "mean_beta": 10.7825,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.008575645382606405,
+            "share_within": 0.7805,
+            "hit_lost": 0.04705852559526806,
+            "mean_beta": 4.618,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.038057467008244174,
+            "share_within": 1.0,
+            "hit_lost": 0.15559008801362398,
+            "mean_beta": 9.2325,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.010141578401559947,
+            "share_within": 0.8930000000000001,
+            "hit_lost": 0.04945081802865617,
+            "mean_beta": 4.7885,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.018131237406472656,
+            "share_within": 0.9995,
+            "hit_lost": 0.0778021572232362,
+            "mean_beta": 6.0115,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.01184512593279948,
+            "share_within": 0.9985000000000002,
+            "hit_lost": 0.05333843642226802,
+            "mean_beta": 4.997,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.011850940796447626,
+            "share_within": 1.0,
+            "hit_lost": 0.053141245667550484,
+            "mean_beta": 5.0,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.004698480663330982,
+        "alpha_from": "tuning scenario"
+      },
+      "target30": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.01796993847661414,
+            "share_within": 0.7424999999999999,
+            "hit_lost": 0.1428584729220326,
+            "mean_beta": 8.7025,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.05543672111583806,
+            "share_within": 1.0,
+            "hit_lost": 0.3734550833131605,
+            "mean_beta": 19.375000000000004,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.02032938411180767,
+            "share_within": 0.8165000000000001,
+            "hit_lost": 0.1520384802272134,
+            "mean_beta": 9.0825,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.026989419343448416,
+            "share_within": 1.0,
+            "hit_lost": 0.18103007209049854,
+            "mean_beta": 10.304999999999998,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.023570880042245446,
+            "share_within": 0.9205,
+            "hit_lost": 0.16460697920764006,
+            "mean_beta": 9.602500000000001,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.026026956702250265,
+            "share_within": 1.0,
+            "hit_lost": 0.17455886819976815,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.026007763257068627,
+            "share_within": 0.9995,
+            "hit_lost": 0.1746544568188626,
+            "mean_beta": 9.997499999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.026016048009881394,
+            "share_within": 1.0,
+            "hit_lost": 0.17448101761614615,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.01035872260921247,
+        "alpha_from": "tuning scenario"
+      }
+    },
+    "nbfnet": {
+      "target5": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0025425829818457365,
+            "share_within": 0.5730000000000001,
+            "hit_lost": 0.005659012516209066,
+            "mean_beta": 1.5716,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.04757746340128467,
+            "share_within": 1.0,
+            "hit_lost": 0.10195515019714665,
+            "mean_beta": 8.505,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.002080290305506779,
+            "share_within": 0.582,
+            "hit_lost": 0.004269818732631048,
+            "mean_beta": 1.4893750000000001,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.023774124428327843,
+            "share_within": 0.9989999999999999,
+            "hit_lost": 0.03172872914610607,
+            "mean_beta": 4.28875,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0024639218283714426,
+            "share_within": 0.651,
+            "hit_lost": 0.0038497517313988974,
+            "mean_beta": 1.51165,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.012661670451241067,
+            "share_within": 0.986,
+            "hit_lost": 0.012799054270431778,
+            "mean_beta": 2.724125,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.0025680513390052328,
+            "share_within": 0.746,
+            "hit_lost": 0.0035006523902080472,
+            "mean_beta": 1.501375,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.004243164971369994,
+            "share_within": 0.9324999999999999,
+            "hit_lost": 0.004316734801788227,
+            "mean_beta": 1.693,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0015601334544081825,
+        "alpha_from": "tuning scenario"
+      },
+      "target10": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.00421854645229923,
+            "share_within": 0.643,
+            "hit_lost": 0.015421030685827314,
+            "mean_beta": 2.7756549999999995,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.048132536276922634,
+            "share_within": 1.0,
+            "hit_lost": 0.13710134372020683,
+            "mean_beta": 10.340500000000002,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.003872233341830231,
+            "share_within": 0.6955,
+            "hit_lost": 0.013096610757679233,
+            "mean_beta": 2.6826499999999998,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.028062316556158047,
+            "share_within": 0.9995,
+            "hit_lost": 0.06439664006057026,
+            "mean_beta": 6.4350000000000005,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.004273466092408457,
+            "share_within": 0.7785,
+            "hit_lost": 0.012611201539929857,
+            "mean_beta": 2.709625,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.015051965846468719,
+            "share_within": 0.9934999999999998,
+            "hit_lost": 0.029707703273704644,
+            "mean_beta": 4.19775,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.00357285700450165,
+            "share_within": 0.8535,
+            "hit_lost": 0.010582139956471597,
+            "mean_beta": 2.5947500000000003,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.0062468276988420866,
+            "share_within": 0.9415000000000001,
+            "hit_lost": 0.014996152231180143,
+            "mean_beta": 2.92275,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.0036831526852116243,
+        "alpha_from": "tuning scenario"
+      },
+      "target20": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.010070576315624708,
+            "share_within": 0.7529999999999999,
+            "hit_lost": 0.06180131268890776,
+            "mean_beta": 6.213125,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.05272515401207221,
+            "share_within": 1.0,
+            "hit_lost": 0.26744575807557797,
+            "mean_beta": 16.409999999999997,
+            "share_reachable": 1.0
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.009744584736607515,
+            "share_within": 0.774,
+            "hit_lost": 0.05914062773629749,
+            "mean_beta": 6.119000000000001,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.031413026840168425,
+            "share_within": 0.9994999999999999,
+            "hit_lost": 0.13393566322228245,
+            "mean_beta": 10.185,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.010566353359473053,
+            "share_within": 0.8484999999999999,
+            "hit_lost": 0.060205332622181196,
+            "mean_beta": 6.246,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.02424353440797903,
+            "share_within": 0.9955,
+            "hit_lost": 0.10603197138278839,
+            "mean_beta": 8.7775,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.010270232873952775,
+            "share_within": 0.8699999999999999,
+            "hit_lost": 0.058273992982230315,
+            "mean_beta": 6.1825,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.014185231540734037,
+            "share_within": 0.9754999999999999,
+            "hit_lost": 0.07091823536156341,
+            "mean_beta": 6.93,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.012926351635148681,
+        "alpha_from": "tuning scenario"
+      },
+      "target30": {
+        "25": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.014436136182013429,
+            "share_within": 0.9199999999999999,
+            "hit_lost": 0.135098423910574,
+            "mean_beta": 10.227999999999998,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.047580070301987194,
+            "share_within": 1.0,
+            "hit_lost": 0.3486922214840799,
+            "mean_beta": 19.955,
+            "share_reachable": 0.9620000000000001
+          }
+        },
+        "50": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.014293974574766975,
+            "share_within": 0.9635,
+            "hit_lost": 0.13151380180519684,
+            "mean_beta": 10.0625,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.036742130810330974,
+            "share_within": 1.0,
+            "hit_lost": 0.2705350619087012,
+            "mean_beta": 16.564999999999998,
+            "share_reachable": 1.0
+          }
+        },
+        "100": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.014419826103381064,
+            "share_within": 0.9890000000000001,
+            "hit_lost": 0.13084483896924243,
+            "mean_beta": 10.014999999999999,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.022283878772237874,
+            "share_within": 1.0,
+            "hit_lost": 0.17488628845547932,
+            "mean_beta": 12.25,
+            "share_reachable": 1.0
+          }
+        },
+        "half": {
+          "grid": {
+            "mean_test_risk_minus_alpha": -0.014482501774770474,
+            "share_within": 1.0,
+            "hit_lost": 0.13068285137773078,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          },
+          "crc": {
+            "mean_test_risk_minus_alpha": -0.014471512456813319,
+            "share_within": 1.0,
+            "hit_lost": 0.13094130417924316,
+            "mean_beta": 10.0,
+            "share_reachable": 1.0
+          }
+        },
+        "customers_above_alpha_at_beta_max": 0.04303587755885101,
+        "alpha_from": "tuning scenario"
+      }
+    }
+  },
+  "H4_shift_minus_penalty_hit": {
+    "per_seed": [
+      0.0021121351766513197,
+      0.0016766020864380504,
+      0.005148182609744478,
+      0.002826455624646673,
+      -0.004901960784313708,
+      -0.00292772186642265,
+      -0.0061133753241942035,
+      0.0038727676883660855,
+      -0.0071632349240902116,
+      -0.004036133000192121
+    ],
+    "mean": -0.0009506282713366287
+  },
+  "tests": {
+    "H1 best KGE vs co-supply, hit@10": {
+      "p": 0.001953125,
+      "p_holm": 0.0078125
+    },
+    "H2 NBFNet vs co-supply, hit@10": {
+      "p": 0.001953125,
+      "p_holm": 0.0078125
+    },
+    "H3 gnn_gat_softmax vs gnn_gat_bce, hit@10": {
+      "p": 0.001953125,
+      "p_holm": 0.0078125
+    },
+    "H4 shift vs learned penalty at equal risk (lambda 1), hit@10": {
+      "p": 0.431640625,
+      "p_holm": 0.431640625
+    }
+  },
+  "summary": {
+    "co_supply": {
+      "hit@10": {
+        "mean": 0.6422154883220135,
+        "std": 0.010724041115322826
+      },
+      "recall@10": {
+        "mean": 0.5866815063509344,
+        "std": 0.011517418730769073
+      },
+      "rr": {
+        "mean": 0.39102716210938493,
+        "std": 0.01021153398755593
+      },
+      "risk@10": {
+        "mean": 0.16414309402170724,
+        "std": 0.0012947557898001466
+      }
+    },
+    "popularity": {
+      "hit@10": {
+        "mean": 0.5055463915807809,
+        "std": 0.016677120298793303
+      },
+      "recall@10": {
+        "mean": 0.45211554314027147,
+        "std": 0.015976411747498274
+      },
+      "rr": {
+        "mean": 0.2645547708052838,
+        "std": 0.011882391556127863
+      },
+      "risk@10": {
+        "mean": 0.16708106938460177,
+        "std": 0.0009208738021497283
+      }
+    },
+    "gnn_gat_bce": {
+      "hit@10": {
+        "mean": 0.6378757071862003,
+        "std": 0.01568638481219179
+      },
+      "recall@10": {
+        "mean": 0.5761266183952795,
+        "std": 0.017156020291094545
+      },
+      "rr": {
+        "mean": 0.3436924428720619,
+        "std": 0.015117613481596584
+      },
+      "risk@10": {
+        "mean": 0.16349875786299312,
+        "std": 0.0014009563909120376
+      },
+      "train_seconds": {
+        "mean": 481.21376525000085,
+        "std": 89.69503636863003
+      },
+      "rerank_ms_per_query": {
+        "mean": 0.04945208000135608,
+        "std": 0.001971444232422302
+      }
+    },
+    "gnn_gat_softmax": {
+      "hit@10": {
+        "mean": 0.7689911410697368,
+        "std": 0.010263479972287772
+      },
+      "recall@10": {
+        "mean": 0.7094973599318897,
+        "std": 0.01135760053663535
+      },
+      "rr": {
+        "mean": 0.47296552896137756,
+        "std": 0.013227171442676879
+      },
+      "risk@10": {
+        "mean": 0.16600829758769295,
+        "std": 0.000981215285547553
+      },
+      "train_seconds": {
+        "mean": 225.76099636999714,
+        "std": 60.65324721436941
+      },
+      "rerank_ms_per_query": {
+        "mean": 0.04903516000485979,
+        "std": 0.0023475660468868175
+      }
+    },
+    "gnn_gat_softmax_lam1": {
+      "hit@10": {
+        "mean": 0.7694800014469614,
+        "std": 0.0123647096763473
+      },
+      "recall@10": {
+        "mean": 0.7099315615934751,
+        "std": 0.01316160491929071
+      },
+      "rr": {
+        "mean": 0.473705766164316,
+        "std": 0.016514850884209023
+      },
+      "risk@10": {
+        "mean": 0.16603431412833275,
+        "std": 0.0010321386778699873
+      },
+      "train_seconds": {
+        "mean": 235.05574217000247,
+        "std": 57.06404950258925
+      }
+    },
+    "gnn_gat_softmax_lam5": {
+      "hit@10": {
+        "mean": 0.7576327685545896,
+        "std": 0.01090099782124097
+      },
+      "recall@10": {
+        "mean": 0.6986674869999916,
+        "std": 0.01160252912793753
+      },
+      "rr": {
+        "mean": 0.4669101244761727,
+        "std": 0.015321812890373933
+      },
+      "risk@10": {
+        "mean": 0.1646604390902508,
+        "std": 0.0007626975298474834
+      },
+      "train_seconds": {
+        "mean": 237.58214604000096,
+        "std": 64.02802305813682
+      }
+    },
+    "gnn_sage_bce": {
+      "hit@10": {
+        "mean": 0.6953310691296306,
+        "std": 0.015907585375056224
+      },
+      "recall@10": {
+        "mean": 0.6324982071029048,
+        "std": 0.01790752399762386
+      },
+      "rr": {
+        "mean": 0.38490956832757756,
+        "std": 0.015163047877365532
+      },
+      "risk@10": {
+        "mean": 0.16362704291265262,
+        "std": 0.0011641495532771146
+      },
+      "train_seconds": {
+        "mean": 77.9398553400024,
+        "std": 19.725127860569668
+      },
+      "rerank_ms_per_query": {
+        "mean": 0.049989060001098554,
+        "std": 0.0028135902795628927
+      }
+    },
+    "gnn_sage_softmax": {
+      "hit@10": {
+        "mean": 0.7614375516524866,
+        "std": 0.011846079444543491
+      },
+      "recall@10": {
+        "mean": 0.7030551706449177,
+        "std": 0.013197398306369621
+      },
+      "rr": {
+        "mean": 0.46250350468351964,
+        "std": 0.014261873132048391
+      },
+      "risk@10": {
+        "mean": 0.1664452774353912,
+        "std": 0.001180700312431082
+      },
+      "train_seconds": {
+        "mean": 48.39182416999684,
+        "std": 20.219819185552357
+      },
+      "rerank_ms_per_query": {
+        "mean": 0.051810219997423704,
+        "std": 0.0025608722965610904
+      }
+    },
+    "kge_ComplEx_bce": {
+      "hit@10": {
+        "mean": 0.7029291073850207,
+        "std": 0.014809731340974262
+      },
+      "recall@10": {
+        "mean": 0.6429614591407206,
+        "std": 0.01535899691576712
+      },
+      "rr": {
+        "mean": 0.4180554921035977,
+        "std": 0.013359080248101547
+      },
+      "risk@10": {
+        "mean": 0.16434546316952897,
+        "std": 0.0012727526344164493
+      },
+      "train_seconds": {
+        "mean": 70.65399272000214,
+        "std": 29.785401401229354
+      },
+      "rerank_ms_per_query": {
+        "mean": 0.057507900000200604,
+        "std": 0.01233139159620041
+      }
+    },
+    "kge_ComplEx_softmax": {
+      "hit@10": {
+        "mean": 0.7442106177995561,
+        "std": 0.012298987567388474
+      },
+      "recall@10": {
+        "mean": 0.686131576408156,
+        "std": 0.013233134813080517
+      },
+      "rr": {
+        "mean": 0.4457188125290375,
+        "std": 0.01649552692652136
+      },
+      "risk@10": {
+        "mean": 0.16502284251707833,
+        "std": 0.001024889537396327
+      },
+      "train_seconds": {
+        "mean": 33.238526820001425,
+        "std": 18.501884200065355
+      },
+      "rerank_ms_per_query": {
+        "mean": 0.06027576000196859,
+        "std": 0.010831922138450635
+      }
+    },
+    "kge_DistMult_softmax": {
+      "hit@10": {
+        "mean": 0.7598350063149483,
+        "std": 0.008397271757971234
+      },
+      "recall@10": {
+        "mean": 0.7000200755396331,
+        "std": 0.008866530624978896
+      },
+      "rr": {
+        "mean": 0.44427093915683774,
+        "std": 0.012578477058492098
+      },
+      "risk@10": {
+        "mean": 0.16530156311899782,
+        "std": 0.0008234829112406219
+      },
+      "train_seconds": {
+        "mean": 30.568570510001155,
+        "std": 19.43356122427678
+      },
+      "rerank_ms_per_query": {
+        "mean": 0.04792185999685898,
+        "std": 0.002715323698922059
+      }
+    },
+    "kge_RotatE_bce": {
+      "hit@10": {
+        "mean": 0.8015551759813851,
+        "std": 0.014102832965228662
+      },
+      "recall@10": {
+        "mean": 0.7463629652859564,
+        "std": 0.014892246731709611
+      },
+      "rr": {
+        "mean": 0.49944704484497365,
+        "std": 0.013169362561186601
+      },
+      "risk@10": {
+        "mean": 0.16429808249873043,
+        "std": 0.0007033834683401165
+      },
+      "train_seconds": {
+        "mean": 100.87507787000068,
+        "std": 37.68555779762334
+      },
+      "rerank_ms_per_query": {
+        "mean": 0.05007001999183558,
+        "std": 0.012169717681266687
+      }
+    },
+    "kge_RotatE_softmax": {
+      "hit@10": {
+        "mean": 0.8240329925556942,
+        "std": 0.008718832472199456
+      },
+      "recall@10": {
+        "mean": 0.7728557350917281,
+        "std": 0.011002422031094245
+      },
+      "rr": {
+        "mean": 0.5620564688801817,
+        "std": 0.012649255855259327
+      },
+      "risk@10": {
+        "mean": 0.16476108425776123,
+        "std": 0.0007401231358866618
+      },
+      "train_seconds": {
+        "mean": 120.33630903999874,
+        "std": 47.120476512100225
+      },
+      "rerank_ms_per_query": {
+        "mean": 0.04904257999442052,
+        "std": 0.002913022048825037
+      }
+    },
+    "kge_TransE_softmax": {
+      "hit@10": {
+        "mean": 0.7856676426816963,
+        "std": 0.013963120522433228
+      },
+      "recall@10": {
+        "mean": 0.729668482332513,
+        "std": 0.014106909655699738
+      },
+      "rr": {
+        "mean": 0.5060850635210942,
+        "std": 0.016014849034558944
+      },
+      "risk@10": {
+        "mean": 0.16696460813996966,
+        "std": 0.0012315682127642983
+      },
+      "train_seconds": {
+        "mean": 62.41031330999831,
+        "std": 23.11344622559814
+      },
+      "rerank_ms_per_query": {
+        "mean": 0.04859858000127133,
+        "std": 0.00299501872461433
+      }
+    },
+    "nbfnet": {
+      "hit@10": {
+        "mean": 0.8316178067629387,
+        "std": 0.012084979459395942
+      },
+      "recall@10": {
+        "mean": 0.7804033219139302,
+        "std": 0.011873642196762207
+      },
+      "rr": {
+        "mean": 0.5678097402623331,
+        "std": 0.016785882485025928
+      },
+      "risk@10": {
+        "mean": 0.16534397234691672,
+        "std": 0.001107663660135032
+      },
+      "train_seconds": {
+        "mean": 608.8599590699989,
+        "std": 2.915540965633043
+      },
+      "rerank_ms_per_query": {
+        "mean": 0.054021099998499265,
+        "std": 0.0029436613359266318
+      }
+    }
+  }
+}
