@@ -94,3 +94,9 @@ Exploratory shift results for RotatE (seed 0, mean over years):
 - At β = 1, risk 0.051 (−42%) and hit 0.689, still above co-supply's 0.616.
 
 Also exploratory: on Trase, GraphSAGE does better with BCE than with softmax, the opposite of AnonNet. The best loss depends on the data.
+
+## 6. Checks added after the confirmatory run (exploratory, 20 Nov 2026)
+
+**Reverse-link exposure** (`scripts/55_v5_reverse_exposure.py`, `v5_reverse_exposure.json`). In 14% of queries (13.0-16.6% per seed) a correct answer has a visible link from the customer. On the remaining queries, hit@10 is: co-supply 0.670, RotatE 0.822, NBFNet 0.819, GATv2 softmax 0.762, GraphSAGE softmax 0.756. Differences against co-supply: RotatE +15.3, NBFNet +14.9, GATv2 +9.2, GraphSAGE +8.7; GATv2 softmax against binary +11.4 (all 10/10 seeds, p = 0.002). NBFNet against RotatE is -0.3 (2/10, p = 0.16). On the exposed queries: NBFNet 0.909, RotatE 0.835, co-supply 0.475.
+
+**Penalty size** (`scripts/56_v5_penalty_scale.py`, `v5_penalty_scale.json`, first 60 steps on seed 100). At lambda = 1 the penalty is 1.2-2.2% of the base loss under the softmax loss (GATv2) against 11.7-16.8% under BCE. Its gradient is 0.2-3.1% of the base loss's gradient against 8.7-17.8%. lambda is not comparable across losses.
