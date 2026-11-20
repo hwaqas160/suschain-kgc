@@ -1,90 +1,67 @@
 # suschain-kgc
 
-Reproducible re-benchmark and extension of Peeris, Baryannis & Papadakis
-(2026), *Sustainability* 18(6), 2825, "Advancing Sustainable Supply Chains
-Through Knowledge Graph Completion and Graph-Based Artificial Intelligence"
-(<https://doi.org/10.3390/su18062825>).
+Code, configurations and per-seed results for the study "Retrain or re-rank? An evaluation of
+sustainability-aware graph learning for supplier substitution under disruption".
 
-The base paper proposes graph neural networks (GraphSAGE, GAT, RGCN) for
-supplier-substitution link prediction and sustainability-risk node
-classification, evaluated on two supply-chain datasets against synthetic
-labels, with no released code and an undisclosed evaluation protocol. This
-repository rebuilds that pipeline from scratch and closes the gaps that
-follow from an undisclosed protocol: no non-learned baselines, no
-knowledge-graph-embedding (KGE) baselines, no stated negative-sampling ratio
-or candidate-pool size, and no statistical testing between architectures.
+The study asks whether a sustainability preference should be learned in the training loss of a
+supplier-ranking model or applied to its scores afterwards. It builds on Peeris, Baryannis &
+Papadakis (2026), *Sustainability* 18(6), 2825 (<https://doi.org/10.3390/su18062825>), who rank
+candidate suppliers with graph neural networks and propose building sustainability objectives into
+the training loss as future work.
 
-## v4 revision (November 2026): current results
+## Current version (v5, November 2026)
 
-The v4 scripts (`scripts/33`–`45`, `docs/v4/`) support the revised manuscript
-"Retrain or re-rank? An evaluation of sustainability-aware graph learning for
-supplier substitution under disruption". Every result uses ten seeds. Where
-the v4 findings differ from the earlier sections below, the v4 findings
-apply. They are summarised in `docs/v4/FINDINGS.md`.
+Everything reported in the current manuscript comes from the v5 scripts below. Results are
+summarised in `docs/v5/FINDINGS.md`.
 
-- **Substitution test with held-out ground truth** on AnonNet
-  (`scripts/36`, `43`). The failed supplier is never a correct answer.
-- **The sustainability penalty in the loss behaves like a score shift**, to
-  first order (`docs/v4/penalty_derivation.md`). Applied after training, the
-  shift beats the trained penalty at every setting (`scripts/34`–`37`).
-- **The choice of ranker matters more than the penalty.** Top-10 hit rate:
-  RotatE 0.823; the co-supply rule 0.635; the GNNs 0.45–0.59.
-- **Risk-budgeted re-ranking** (`scripts/43`) calibrates the shift to a
-  target risk reduction on half the customers and checks it on the other half.
-- **Corrected link-prediction benchmark** (`scripts/41`,
-  `docs/v4/benchmark_protocol.md`). It uses equal-budget tuning on validation
-  data only, a leak-free directed AnonNet split, KGE models with reciprocal
-  relations, and tied scores sharing ranks. KGE models lead on both datasets.
-- **Replication of the base paper's setting** (`scripts/44`), following the
-  first author's description of it.
-- The manuscript's tables are generated from the result files by
-  `scripts/45_v4_paper_tables.py`.
+- **Pre-registrations.** `docs/v5/PREREGISTRATION.md` (commit 0c706e8) fixes the hypotheses,
+  selection rules and analysis of the confirmatory round before any evaluation seed was run.
+  `docs/v5/PREREGISTRATION_TRASE.md` (commit da186fa) does the same for the Trase study.
+  Deviations are listed in `docs/v5/DEVIATIONS.md`.
+- **Tuning on substitution queries** (`scripts/46_v5_tune_substitution.py`), scenario seed 100.
+  Frozen settings: `configs/model_v5/` (commit 12d7a9c).
+- **Confirmatory round** on AnonNet, seeds 10 to 19 (`scripts/47_v5_confirmatory.py`) and its
+  pre-registered analysis (`scripts/48_v5_analysis.py`, `scripts/54_v5_h5_penalty.py`).
+- **Observed replacements on Trase Brazil soy** (`scripts/50_v5_trase.py`).
+- **Exploratory checks added after the confirmatory run:** reverse-link exposure
+  (`scripts/55_v5_reverse_exposure.py`) and the size of the learned penalty relative to the base
+  loss (`scripts/56_v5_penalty_scale.py`).
+- **Figures and tables** of the manuscript: `scripts/52_v5_schematics.py`,
+  `scripts/53_v5_results_figures.py`.
 
-The earlier claims about the multi-objective loss and the cold-start result
-are withdrawn in v4. See `docs/v4/FINDINGS.md`: section 7 and the "Gate A decision" section.
+Result files: `results/metrics/v5_*.json` and `v5_*_curves.npz` (per-query outcomes).
 
-## What this adds over the base paper (v1–v3)
+### Trase data
 
-- A disclosed benchmark: heuristic floors (popularity, common neighbors,
-  Adamic-Adar, preferential attachment), four KGE models (TransE, DistMult,
-  ComplEx, RotatE via PyKEEN), a dual-reported ranking protocol
-  (full-catalog filtered and 99-candidate sampled-pool), per-architecture
-  hyperparameter tuning, and seven-seed Wilcoxon significance testing.
-- Real sustainability grounding: the base paper's synthetic emission labels
-  are replaced with cited external data (Our World in Data CO2-per-capita)
-  where matching is reliable, and with the datasets' own certification
-  records where external matching is measured and found inadequate.
-- Sustainability folded into training via a multi-objective loss, evaluated
-  both as a Pareto utility-risk tradeoff and as a supplier-disruption
-  simulation reporting managerial outcomes (substitute recall, recommended
-  risk, certification compliance), all at seven seeds.
-- The first genuine inductive/cold-start test for this model class, with a
-  destination-popularity control.
-- A zero-parameter certificate-co-occurrence baseline for LODHalal link
-  prediction that outperforms every learned model tested (see
-  `results/metrics/phase1_cert_cooccurrence_full_lodhalal.json` and
-  `scripts/22`-`25`): 99.0% of LODHalal certificates that connect more than
-  one food connect foods sharing a single manufacturer, so the certificate
-  functions as a near-lookup for the prediction target. This is the paper's
-  central methodological finding, applied to its own results rather than
-  only the base paper's.
+The Trase Brazil soy supply chain, release 2.6.1 (CC BY 4.0), is not redistributed here because of
+its size. Download the composite table from
+<https://trase.earth/open-data/datasets/supply-chains-brazil-soy> and save it as
+`data/external/brazil_soy_v2_6_1_composite.csv` before running `scripts/50_v5_trase.py`.
 
-The manuscript itself is not part of this repository; see the citation
-metadata in `CITATION.cff` and `.zenodo.json` for how to cite this code and
-the associated paper once published.
+## Earlier versions
+
+The v4 scripts (`scripts/33` to `45`, `docs/v4/`) are the first, exploratory round of the current
+study and the corrected link-prediction benchmark (`scripts/41`, `docs/v4/benchmark_protocol.md`).
+Where they differ from v5, v5 applies.
+
+Scripts `01` to `25` belong to an earlier, unpublished version of this study. Its benchmark had
+several problems that are documented in `docs/v4/FINDINGS.md` (section 8) and corrected in v4: test
+data used in tuning, reverse-edge leakage on AnonNet, embedding baselines trained on one relation
+and tied scores counted in a method's favour. Its conclusions about the multi-objective loss are
+superseded. These scripts are kept so that every earlier number can still be reproduced.
 
 ## Datasets
 
 - **LODHalal** (`data/raw/lodhalal/`): food-manufacturer-ingredient-
   certification knowledge graph, sourced from
-  <https://github.com/utomogirraz/graph-app-kit> (cited by the base paper).
+  <https://github.com/utomogirraz/graph-app-kit> (as used by Peeris et al.).
 - **AnonNet** (`data/raw/anonnet/`): anonymised manufacturing supply
   network, sourced from <https://github.com/lx249/anon-network> (Xu, Long &
   Brintrup, 2025).
 
 Both are used exactly as published by their original sources, with data
 quality issues found during verification documented in the code (see
-`src/suschain/data/`) and in the paper's Materials and Methods section.
+`src/suschain/data/`) and in the manuscript.
 `data/processed/lodhalal_food_off_matched.parquet` and
 `data/external/owid_co2_data.csv` are the enriched real-sustainability-label
 artifacts described above. The Open Food Facts product dump and the

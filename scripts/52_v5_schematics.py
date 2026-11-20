@@ -162,10 +162,10 @@ def task():
 def design():
     fig, ax = canvas(DOUBLE_COL, 4.5, 120, 72)
     ax.text(1, 71.5, "Protocol", fontsize=8.2, fontweight="bold", color=INK, va="top")
-    steps = [("Round 1", ["exploratory", "seeds 0–9"], FILL, INK2),
+    steps = [("Round 1", ["exploratory", "seeds 0 to 9"], FILL, INK2),
              ("Pre-registration", ["hypotheses, rules", "and analysis, public"], FILL_ACC, ACCENT),
              ("Tuning scenario", ["seed 100: tune on", "substitution; fix α"], FILL, INK2),
-             ("Round 2", ["confirmatory, frozen", "settings, seeds 10–19"], FILL_ACC, ACCENT),
+             ("Round 2", ["confirmatory", "seeds 10 to 19"], FILL_ACC, ACCENT),
              ("Tests", ["Wilcoxon + Holm;", "customer bootstrap"], FILL, INK2)]
     w, gap = 21.6, 2.0
     for i, (t, ls_, fc, ec) in enumerate(steps):
@@ -182,10 +182,10 @@ def design():
         ax.text(x + 0.5, head_y, h, fontsize=6.8, fontweight="bold", color=INK2, va="center")
     ax.plot([1, 119], [head_y - 2.2, head_y - 2.2], color=LINE, lw=0.8)
     rows = [
-        ("RQ1  Which rankers find substitutes\nonce loss and tuning are matched?",
+        ("RQ1  Which rankers find substitutes\nonce each is tuned on the task?",
          "AnonNet, 7,245 firms; 11 tuned rankers:\nGNN × loss, KGE × loss, NBFNet, rules",
-         "H1–H3 on paired seeds;\nencoder × loss ablation", "Results:\naccuracy"),
-        ("RQ2  Learn the sustainability goal,\nor apply it after training?",
+         "H1 to H3 on paired seeds;\nencoder × loss ablation", "Results:\naccuracy"),
+        ("RQ2  Learn the sustainability goal\nor apply it after training?",
          "learned penalty (λ = 1, 5) against the\nshift and the filter on the same ranker",
          "H4: hit@10 at equal risk;\nPropositions 1 and 2", "Results:\ntrade-off"),
         ("RQ3  Can a risk target be met\non new customers, guaranteed?",
@@ -193,7 +193,7 @@ def design():
          "grid vs guaranteed rule;\nProposition 3, Lemma 1", "Results:\nrisk budget"),
         ("RQ4  Do the conclusions hold on\nobserved replacements?",
          "Trase Brazil soy: importers' new\nexporters; deforestation exposure",
-         "T1–T3 on seven paired\nevaluation years", "Results:\nTrase"),
+         "T1 to T3 on seven paired\nevaluation years", "Results:\nTrase"),
     ]
     rh = 9.4
     for i, row in enumerate(rows):

@@ -130,8 +130,8 @@ def tab_accuracy(d):
             r = np.mean(per[m]["rr"])
             rc = np.mean(per[m]["recall@10"])
             rk = np.mean(per[m]["risk@10"])
-            tr = f"{np.mean(per[m]['train_seconds']):.0f}" if "train_seconds" in per[m] else "--"
-            rr = f"{np.mean(per[m]['rerank_ms_per_query']):.2f}" if "rerank_ms_per_query" in per[m] else "--"
+            tr = f"{np.mean(per[m]['train_seconds']):.0f}" if "train_seconds" in per[m] else "n/a"
+            rr = f"{np.mean(per[m]['rerank_ms_per_query']):.2f}" if "rerank_ms_per_query" in per[m] else "n/a"
             nm = name(m) + ("$^\\dagger$" if m in (d["best_gnn"], d["best_kge"]) else "")
             lines.append(f"{nm} & {h:.3f} $\\pm$ {hh:.3f} & {r:.3f} & {rc:.3f} & {rk:.3f} & {tr} & {rr} \\\\")
     if lam:
@@ -143,18 +143,30 @@ def tab_accuracy(d):
             lab = f"\\quad $\\lambda={m.rsplit('_lam', 1)[1]}$"
             lines.append(f"{lab} & {h:.3f} $\\pm$ {hh:.3f} & {np.mean(per[m]['rr']):.3f} & "
                          f"{np.mean(per[m]['recall@10']):.3f} & {np.mean(per[m]['risk@10']):.3f} & "
-                         f"{np.mean(per[m]['train_seconds']):.0f} & -- \\\\")
+                         f"{np.mean(per[m]['train_seconds']):.0f} & n/a \\\\")
     lines += [r"\bottomrule", r"\end{tabular}"]
     (TAB / "accuracy_v5.tex").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def tab_tests(a):
-    lines = [r"\begin{tabular}{lrr}", r"\toprule", r"Hypothesis & $p$ & $p$ (Holm) \\", r"\midrule"]
-    for k, v in a["tests"].items():
-        lab = k.replace("_", r"\_").replace("vs", "vs.").replace("(lambda 1)", r"($\lambda=1$)")
-        for key, nm in NAMES.items():
-            lab = lab.replace(key.replace("_", r"\_"), nm)
-        lines.append(f"{lab} & {fmt_p(v['p'])} & {fmt_p(v['p_holm'])} \\\\")
+def paired_effects(a, d):
+    """Per-seed hit@10 differences (points) behind H1-H4: mean, SD and Cohen's d_z."""
+    per = d["per_seed"]
+    h = lambda m: np.array(per[m]["hit@10"]) * 100
+    diffs = [h(a["best_kge"]) - h("co_supply"), h("nbfnet") - h("co_supply"),
+             h(a["best_gnn"]) - h(a["best_gnn"].replace("softmax", "bce")),
+             np.array(a["H4_shift_minus_penalty_hit"]["per_seed"]) * 100]
+    return [(x.mean(), x.std(ddof=1), x.mean() / x.std(ddof=1)) for x in diffs]
+
+
+def tab_tests(a, d):
+    eff = paired_effects(a, d)
+    lines = [r"\begin{tabular}{lrrrrr}", r"\toprule",
+             r"Hypothesis & Diff. & SD & $d_z$ & $p$ & $p$ (Holm) \\", r"\midrule"]
+    short = [f"H1 {NAMES.get(a['best_kge'], a['best_kge']).split(',')[0]} vs. co-supply", "H2 NBFNet vs. co-supply",
+             f"H3 {NAMES.get(a['best_gnn'], a['best_gnn']).split(',')[0]}: softmax vs. binary",
+             r"H4 Shift vs. penalty ($\lambda=1$), equal risk"]
+    for lab, (k, v), (mu, sd, dz) in zip(short, a["tests"].items(), eff):
+        lines.append(f"{lab} & ${mu:+.1f}$ & {sd:.1f} & ${dz:+.1f}$ & {fmt_p(v['p'])} & {fmt_p(v['p_holm'])} \\\\")
     lines += [r"\bottomrule", r"\end{tabular}"]
     (TAB / "tests_v5.tex").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -210,7 +222,7 @@ def fig_tradeoff(d, cv):
 # ------------------------------------------------------------------ budget
 def fig_budget(a, d, target="target20"):
     bud = a["risk_budget"]
-    rankers = [m for m in (d["best_kge"], "co_supply", d["best_gnn"]) if m in bud]
+    rankers = [m for m in (d["best_kge"], "co_supply", d["best_gnn"], "nbfnet") if m in bud]
     sizes = ["25", "50", "100", "half"]
     n_cust = int(np.mean(d["per_seed"]["_n_queries"]["customers"]))
     xs = [25, 50, 100, n_cust // 2]
@@ -224,6 +236,8 @@ def fig_budget(a, d, target="target20"):
         cols[rankers[1]] = MUTE
     if len(rankers) > 2:
         cols[rankers[2]] = YELLOW
+    if len(rankers) > 3:
+        cols[rankers[3]] = OK
     for ax, (k, title) in zip(axes, metrics):
         for m in rankers:
             for rule, (ls, mk, _) in styles.items():
@@ -351,7 +365,7 @@ def tab_trase(t, ta):
         h = [per[m][str(y)]["hit"] for y in years]
         r = np.mean([per[m][str(y)]["rr"] for y in years])
         rk = np.mean([per[m][str(y)]["risk"] for y in years])
-        above = "--" if m == "co_supply" else f"{sum(a > b for a, b in zip(h, co))} of {len(years)}"
+        above = "n/a" if m == "co_supply" else f"{sum(a > b for a, b in zip(h, co))} of {len(years)}"
         nm = name(m) + ("$^\\dagger$" if m == t["best"] else "")
         lines.append(f"{nm} & {np.mean(h):.3f} & {r:.3f} & {rk:.3f} & {above} \\\\")
     lines += [r"\bottomrule", r"\end{tabular}"]
@@ -372,7 +386,7 @@ def main():
         fig_tradeoff(d, cv)
         an = load(MET / f"v5_analysis{a_.tag}.json")
         if an:
-            tab_tests(an)
+            tab_tests(an, d)
             fig_budget(an, d)
             tab_budget(an, d)
     t = load(MET / "v5_trase.json")
