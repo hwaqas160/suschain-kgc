@@ -100,3 +100,11 @@ Also exploratory: on Trase, GraphSAGE does better with BCE than with softmax, th
 **Reverse-link exposure** (`scripts/55_v5_reverse_exposure.py`, `v5_reverse_exposure.json`). In 14% of queries (13.0-16.6% per seed) a correct answer has a visible link from the customer. On the remaining queries, hit@10 is: co-supply 0.670, RotatE 0.822, NBFNet 0.819, GATv2 softmax 0.762, GraphSAGE softmax 0.756. Differences against co-supply: RotatE +15.3, NBFNet +14.9, GATv2 +9.2, GraphSAGE +8.7; GATv2 softmax against binary +11.4 (all 10/10 seeds, p = 0.002). NBFNet against RotatE is -0.3 (2/10, p = 0.16). On the exposed queries: NBFNet 0.909, RotatE 0.835, co-supply 0.475.
 
 **Penalty size** (`scripts/56_v5_penalty_scale.py`, `v5_penalty_scale.json`, first 60 steps on seed 100). At lambda = 1 the penalty is 1.2-2.2% of the base loss under the softmax loss (GATv2) against 11.7-16.8% under BCE. Its gradient is 0.2-3.1% of the base loss's gradient against 8.7-17.8%. lambda is not comparable across losses.
+
+## 7. Further checks (exploratory, 20 Nov 2026)
+
+`scripts/57_v5_control_modes.py`, output `results/metrics/v5_control_modes.json`; stored curves only, no retraining.
+
+- **How to meet a risk target.** A weight chosen per shortlist or per customer at decision time meets the target for (almost) every list or customer but costs more than one weight for all customers when many calibration customers are available. RotatE, hit@10 points lost (10% / 20% / 30% target): per list 9.6 / 15.6 / 22.5; per customer 7.9 / 13.8 / 21.2; guaranteed rule with 25 calibration customers 14.5 / 22.1 / 39.4, with 100 3.1 / 10.1 / 15.9, with half 1.6 / 5.2 / 15.9. From 100 calibration customers on, the single weight is cheaper for every ranker and target; with 25, the per-customer weight is.
+- **Trase.** Per-importer weights met the target for every importer at 2.9 / 3.5 / 6.2 points, against 9.2 points for the guaranteed rule at 20%.
+- **Trase, importers weighted equally (model seed 0).** RotatE 62.5% vs co-supply 56.0%, 6 of 7 years, p = 0.031. NBFNet 56.0% vs 56.0%. RotatE 52.7% vs 43.8% in 2014 to 2018 and 75.5% vs 72.3% in 2020 to 2022. In 2018 five of 24 importers give 71% of queries.

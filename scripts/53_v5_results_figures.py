@@ -86,12 +86,13 @@ def fig_accuracy(d):
             mu, h = ci(per[m][key])
             soft = not m.endswith("_bce")
             col = ACCENT if m in best else (MUTE if g == "Rules" else INK2)
-            ax.errorbar(mu, yy, xerr=h if h > 0 else None, fmt="o", ms=5, mfc=col if soft else "white",
+            ax.errorbar(mu, yy, xerr=h if h > 0 else None, fmt="D" if m in best else "o", ms=5,
+                        mfc=col if soft else "white",
                         mec=col, ecolor=col, elinewidth=1.0, capsize=0, mew=1.2)
-            ax.text(mu + max(h, 0) + 0.012, yy, f"{mu:.3f}", va="center", fontsize=6.3, color=INK2)
+            ax.text(mu + max(h, 0) + 0.012, yy, f"{mu:.3f}", va="center", fontsize=7, color=INK2)
         co = np.mean(per["co_supply"][key])
         ax.axvline(co, color=LINE, lw=0.9, ls=(0, (3, 2)), zorder=0)
-        ax.set_title(title, fontsize=8, color=INK, loc="left")
+        ax.set_xlabel(title + " (higher is better)")
         ax.grid(axis="y", visible=False)
         ax.set_xlim(left=0)
     axes[0].set_yticks(y)
@@ -101,14 +102,14 @@ def fig_accuracy(d):
     for (g, _), yy in zip(rows, y):
         gy.setdefault(g, []).append(yy)
     for g, ys in gy.items():
-        axes[1].text(1.0, max(ys) + 0.45, g, transform=axes[1].get_yaxis_transform(), ha="right", va="bottom",
-                     fontsize=6.4, color=MUTE, style="italic")
+        axes[0].text(0.01, max(ys) + 0.45, g, transform=axes[0].get_yaxis_transform(), ha="left", va="bottom",
+                     fontsize=7, color=MUTE, style="italic")
     axes[0].plot([], [], "o", mfc=INK2, mec=INK2, label="softmax loss (or no loss)")
     axes[0].plot([], [], "o", mfc="white", mec=INK2, label="binary cross-entropy")
-    axes[0].plot([], [], "o", mfc=ACCENT, mec=ACCENT, label="selected by the pre-registered rule")
+    axes[0].plot([], [], "D", mfc=ACCENT, mec=ACCENT, label="selected by the pre-registered rule")
     axes[0].plot([], [], color=LINE, ls=(0, (3, 2)), label="co-supply")
-    fig.legend(loc="lower center", ncol=4, fontsize=6.6, bbox_to_anchor=(0.55, -0.02))
-    fig.tight_layout(rect=(0, 0.05, 1, 1))
+    fig.legend(loc="lower center", ncol=2, fontsize=7, bbox_to_anchor=(0.55, -0.03))
+    fig.tight_layout(rect=(0, 0.08, 1, 1))
     save(fig, "Figure_Accuracy")
 
 
@@ -155,18 +156,18 @@ def paired_effects(a, d):
     diffs = [h(a["best_kge"]) - h("co_supply"), h("nbfnet") - h("co_supply"),
              h(a["best_gnn"]) - h(a["best_gnn"].replace("softmax", "bce")),
              np.array(a["H4_shift_minus_penalty_hit"]["per_seed"]) * 100]
-    return [(x.mean(), x.std(ddof=1), x.mean() / x.std(ddof=1)) for x in diffs]
+    return [(x.mean(), x.std(ddof=1), int((x > 0).sum())) for x in diffs]
 
 
 def tab_tests(a, d):
     eff = paired_effects(a, d)
     lines = [r"\begin{tabular}{lrrrrr}", r"\toprule",
-             r"Hypothesis & Diff. & SD & $d_z$ & $p$ & $p$ (Holm) \\", r"\midrule"]
+             r"Hypothesis & Diff. & SD & Seeds ahead & $p$ & $p$ (Holm) \\", r"\midrule"]
     short = [f"H1 {NAMES.get(a['best_kge'], a['best_kge']).split(',')[0]} vs. co-supply", "H2 NBFNet vs. co-supply",
              f"H3 {NAMES.get(a['best_gnn'], a['best_gnn']).split(',')[0]}: softmax vs. binary",
              r"H4 Shift vs. penalty ($\lambda=1$), equal risk"]
-    for lab, (k, v), (mu, sd, dz) in zip(short, a["tests"].items(), eff):
-        lines.append(f"{lab} & ${mu:+.1f}$ & {sd:.1f} & ${dz:+.1f}$ & {fmt_p(v['p'])} & {fmt_p(v['p_holm'])} \\\\")
+    for lab, (k, v), (mu, sd, up) in zip(short, a["tests"].items(), eff):
+        lines.append(f"{lab} & ${mu:+.1f}$ & {sd:.1f} & {up} of 10 & {fmt_p(v['p'])} & {fmt_p(v['p_holm'])} \\\\")
     lines += [r"\bottomrule", r"\end{tabular}"]
     (TAB / "tests_v5.tex").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -199,22 +200,22 @@ def fig_tradeoff(d, cv):
     ax.set_title(f"(a) {name(bg)}: retrain or re-rank (high-risk end)", fontsize=8, loc="left", color=INK)
     ax.set_xlim(R[0] - 0.035, R[0] + 0.003)
     ax.set_ylim(H[0] - 0.09, H[0] + 0.02)
-    ax.legend(fontsize=6.4, loc="lower right")
+    ax.legend(fontsize=7, loc="lower right")
     # (b) shift curves of the main rankers
     ax = axes[1]
-    series = [(bk, ACCENT), ("nbfnet", OK), (bg, YELLOW), ("co_supply", MUTE)]
-    for m, col in series:
+    series = [(bk, ACCENT, "-", "o"), ("nbfnet", OK, (0, (4, 2)), "s"), (bg, YELLOW, "-.", "^"),
+              ("co_supply", MUTE, ":", "v")]
+    for m, col, ls, mk in series:
         if f"s{seeds[0]}/{m}/hit" not in cv.files:
             continue
         H, R = mean_curve(cv, seeds, m)
-        ax.plot(R, H, "-", color=col, lw=1.6, label=name(m))
-        ax.plot(R[0], H[0], "o", color=col, ms=4.5)
+        ax.plot(R, H, ls=ls, color=col, lw=1.5, marker=mk, ms=3, markevery=3, label=name(m))
+        ax.plot(R[0], H[0], mk, color=col, ms=5)
     ax.set_xlabel("risk@10 (lower is better)")
+    ax.set_ylabel("hit@10")
     ax.set_title("(b) Shift applied to different rankers", fontsize=8, loc="left", color=INK)
-    ax.legend(fontsize=6.4, loc="lower right")
+    ax.legend(fontsize=7, loc="lower right")
     axes[1].set_ylim(bottom=0)
-    fig.text(0.5, -0.02, "Each curve starts at the plain ranking (dot, β = 0) and moves left as the shift weight β "
-             "grows from 0 to 20. Mean over seeds.", ha="center", fontsize=6.6, color=INK2)
     fig.tight_layout()
     save(fig, "Figure_Tradeoff")
 
@@ -226,11 +227,12 @@ def fig_budget(a, d, target="target20"):
     sizes = ["25", "50", "100", "half"]
     n_cust = int(np.mean(d["per_seed"]["_n_queries"]["customers"]))
     xs = [25, 50, 100, n_cust // 2]
-    fig, axes = plt.subplots(1, 3, figsize=(DOUBLE_COL, 2.45))
-    metrics = [("mean_test_risk_minus_alpha", "(a) test risk minus target α"),
+    fig, axes = plt.subplots(1, 3, figsize=(DOUBLE_COL, 2.75))
+    metrics = [("mean_test_risk_minus_alpha", "(a) evaluation risk minus target α"),
                ("share_within", "(b) share of splits with risk ≤ α"),
                ("hit_lost", "(c) hit@10 lost")]
-    styles = {"crc": ("-", "o", "guaranteed rule"), "grid": ("--", "s", "grid rule")}
+    styles = {"crc": ("-", "guaranteed rule"), "grid": ("--", "grid rule")}
+    marks = dict(zip(rankers, ["o", "v", "^", "s"]))
     cols = {rankers[0]: ACCENT}
     if len(rankers) > 1:
         cols[rankers[1]] = MUTE
@@ -240,26 +242,59 @@ def fig_budget(a, d, target="target20"):
         cols[rankers[3]] = OK
     for ax, (k, title) in zip(axes, metrics):
         for m in rankers:
-            for rule, (ls, mk, _) in styles.items():
+            for rule, (ls, _) in styles.items():
                 v = [bud[m][target][s][rule][k] for s in sizes]
-                ax.plot(xs, v, ls=ls, marker=mk, ms=3.5, color=cols[m], lw=1.2,
+                ax.plot(xs, v, ls=ls, marker=marks[m], ms=3.8, color=cols[m], lw=1.2,
                         mfc=cols[m] if rule == "crc" else "white")
         ax.set_xscale("log")
         ax.set_xticks(xs)
-        ax.set_xticklabels([str(x) for x in xs], fontsize=6.6)
+        ax.set_xticklabels([str(x) for x in xs[:-1]] + [f"~{int(round(xs[-1], -1))}"], fontsize=7)
         ax.minorticks_off()
-        ax.set_xlabel("calibration customers", fontsize=7)
+        ax.set_xlabel("calibration customers (log scale)", fontsize=7)
         ax.set_title(title, fontsize=7.6, loc="left", color=INK)
     axes[0].axhline(0, color=INK2, lw=0.8)
     axes[1].set_ylim(0, 1.02)
+    axes[0].set_ylabel("risk@10 minus α")
+    axes[1].set_ylabel("share of splits")
+    axes[2].set_ylabel("hit@10 lost")
     for m in rankers:
-        axes[2].plot([], [], color=cols[m], lw=1.6, label=name(m))
-    for rule, (ls, mk, lab) in styles.items():
-        axes[2].plot([], [], ls=ls, marker=mk, color=INK2, mfc=INK2 if rule == "crc" else "white", label=lab)
-    fig.legend(*axes[2].get_legend_handles_labels(), loc="lower center", ncol=6, fontsize=6.6,
-               bbox_to_anchor=(0.5, -0.06))
-    fig.tight_layout(rect=(0, 0.08, 1, 1))
+        axes[2].plot([], [], color=cols[m], lw=1.4, marker=marks[m], ms=4, label=name(m))
+    for rule, (ls, lab) in styles.items():
+        axes[2].plot([], [], ls=ls, color=INK2, lw=1.2, label=lab)
+    fig.legend(*axes[2].get_legend_handles_labels(), loc="lower center", ncol=3, fontsize=7,
+               bbox_to_anchor=(0.5, -0.08))
+    fig.tight_layout(rect=(0, 0.14, 1, 1))
     save(fig, "Figure_Budget")
+
+
+def fig_modes(cm, d):
+    """Hit@10 lost to meet a risk target: one calibrated weight vs a weight chosen per customer or per list."""
+    an = cm["anonnet"]
+    m = d["best_kge"]
+    n_half = int(np.mean(d["per_seed"]["_n_queries"]["customers"])) // 2
+    fig, axes = plt.subplots(1, 3, figsize=(DOUBLE_COL, 2.6), sharey=True)
+    for ax, tk, title in zip(axes, ("target10", "target20", "target30"), ("(a) 10% target", "(b) 20% target",
+                                                                           "(c) 30% target")):
+        e = an[m][tk]
+        xs = [25, 100, n_half]
+        ax.plot(xs, [e[f"crc_{s}"]["lost"] for s in ("25", "100", "half")], "-o", color=ACCENT, lw=1.5, ms=4,
+                label="one weight, guaranteed rule")
+        ax.plot(xs, [e[f"grid_{s}"]["lost"] for s in ("25", "100", "half")], "--o", color=ACCENT, lw=1.2, ms=4,
+                mfc="white", label="one weight, grid rule (no guarantee)")
+        ax.axhline(e["per_customer"]["lost"], color=OK, lw=1.4, ls=(0, (4, 2)), label="weight per customer")
+        ax.axhline(e["per_list"]["lost"], color=RISK, lw=1.4, ls=":", label="weight per shortlist")
+        ax.set_xscale("log")
+        ax.set_xticks(xs)
+        ax.set_xticklabels(["25", "100", f"~{int(round(n_half, -1))}"])
+        ax.minorticks_off()
+        ax.set_xlabel("calibration customers (log scale)")
+        ax.set_title(title, fontsize=8, loc="left", color=INK)
+    axes[0].set_ylabel(f"hit@10 lost, {name(m)}")
+    axes[0].set_ylim(bottom=0)
+    fig.legend(*axes[0].get_legend_handles_labels(), loc="lower center", ncol=2, fontsize=7,
+               bbox_to_anchor=(0.5, -0.06))
+    fig.tight_layout(rect=(0, 0.13, 1, 1))
+    save(fig, "Figure_Modes")
 
 
 def tab_budget(a, d):
@@ -286,11 +321,11 @@ def tab_budget(a, d):
 # ------------------------------------------------------------------ tuning table
 def hp_text(b):
     if b["family"] == "nbfnet":
-        return f"dim {b['dim']}, {b['layers']} layers, {b['seconds']:.0f} s"
+        return f"dim {b['dim']}, {b['layers']} layers; tuned at 240 s, evaluated at {b['seconds']:.0f} s"
     h = b["hp"]
     if b["family"] == "gnn":
-        return (f"{h['num_layers']} layers, dim {h['out_channels']}, lr {h['lr']:.1e}, batch {h['batch_size']}, "
-                f"{h['epochs']} ep., {h['num_neg']} neg.")
+        return (f"{h['num_layers']} layers, emb. {h['embedding_dim']}, hidden {h['hidden_channels']}, "
+                f"out {h['out_channels']}, lr {h['lr']:.1e}, batch {h['batch_size']}, {h['epochs']} ep., {h['num_neg']} neg.")
     return (f"dim {h['dim']}, lr {h['lr']:.1e}, batch {h['batch_size']}, {h['epochs']} ep., "
             f"{h['num_neg']} neg." + (f", $\\gamma$ {h['gamma']:g}" if "gamma" in h else ""))
 
@@ -300,18 +335,20 @@ def tab_tuning():
     for p in sorted(CONF.glob("substitution_*.json")):
         c = json.loads(p.read_text())
         rows.append((c["key"], c))
-    lines = [r"\begin{tabular}{lp{0.30\textwidth}rrr}", r"\toprule",
+    lines = [r"\begin{tabularx}{\textwidth}{lXrrr}", r"\toprule",
              r"Ranker & Chosen setting & Trials & Minutes & Tuning hit@10 \\", r"\midrule"]
     order = [m for _, ms in GROUPS for m in ms]
     for k, c in sorted(rows, key=lambda r: order.index(r[0]) if r[0] in order else 99):
         lines.append(f"{name(k)} & {hp_text(c['best'])} & {len(c['trials'])} & {c['total_seconds'] / 60:.0f} & "
                      f"{c['best_val_hit10']:.3f} \\\\")
-    lines += [r"\bottomrule", r"\end{tabular}"]
+    lines += [r"\bottomrule", r"\end{tabularx}"]
     body = "\n".join(lines)
-    out = (r"\begin{table}[h]" "\n"
+    out = (r"\begin{table}[htbp]" "\n"
            r"\caption{Settings chosen on the tuning scenario (seed 100) by mean hit@10 of its substitution "
-           r"queries. Minutes are wall-clock time on one shared 5\,GB GPU.}\label{tab:tuning}" "\n"
-           r"\centering\scriptsize" "\n" + body + "\n" r"\end{table}" "\n")
+           r"queries. emb.: input embedding size; hidden and out: layer widths; dim: embedding size; lr: learning "
+           r"rate; ep.: epochs; neg.: sampled negatives per positive; $\gamma$: margin of the distance models. "
+           r"Minutes are wall-clock time on one shared 5\,GB GPU.}\label{tab:tuning}" "\n"
+           r"\centering\footnotesize" "\n" + body + "\n" r"\end{table}" "\n")
     (TAB / "tuning.tex").write_text(out, encoding="utf-8")
 
 
@@ -328,14 +365,15 @@ def fig_trase(t, ta, tc):
         if m in seen or m not in per:
             continue
         seen.add(m)
-        v = [per[m][str(y)]["hit"] for y in years]
-        ax.plot(years, v, ls=ls, marker="o", ms=3.5, color=col, lw=1.4, label=name(m))
+        full = list(range(min(years), max(years) + 1))
+        v = [per[m][str(y)]["hit"] if y in years else np.nan for y in full]
+        ax.plot(full, v, ls=ls, marker="o", ms=3.5, color=col, lw=1.4, label=name(m))
     ax.set_xticks(years)
-    ax.set_xticklabels([str(y) for y in years], fontsize=6.6)
+    ax.set_xticklabels([str(y) for y in years], fontsize=7)
     ax.set_ylabel("hit@10")
     ax.set_ylim(0, 1)
     ax.set_title("(a) Observed replacements, per evaluation year", fontsize=8, loc="left", color=INK)
-    ax.legend(fontsize=6.4, loc="lower left", ncol=2)
+    ax.legend(fontsize=7, loc="lower left", ncol=2)
     ax = axes[1]
     for m, col, _ in series[:3]:
         if f"{years[0]}/{m}/hit" not in tc.files:
@@ -348,7 +386,7 @@ def fig_trase(t, ta, tc):
     ax.set_ylabel("hit@10")
     ax.set_ylim(bottom=0)
     ax.set_title("(b) Shift on Trase: accuracy against risk", fontsize=8, loc="left", color=INK)
-    ax.legend(fontsize=6.4, loc="lower right")
+    ax.legend(fontsize=7, loc="lower right")
     fig.tight_layout()
     save(fig, "Figure_Trase")
 
@@ -389,6 +427,9 @@ def main():
             tab_tests(an, d)
             fig_budget(an, d)
             tab_budget(an, d)
+        cm = load(MET / "v5_control_modes.json")
+        if cm:
+            fig_modes(cm, d)
     t = load(MET / "v5_trase.json")
     ta = load(MET / "v5_trase_analysis.json")
     if t and ta:

@@ -53,7 +53,7 @@ def benchmark():
         for d in (a, l):
             s = d["summary"].get(m)
             if s is None:
-                cells += ["--"] * 3
+                cells += ["n/a"] * 3
                 continue
             r = s["test_ranking_v4"]["realistic"]
             cells += [ms(r["mrr"]), ms(r["hits@10"]), f"{s['test_metrics']['auc_roc']['mean']:.3f}"]
@@ -73,7 +73,7 @@ def benchmark():
 \toprule
  & \multicolumn{3}{c}{AnonNet (leak-free)} & \multicolumn{3}{c}{LODHalal} \\
 \cmidrule(lr){2-4}\cmidrule(lr){5-7}
-Method & MRR & Hits@10 & AUC & MRR & Hits@10 & AUC \\
+Method & MRR & hit@10 & AUC & MRR & hit@10 & AUC \\
 \midrule
 """ + "\n".join(rows) + r"""
 \bottomrule
@@ -110,7 +110,7 @@ def replication():
                 f"{v['tail_full_hits@10']['mean']:.3f} & {v['tail_sampled99_hits@10']['mean']:.3f} \\\\")
     body = (r"""\begin{tabular}{lccccccc}
 \toprule
- & & & & \multicolumn{2}{c}{MRR} & \multicolumn{2}{c}{Hits@10} \\
+ & & & & \multicolumn{2}{c}{MRR} & \multicolumn{2}{c}{hit@10} \\
 \cmidrule(lr){5-6}\cmidrule(lr){7-8}
  & Acc.\ (0.5) & F1 (0.5) & AUC & full & 99 neg. & full & 99 neg. \\
 \midrule

@@ -18,7 +18,7 @@ from matplotlib.colors import to_rgb  # noqa: E402
 from matplotlib.patches import Circle, Ellipse, FancyBboxPatch  # noqa: E402
 
 matplotlib.rcParams.update({
-    "pdf.fonttype": 42, "ps.fonttype": 42, "font.family": "DejaVu Sans", "font.size": 8,
+    "pdf.fonttype": 42, "ps.fonttype": 42, "font.family": "DejaVu Sans", "font.size": 8, "axes.labelsize": 7.5, "xtick.labelsize": 7, "ytick.labelsize": 7,
     "axes.spines.top": False, "axes.spines.right": False, "axes.linewidth": 0.6,
     "axes.edgecolor": "#52514e", "axes.labelcolor": "#0b0b0b", "xtick.color": "#52514e",
     "ytick.color": "#52514e", "xtick.major.width": 0.6, "ytick.major.width": 0.6,
@@ -31,10 +31,10 @@ INK, INK2, MUTE, LINE = "#0b0b0b", "#52514e", "#8a8984", "#c9c8c2"
 ACCENT, RISK, OK, VIOLET = "#2a78d6", "#eb6834", "#1baf7a", "#6250d6"
 FILL, FILL_ACC, FILL_RISK, FILL_OK = "#f4f4f2", "#e6eefa", "#fcebe3", "#e3f5ee"
 RISK_RAMP = ["#fde7dc", "#f8b896", "#eb6834", "#a8431a"]  # low -> high risk
-SINGLE_COL, DOUBLE_COL = 3.54, 7.48  # inches (90 mm, 190 mm)
+SINGLE_COL, DOUBLE_COL = 3.54, 6.5  # inches; 6.5 in is the text width of the manuscript, so fonts print at size
 
 
-SOFT3D = True  # soft drop shadow + gentle vertical gradient on diagram boxes and nodes
+SOFT3D = False  # soft drop shadow + gentle vertical gradient on diagram boxes and nodes
 
 
 def _mix(c, other, t):

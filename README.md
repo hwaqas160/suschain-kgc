@@ -1,7 +1,8 @@
 # suschain-kgc
 
-Code, configurations and per-seed results for the study "Retrain or re-rank? An evaluation of
-sustainability-aware graph learning for supplier substitution under disruption".
+Code, configurations and per-seed results for a study of sustainability-aware graph learning for
+supplier substitution. The manuscript is under double-anonymised review; author details will be added
+after the review.
 
 The study asks whether a sustainability preference should be learned in the training loss of a
 supplier-ranking model or applied to its scores afterwards. It builds on Peeris, Baryannis &
@@ -24,8 +25,9 @@ summarised in `docs/v5/FINDINGS.md`.
   pre-registered analysis (`scripts/48_v5_analysis.py`, `scripts/54_v5_h5_penalty.py`).
 - **Observed replacements on Trase Brazil soy** (`scripts/50_v5_trase.py`).
 - **Exploratory checks added after the confirmatory run:** reverse-link exposure
-  (`scripts/55_v5_reverse_exposure.py`) and the size of the learned penalty relative to the base
-  loss (`scripts/56_v5_penalty_scale.py`).
+  (`scripts/55_v5_reverse_exposure.py`), the size of the learned penalty relative to the base
+  loss (`scripts/56_v5_penalty_scale.py`) and decision-time risk weights with an importer-level
+  Trase check (`scripts/57_v5_control_modes.py`).
 - **Figures and tables** of the manuscript: `scripts/52_v5_schematics.py`,
   `scripts/53_v5_results_figures.py`.
 
