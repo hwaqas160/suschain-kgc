@@ -256,7 +256,7 @@ def fig_budget(a, d, target="target20"):
         axes[2].plot([], [], color=cols[m], lw=1.6, label=name(m))
     for rule, (ls, mk, lab) in styles.items():
         axes[2].plot([], [], ls=ls, marker=mk, color=INK2, mfc=INK2 if rule == "crc" else "white", label=lab)
-    fig.legend(*axes[2].get_legend_handles_labels(), loc="lower center", ncol=5, fontsize=6.6,
+    fig.legend(*axes[2].get_legend_handles_labels(), loc="lower center", ncol=6, fontsize=6.6,
                bbox_to_anchor=(0.5, -0.06))
     fig.tight_layout(rect=(0, 0.08, 1, 1))
     save(fig, "Figure_Budget")
